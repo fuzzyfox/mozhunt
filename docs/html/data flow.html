@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    margin: 10px 13px 10px 13px;
+}
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+@media screen and (min-width: 768px) {
+    body {
+        width: 748px;
+        margin:10px auto;
+    }
+}
+</style>
+<title>data flow.html</title>
+</head>
+<body>
+<hr />
+
+<p>Contents</p>
+
+<ul>
+<li>Basic idea &ndash; <code>starthere.md</code>
+
+<ul>
+<li>The players</li>
+<li>The hiders</li>
+<li>The token</li>
+</ul>
+</li>
+<li>Getting started &ndash; <code>getting started.md</code>
+
+<ul>
+<li>Development environment</li>
+<li>Development process</li>
+<li>Coding style</li>
+<li>Where to begin</li>
+</ul>
+</li>
+<li>Data flow &ndash; <code>data flow.md</code>
+
+<ul>
+<li>Player</li>
+<li>Hider</li>
+<li>Token</li>
+</ul>
+</li>
+<li>System flows &ndash; <code>system flows.md</code>
+
+<ul>
+<li>Player creation</li>
+<li>Token creation</li>
+<li>Token finding</li>
+</ul>
+</li>
+<li>Application structure &ndash; <code>application struct.md</code>
+
+<ul>
+<li>Directory structure explained</li>
+<li>URI structure</li>
+<li>Controllers</li>
+<li>Methods</li>
+<li>API</li>
+</ul>
+</li>
+<li>Site map &ndash; <code>sitemap.md</code></li>
+</ul>
+
+
+<hr />
+
+<h1>Data flow</h1>
+
+<p><strong>Key:</strong></p>
+
+<ul>
+<li><strong>&ndash;></strong> represents data from the <strong>entity</strong> in question to <strong>mozhunt</strong></li>
+<li><strong>&lt;&ndash;</strong> represents data from <strong>mozhunt</strong> to the <strong>entity</strong> in question</li>
+<li><strong>&lt;&ndash;></strong> represents a two way flow of data between both <strong>mozhunt</strong> and the <strong>entity</strong> in question</li>
+<li><strong>( ! )</strong> represents an important note</li>
+</ul>
+
+
+<h2>Player</h2>
+
+<ul>
+<li><strong>&ndash;></strong> | nickname &ndash; this is the publicly displayed identity of the player.</li>
+<li><strong>&ndash;></strong> | password &ndash; obviously this is part of the log in process.</li>
+<li><strong>&ndash;></strong> | email &ndash; this is for the mailing list before the game launches and then for log in and contact during, and for a short period after, the game finishes.</li>
+<li><strong>&ndash;></strong> | preferences &ndash; this includes preferences on settings like opt-in and opt-out features.</li>
+<li><strong>&ndash;></strong> | found token &ndash; this is the api key of any token the player finds.</li>
+<li><strong>&lt;&ndash;</strong> | player score &ndash; this can either be on their account page OR on the leader board.</li>
+<li><strong>&lt;&ndash;</strong> | clues &ndash; during game play there will be clues given as to the whereabouts of tokens are.</li>
+</ul>
+
+
+<h2>Hider</h2>
+
+<ul>
+<li><strong>&lt;&ndash;></strong> | see <strong>player</strong>.</li>
+<li><strong>&ndash;></strong> | api key.</li>
+<li><strong>&ndash;></strong> | token &ndash; this is the code need for copy-paste implementation.</li>
+<li><strong>&ndash;></strong> | token status &ndash; this is the statistical data on how many people have found the token compared to how many could have potentially found it.</li>
+<li><strong>&lt;&ndash;</strong> | token type &ndash; there will be a number of options to customise what the token should look like to players.</li>
+<li><strong>&lt;&ndash;</strong> | location of token &ndash; this is the top level domain of the site the token is to be hidden on (or including the top route of the site if needed).</li>
+</ul>
+
+
+<h2>Token</h2>
+
+<ul>
+<li><strong>&ndash;></strong> | api key &ndash; this is for verification of authenticity, as well as to identify the token when found.</li>
+<li><strong>&ndash;></strong> | referrer &ndash; this again is for verification of authenticity of the token.</li>
+<li><strong>&lt;&ndash;</strong> | status &ndash; this is to tell the token to display as found, hidden, or normal based on current gameplay state and user viewing token.</li>
+<li><strong>&lt;&ndash;</strong> | type &ndash; this is the type of token to display based on the hiders preference.</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    margin: 10px 13px 10px 13px;
+}
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+@media screen and (min-width: 768px) {
+    body {
+        width: 748px;
+        margin:10px auto;
+    }
+}
+</style>
+<title>getting started.html</title>
+</head>
+<body>
+<hr />
+
+<p>Contents</p>
+
+<ul>
+<li>Basic idea &ndash; <code>starthere.md</code>
+
+<ul>
+<li>The players</li>
+<li>The hiders</li>
+<li>The token</li>
+</ul>
+</li>
+<li>Getting started &ndash; <code>getting started.md</code>
+
+<ul>
+<li>Development environment</li>
+<li>Development process</li>
+<li>Coding style</li>
+<li>Where to begin</li>
+</ul>
+</li>
+<li>Data flow &ndash; <code>data flow.md</code>
+
+<ul>
+<li>Player</li>
+<li>Hider</li>
+<li>Token</li>
+</ul>
+</li>
+<li>System flows &ndash; <code>system flows.md</code>
+
+<ul>
+<li>Player creation</li>
+<li>Token creation</li>
+<li>Token finding</li>
+</ul>
+</li>
+<li>Application structure &ndash; <code>application struct.md</code>
+
+<ul>
+<li>Directory structure explained</li>
+<li>URI structure</li>
+<li>Controllers</li>
+<li>Methods</li>
+<li>API</li>
+</ul>
+</li>
+<li>Site map &ndash; <code>sitemap.md</code></li>
+</ul>
+
+
+<hr />
+
+<h1>Getting Started</h1>
+
+<h2>Development environment</h2>
+
+<p>So there is of course a difference between the development environment and the production site, however we need to make this difference as small as possible. So this section provides information on how to setup your development environment so as to reflect that of the production server.</p>
+
+<h3>System requirements</h3>
+
+<ul>
+<li>Git + GitHub account</li>
+<li>Backend Development Only
+
+<ul>
+<li>MySQL</li>
+<li>PHP</li>
+<li>Apache</li>
+</ul>
+</li>
+<li>Frontend Development Only
+
+<ul>
+<li>Mozilla Aurora (Firefox v. 11 minimum)</li>
+<li>Chrome Beta</li>
+<li>Internet Explorer 8, 9, or 10 beta (if it is due/likely to release before Easter)</li>
+</ul>
+</li>
+</ul>
+
+
+<p>Why so many different browsers for frontend development? Well even though the main target is the Mozilla Community, not all of those in the community use Mozilla Firefox… and we want to be able to allow those who may not be part of the Mozilla Community to join in too!</p>
+
+<p>So why are we using the development versions of the browsers? Well we want to promote the open web, and web standards so that is done by developing the application in accordance with those. However we also want to promote good practice for internet users which is to ensure they have the latest version of their browser possible. This means using development versions of some browsers as these development versions will be release versions come our launch date.</p>
+
+<h3>Untracked files</h3>
+
+<p>For security, and common sense reasons, some files are not tracked on the git repository… these files consist of those that are either created by the operating system in order to manage directories and other things, as well as those that contain any sensitive information such as database passwords, encryption keys, or anything that falls under the protection of the <em>Data Protection Act</em>.</p>
+
+<p>In some instances these files are essential for the operation of the application. So to counteract this problem, should any file be untracked but needed for the application to run, a sample version should be created which should be named in the following manner:</p>
+
+<pre><code>{filename}.sample.{extension}
+</code></pre>
+
+<p>This indicates that the file should be copied and the <code>.sample</code> part be removed.</p>
+
+<p>Sample files <strong>MUST NOT</strong> contain sensitive information. This information should be replaced by a few words that describe what should be there OR it should be self explanatory what should be entered. If neither applies then ensure a comment is added nearby in the code that explains what information should be entered and where.</p>
+
+<h2>Development process</h2>
+
+<h3>Repository management</h3>
+
+<p>When working on a specific feature (i.e. user signup), you should, where possible, create a new branch for that feature, and then merge it once it is complete.</p>
+
+<p>The <strong>master</strong> branch should only be used for certain milestones, and releases. There will therefore be a <strong>development</strong> branch which features should be merged into. This will allow easy staging, as well as a clear development process for future releases and enhancements.</p>
+
+<h4>Additional Features</h4>
+
+<p>There may be separate features that are not part of the core application such as a JetPack (restartless add-on) for Firefox, or a WordPress Plugin for hiders. These features should also be developed on separate branches, however do not need to follow the same management process as the core. It will be up to the branch owners how to manage those features and should add that information to this file below.</p>
+
+<h3>Milestones</h3>
+
+<p>Each milestone is to be achieved before the next is started, as it would be so when walking in the countryside.</p>
+
+<p>A milestone represents a major improvement or completion of the core application. This would be events like:</p>
+
+<ul>
+<li>A large feature is completed that provides the one of most essential elements of the application</li>
+<li>Major changes have been made to the application that need to be distributed to anyone else using it beside mozhunt.</li>
+<li>Critical, or a collection of minor, bug fixes. These, though not necessarily milestones in the strictest sense are important to be on the <strong>master</strong> branch.</li>
+</ul>
+
+
+<h3>Issue tracking</h3>
+
+<p>This will primarily be done using GitHub&rsquo;s build in issue tracker. This means that there are less different tools to learn, and in less locations. Issues should be tagged based on feature and severity (Critical, Minor, Request).</p>
+
+<p>Issues should be as descriptive as possible and should where appropriate include the following information:</p>
+
+<ul>
+<li>Version of the application (or commit reference) when issue is created</li>
+<li>For fronted issues which browser they occur in</li>
+<li>A short description of the issue and steps to reproduce</li>
+<li>If problem code is known but not in current development this should be included</li>
+<li>Suggestions on how to fix</li>
+</ul>
+
+
+<h4>Example:</h4>
+
+<pre><code>v. 0.0.1
+browser: Internet Explorer 6
+
+all the ajaj does not work and the site looks funky.    All the images have grey backgrounds and forms are  hideously Windows 98.
+
+Steps:
+1. visit the site using IE 6
+
+Fix:
+none… who would be stupid enough now to support IE6?!
+</code></pre>
+
+<h2>Coding style</h2>
+
+<p>Coding style is something that varies from developer to developer, so this is just a guide on appreciated practices and some requirements for comments/documentation.</p>
+
+<h3>Indentation and code blocks</h3>
+
+<p>Be consistent if nothing else, however it is preferred if you don&rsquo;t do this:</p>
+
+<pre><code>if($x == 1){$y = 2;}
+</code></pre>
+
+<p>but instead do this:</p>
+
+<pre><code>if($x == 1)
+{
+    $y = 2;
+}
+</code></pre>
+
+<p>or this:</p>
+
+<pre><code>if($x == 1) {
+    $y = 2;
+}
+</code></pre>
+
+<h3>Shorthand and complex bits</h3>
+
+<p>When doing something shorthand or complex that is not easy to understand add a simple comment before hand to explain what it is you are doing. For example this oversimplified example:</p>
+
+<pre><code>// assigning the string 'true' or 'false' based on
+// condition
+$string = ($boolean)? 'true' : 'false';
+</code></pre>
+
+<h3>Quotes</h3>
+
+<p>As much as possible follow these conventions.</p>
+
+<h4>PHP</h4>
+
+<p>Single quotes unless reading variables inline. i.e. <code>"this is a $varType"</code> and <code>'this is a string'</code></p>
+
+<h4>HTML &amp; JavaScript</h4>
+
+<p>Single quotes for JavaScript, and double quotes for HTML attributes. This makes writing any HTML in JavaScript 1000 times easier. i.e. <code>var html = '&lt;a href="/"&gt;home&lt;/a&gt;';</code></p>
+
+<h3>Input, forms, sessions, and database connections</h3>
+
+<p>Please ONLY use the CodeIgniter provided libraries and helpers for dealing with input, sessions and the database. Use the form helper from CodeIgniter at all times when opening forms so as to ensure that we have CSRF protection fully enabled.</p>
+
+<h3>Comments</h3>
+
+<p>Please ensure that you comment your code thoroughly so as to ensure easy pickup for others. Please also use <strong>phpdoc</strong> style comments at the beginning of all files, classes, and functions. Also ensure to add yourself as the author of each function and class you create, and should you work on a piece of code created by someone else add yourself as a contributor. This will help with issue fixing and who deserves praise for what.</p>
+
+<p><strong>Note:</strong> This applies in a similar fashion to <strong>CSS</strong> and <strong>JavaScript</strong>, not so much for <strong>HTML</strong>.</p>
+
+<h3>File endings</h3>
+
+<p>You should include a small comment to point out that it is the end of the file and where the file is/should be located. e.g.</p>
+
+<pre><code>/* End of file welcome.php */
+/* Location: ./application/controllers/welcome.php */
+</code></pre>
+
+<p>This will help provide an easy way to identify files if you multiple files with the same name open in your code editor (some do not show the file path in the title, just the name).</p>
+
+<h4>PHP</h4>
+
+<p>Don&rsquo;t use the PHP close tag. Reasoning for this can be found with a simple Google search, but in short it improves performance and recedes file size a little.</p>
+
+<h2>Where to begin</h2>
+
+<p>You should start be finishing reading these doc&rsquo;s you are currently reading now, then move on to familiarising yourself with CodeIgniter and jQuery if you are not already so. Then… talk to the others working on the code, and decide with them what you will each be working on.</p>
+</body>
+</html>

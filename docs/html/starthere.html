@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    margin: 10px 13px 10px 13px;
+}
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+@media screen and (min-width: 768px) {
+    body {
+        width: 748px;
+        margin:10px auto;
+    }
+}
+</style>
+<title>starthere.html</title>
+</head>
+<body>
+<h1>Welcome to mozhunt</h1>
+
+<p>mozhunt was originally a community developed, community run, treasure hunt on the web for the mozilla community. It was a big success and now it is finally time to dust it off and recreate it.</p>
+
+<hr />
+
+<p>Contents</p>
+
+<ul>
+<li>Basic idea &ndash; <code>starthere.md</code>
+
+<ul>
+<li>The players</li>
+<li>The hiders</li>
+<li>The token</li>
+</ul>
+</li>
+<li>Getting started &ndash; <code>getting started.md</code>
+
+<ul>
+<li>Development environment</li>
+<li>Development process</li>
+<li>Coding style</li>
+<li>Where to begin</li>
+</ul>
+</li>
+<li>Data flow &ndash; <code>data flow.md</code>
+
+<ul>
+<li>Player</li>
+<li>Hider</li>
+<li>Token</li>
+</ul>
+</li>
+<li>System flows &ndash; <code>system flows.md</code>
+
+<ul>
+<li>Player creation</li>
+<li>Token creation</li>
+<li>Token finding</li>
+</ul>
+</li>
+<li>Application structure &ndash; <code>application struct.md</code>
+
+<ul>
+<li>Directory structure explained</li>
+<li>URI structure</li>
+<li>Controllers</li>
+<li>Methods</li>
+<li>API</li>
+</ul>
+</li>
+<li>Site map &ndash; <code>sitemap.md</code></li>
+</ul>
+
+
+<hr />
+
+<h2>Basic idea</h2>
+
+<p>There are two parts to the game&hellip; first of all there are those hiding tokens. The idea is that this is a quick and simple a process as possible. All the hider need do is paste one or two lines of code onto their site and instantly their token is hidden. They can also add a cryptic clue as to what their site is and where on the site their token is hidden.</p>
+
+<p>For the players this is a little different, they visit as many sites as possible (originally around the mozilla community) to find these tokens.</p>
+
+<p>Now you should not need a separate account to hide and find tokens. <strong>However</strong> those hiding tokens may not add the one they have hidden to their site.</p>
+
+<h3>The players</h3>
+
+<p>Players should have the easiest gameplay experience possible, with as many useful and interesting features we can provide without taking away from the simplicity of the idea.</p>
+
+<p>A play will need to have an account with mozhunt and be logged in to play. However they need not visit the site once they start unless they wish to view their rank in the player leader board, or change some settings.</p>
+
+<p>When finding a token players should be able to simply click the token to mark it as found and then continue looking at the site the token was hidden on.</p>
+
+<h2>The hiders</h2>
+
+<p>These people are ordinary players for the most part however they have decided to also hide a token. This therefore means that their own token is automatically marked as found for them, and so they cannot add it to their score.</p>
+
+<p>To hide a token the will need to provide the root domain (and if needed route) that the token will be hidden on. This allows for them to hide it in either a blog post, OR a repeatedly displayed part of their site, such as the header and/or footer.</p>
+
+<p>To add a token to their site, we (mozhunt) will provide the hider with an api key, and a couple of lines of code to add to their site, with the api key already configured so the code is as simple as copy-paste.</p>
+
+<h2>The token</h2>
+
+<p>One item that has been mentioned but not discussed is the token. This is essentially just a record in our (mozhunt&rsquo;s) database, and a few lines of code on a website. These lines of code however include:</p>
+
+<ul>
+<li>A small javascript snippet to AJAJ-ify the token finding process and provide a more seamless experience for the players</li>
+<li>A hyperlink fallback should javascript be disabled or fail</li>
+<li>And an image, this is the token from the players perspective and is what should be clicked to start the finding process</li>
+</ul>
+
+</body>
+</html>
