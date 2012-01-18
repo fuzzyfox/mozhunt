@@ -519,4 +519,13 @@ AddCharset utf-8 .css .js .xml .json .rss .atom
 
 # Hide the index.php from url and allow access to only certain files directly
 RewriteCond $1 !^(index\.php|index\.html|asset|robots\.txt|humans\.txt|user_guide)
-RewriteRule ^(.*)$ /mozhunt/index.php/$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /mozhunt/index.php?$1 [L]  
+
+
+# ----------------------------------------------------------------------
+# mozhunt specific
+# ----------------------------------------------------------------------
+
+DirectoryIndex index.html index.php
