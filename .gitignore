@@ -4,6 +4,9 @@ mozhunt.komodoproject
 user_guide
 application/config/database.php
 application/config/config.php
+.htaccess
+
+!asset/misc/schema.sql
 
 
 # Compiled source #
@@ -32,7 +35,6 @@ application/config/config.php
 ######################
 *.log
 *.sql
-!asset/misc/schema.sql
 *.sqlite
 
 # OS generated files #
