@@ -50,13 +50,28 @@ So where to begin? Well… like this maybe?
 	* **/test** - this is a directory for writing test cases into as well as for any little quick snippets or experiments that do not require the CodeIgniter framework.
 
 ## URI structure
-To be discussed.
+* **/** - static page controller, homepage
+* **/about/** - static page controller, about landing page
+* **/about/history/** - static page controller, mozhunt history
+* **/about/howto/** - static page controller, how to play mozhunt
+* **/about/rules/** - static page controller, the games rules
+* **/user/** - user controller, all things to do with user management
+* **/tokens/** - token controller, all things to do with token management
+* **/api/** - api controller, see **api** section below for more
+* **/legal/** - static page controller, legal landing page
+* **/legal/tos/** - static page controller, terms of service
+* **/legal/privacy/** - static page controller, privacy policy
+* **/legal/disclaimers/** - static page controller, disclaimers
+* **/contact/** - static page controller, contact landing page
 
 ## Controllers
-To be discussed.
+* **static** - static pages are pulled into the site template using this controller
+* **user** - deals with everything to do with user management and user dashboards
+* **token** - controls token creation and management
+* **api** - deals with all api interaction
 
 ## Methods
-To be discussed.
+To come.
 
 ## API
 To be discussed.
