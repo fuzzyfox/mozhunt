@@ -3,6 +3,7 @@
 mozhunt.komodoproject
 user_guide
 application/config/database.php
+application/config/config.php
 
 
 # Compiled source #
