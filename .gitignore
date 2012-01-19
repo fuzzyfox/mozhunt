@@ -31,6 +31,7 @@ application/config/database.php
 ######################
 *.log
 *.sql
+!asset/misc/schema.sql
 *.sqlite
 
 # OS generated files #

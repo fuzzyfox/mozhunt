@@ -24,7 +24,7 @@ For documentation on frameworks or tools mentioned in mozhunt please visit the r
 ## License
 All source code subject to the terms of the [Mozilla Public License, v. 2.0](http://mozilla.org/MPL/2.0/) unless otherwise noted.
 
-All content including images, audio, video, and text is subject to the terms of the [Creative Commons Attribution-ShareAlike v. 3.0](http://creativecommons.org/licenses/by-sa/3.0/)  License unless otherwise noted.
+All content including images, audio, video, and text is subject to the terms of the [Creative Commons Attribution-NonCommercial-ShareAlike 3.0](http://creativecommons.org/licenses/by-nc-sa/3.0/)  License unless otherwise noted.
 
 ### CodeIgniter
 Some of the code for mozhunt is based on the CodeIgniter PHP framework v. 2.1.0, and as such all code from this framework falls under their copyright. Please see the `code igniter-license.md` file for details.
