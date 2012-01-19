@@ -74,4 +74,3 @@ So where to begin? Well… like this maybe?
 To come.
 
 ## API
-To be discussed.
