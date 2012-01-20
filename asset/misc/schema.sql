@@ -21,12 +21,12 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 CREATE TABLE IF NOT EXISTS `domain` (
   `domainID` int(11) NOT NULL AUTO_INCREMENT,
-  `userID` int(11) DEFAULT NULL,
-  `url` varchar(255) DEFAULT NULL,
-  `imgSet` tinyint(1) DEFAULT '0',
-  `apiKey` char(32) DEFAULT NULL,
-  `apiSecret` char(32) DEFAULT NULL,
-  `domainStatus` tinyint(4) DEFAULT '0',
+  `userID` int(11) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `imgSet` tinyint(1) NOT NULL DEFAULT '0',
+  `apiKey` char(32) NOT NULL,
+  `apiSecret` char(32) NOT NULL,
+  `domainStatus` tinyint(4) DEFAULT '0' NOT NULL,
   PRIMARY KEY (`domainID`),
   UNIQUE KEY `apiKey` (`apiKey`,`apiSecret`),
   KEY `userID` (`userID`)
@@ -40,10 +40,10 @@ CREATE TABLE IF NOT EXISTS `domain` (
 
 CREATE TABLE IF NOT EXISTS `token` (
   `tokenID` int(11) NOT NULL AUTO_INCREMENT,
-  `domainID` int(11) DEFAULT NULL,
-  `name` varchar(140) DEFAULT NULL,
-  `clue` varchar(140) DEFAULT NULL,
-  `tokenStatus` tinyint(4) DEFAULT '0',
+  `domainID` int(11) NOT NULL,
+  `name` varchar(140) NOT NULL,
+  `clue` varchar(140) NOT NULL,
+  `tokenStatus` tinyint(4) DEFAULT '0' NOT NULL,
   PRIMARY KEY (`tokenID`),
   UNIQUE KEY `clue` (`clue`),
   KEY `domainID` (`domainID`)
@@ -57,11 +57,11 @@ CREATE TABLE IF NOT EXISTS `token` (
 
 CREATE TABLE IF NOT EXISTS `user` (
   `userID` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(254) DEFAULT NULL,
-  `password` char(128) DEFAULT NULL COMMENT 'sha512',
-  `nickname` varchar(30) DEFAULT NULL,
-  `userStatus` tinyint(4) DEFAULT '4',
-  `lastActive` int(4) unsigned DEFAULT NULL,
+  `email` varchar(254) NOT NULL,
+  `password` char(128) NOT NULL COMMENT 'sha512',
+  `nickname` varchar(30) NOT NULL,
+  `userStatus` tinyint(4) DEFAULT '4' NOT NULL,
+  `lastActive` int(4) unsigned NOT NULL,
   PRIMARY KEY (`userID`),
   UNIQUE KEY `email` (`email`,`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
