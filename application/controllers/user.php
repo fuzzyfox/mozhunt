@@ -52,14 +52,14 @@ class User extends CI_Controller
 			//Grab the time so we can use that as date of registration
 			$dor = time();
 			//Clean up the password first
-			$password = xss_clean($this->input->post('pw1'));
+			$password = $this->input->post('pw1');
 			//Now hash the password with the time to get the actual password that we store
 			$password = sha1($password+$dor);
 			//There where no problems co clean up the data and request the model for a new user
 			$data = array(
-				'email' => xss_clean($this->input->post('email')),
+				'email' => $this->input->post('email'),
 				'password' => $password,
-				'nickname' => xss_clean($this->input->post('nickname')),
+				'nickname' => $this->input->post('nickname'),
 				'lastActive' => time(),
 				'registeredAt' => $dor,
 				'activationKey' => $this->user_session->generateAuthKey(),
