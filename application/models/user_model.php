@@ -61,6 +61,18 @@ class User_model extends CI_Model
 		$this->db->insert('user', $data);
 		return $this->db->insert_id();
 	}
+
+	/**
+	 * Updates a user in the database
+	 * @param array data The new data to use. Must contain a 'userID' key and value
+	 * @author Steve "Uru" West
+	 * @version 2012-01-22
+	 */
+	public function update($data)
+	{
+		$this->db->where('userID', $data['userID']);
+		$this->db->update('user', $data);
+	}
 }
 
 // End fo file user_model.php

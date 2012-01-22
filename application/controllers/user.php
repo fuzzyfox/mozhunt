@@ -91,10 +91,26 @@ class User extends CI_Controller
 		$this->form_validation->set_message('nicknameValid', 'The %s you entered contains invalid characters');
 		return FALSE;
 	}
+	
+	public function activate($key)
+	{
+		//Try and load the right user data
+		$user = $this->user_model->getUserBy('activationKey', $key);
+		if(empty($user))
+		{
+			show_404();
+		}
+		
+		$user = $user[0]; //Make sure we only have 1 user to deal with
 
-	//TODO: remove this
-	public function foo(){
-		$this->user_session->sendActivationEmail('Nickname', 'uru@mozhunt.com', 'some key');
+		$user['activationKey'] = '';
+		$user['userStatus'] = 3;
+		$this->user_model->update($user);
+
+		$data = array(
+			'nickname' => $user['nickname'],
+		);
+		$this->load->view('user/userActivated', $data);
 	}
 }
 

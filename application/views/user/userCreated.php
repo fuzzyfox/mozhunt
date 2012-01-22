@@ -4,7 +4,7 @@
 /**
  * The page that the user is shown when their account has been created
  * @author Steve "Uru" West <uru@mozhunt.com>
- * @version 2012-01-22
+ * @version 2012-01-21
  */
 ?>
 Thank you for registering, <?php echo $nickname; ?>.<br />An activation email has been sent to: <?php echo $email; ?>.<br />
