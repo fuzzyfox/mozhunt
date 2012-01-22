@@ -91,7 +91,13 @@ class User extends CI_Controller
 		$this->form_validation->set_message('nicknameValid', 'The %s you entered contains invalid characters');
 		return FALSE;
 	}
-	
+
+	/**
+	 * Activates a user that has the given key. A 404 will be shown if the key does not exist
+	 * @param string key The key to activate
+	 * @auhtor Steve "Uru" West
+	 * @version 2012-01-22
+	 */
 	public function activate($key)
 	{
 		//Try and load the right user data
