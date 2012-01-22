@@ -71,6 +71,7 @@ So where to begin? Well… like this maybe?
 * **api** - deals with all api interaction
 
 ## Methods
-To come.
+**Removed.**
 
 ## API
+**Has been moved to** `api.md`.
