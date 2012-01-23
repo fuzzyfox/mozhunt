@@ -6,7 +6,7 @@
  * Deals with logging in/out and creating new users.
  * @see useradmin.php for user administration
  * @author Steve "Uru" West <uru@mozhunt.com>
- * @version 2012-01-22
+ * @version 2012-01-23
  */
 class User extends CI_Controller
 {
@@ -117,6 +117,23 @@ class User extends CI_Controller
 			'nickname' => $user['nickname'],
 		);
 		$this->load->view('user/userActivated', $data);
+	}
+
+	/**
+	 */
+	public function login()
+	{
+		//Set up the validation rules
+
+		if($this->form_validation->run() === FALSE)
+		{
+			//Show the log in form
+			$this->load->view('user/login');
+		}
+		else
+		{
+			//Log in
+		}
 	}
 }
 
