@@ -1,6 +1,7 @@
 # Project Specific #
 ####################
-mozhunt.komodoproject
+*.komodoproject
+*.komodotool
 user_guide
 application/config/database.php
 application/config/config.php
