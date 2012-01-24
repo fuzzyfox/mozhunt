@@ -6,7 +6,7 @@
  * Deals with logging in/out and creating new users.
  * @see useradmin.php for user administration
  * @author Steve "Uru" West <uru@mozhunt.com>
- * @version 2012-01-23
+ * @version 2012-01-24
  */
 class User extends CI_Controller
 {
@@ -15,8 +15,8 @@ class User extends CI_Controller
 		parent::__construct();
 
 		$this->load->model('user_model');
-		$this->load->helper('security');
-		$this->load->library(array('form_validation','user_session'));
+		$this->load->helper(array('security', 'url'));
+		$this->load->library('form_validation');
 	}
 
 	/**
@@ -37,8 +37,7 @@ class User extends CI_Controller
 		//Needs to be a valid and unique email with a max length of 254
 		$this->form_validation->set_rules('email', 'email', 'required|valid_email|is_unique[user.email]|max_length[254]');
 		//Needs to match pw2
-		$this->form_validation->set_rules('pw1', 'password', 'required|matches[pw2]');
-		//Just required
+
 		$this->form_validation->set_rules('pw2', 'password comfirmation', 'required');
 
 		//Check to see if the form was submitted and all was found to be ok
@@ -54,7 +53,7 @@ class User extends CI_Controller
 			//Clean up the password first
 			$password = $this->input->post('pw1');
 			//Now hash the password with the time to get the actual password that we store
-			$password = sha1($password+$dor);
+			$password = sha1($password.$dor);
 			//There where no problems co clean up the data and request the model for a new user
 			$data = array(
 				'email' => $this->input->post('email'),
@@ -120,10 +119,23 @@ class User extends CI_Controller
 	}
 
 	/**
+	 * Allows the user to login. Performs validation on user input to see if the session should be updated.
+	 * @param string redirectPath Where to send the user after they log in
+	 * @author Steve "Uru" West
+	 * @version 2012-01-23
 	 */
-	public function login()
+	public function login($redirectPath = '')
 	{
+		//check where we are going to send the user to
+		if($redirectPath == '')
+		{
+			$redirectPath = index_page();
+		}
+
 		//Set up the validation rules
+		$this->form_validation->set_rules('email', 'email', 'required|max_length[254]|valid_email');
+		$email = $this->input->post('email');
+		$this->form_validation->set_rules('password', 'password', "required|callback_validLogin[$email]");
 
 		if($this->form_validation->run() === FALSE)
 		{
@@ -132,8 +144,54 @@ class User extends CI_Controller
 		}
 		else
 		{
-			//Log in
+			//Update the session to say the user have been logged in and also tell the user
+			$user = $this->user_model->getUserBy('email', $email);
+			$this->user_session->logUserIn($user[0]['userID']);
+			redirect($redirectPath);
 		}
+	}
+
+	/**
+	 * Logs the user out of the system
+	 * @author Steve "Uru" West
+	 * @version 2012-01-24
+	 */
+	public function logout()
+	{
+		//Ask the user_session to invalidate the user
+		$this->user_session->logUserOut();
+		$this->load->view('user/loggedOut');
+	}
+
+	/**
+	 * Checks to see if a user with the given email exists and then if the given password is correct
+	 * @param string password The user-inputted password
+	 * @param string email The user's email address
+	 * @author Steve "Uru" West
+	 * @version 2012-01-23
+	 */
+	public function validLogin($password, $email)
+	{
+		//Load the user with the given email
+		$user = $this->user_model->getUserBy('email', $email);
+		//Set an error message for if there is a problem
+		$this->form_validation->set_message('validLogin', 'There was a problem with your login. Please check your email address and password where entered correctly.');
+		if(empty($user))
+		{
+			//No user was found with this email so return false
+			return FALSE;
+		}
+		//Make sure we have only one user
+		$user = $user[0];
+		//Hash the password we have been given and see if it matches
+		$newPW = sha1($password+$user['registeredAt']);
+		//Compare the result and return
+		return $newPW == $user['password'];
+	}
+
+
+	public function foo(){
+		$this->user_session->getCurrentUser();
 	}
 }
 

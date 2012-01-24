@@ -5,7 +5,7 @@ if( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * Defines useful features for dealing with users and sessions
  * @author Steve "Uru" West <uru@mozhunt.com>
- * @version 2012-01-22
+ * @version 2012-01-24
  */
 class User_session
 {
@@ -14,6 +14,19 @@ class User_session
 	public function __construct()
 	{
 		$this->CI =& get_instance();
+		$this->CI->load->library('session');
+		$this->CI->load->model('user_model');
+
+		//check to see if a user is logged in
+		$userID = $this->CI->session->userdata('userID');
+		if(!empty($userID))
+		{
+			//If they are grab their information and load it into the session
+			$user = $this->CI->user_model->getUserBy('userID', $userID);
+			$user = $user[0];
+			$this->CI->session->set_userdata($user);
+			//TODO: Update the user table with the current time
+		}
 	}
 
 	/**
@@ -78,6 +91,46 @@ class User_session
 		$this->CI->email->message("Welcome to Mozhunt, $nickname!\n\nTo finish your registration please click the link below or visit it in your browser.
 \n{unwrap}$activationURL{/unwrap}\n\nHappy hunting,\nThe Mozhunt team.");
 		$this->CI->email->send();
+	}
+
+	/**
+	 * Logs a user in with the given ID
+	 * @param int userID The userID of the user to log in
+	 * @author Steve "Uru" West
+	 * @version 2012-01-24
+	 */
+	public function logUserIn($userID)
+	{
+		$this->CI->session->set_userdata(array('userID' => $userID));
+	}
+
+	/**
+	 * Logs a user out of the system if one is logged in
+	 * @author Steve "Uru" West
+	 * @version 2012-01-24
+	 */
+	public function logUserOut()
+	{
+		$this->CI->session->set_userdata(array('userID' => ''));
+	}
+
+	/**
+	 * Gets all the information about the currently logged in user.
+	 * @return FALSE if there is no user logged in or the user information if there is a user logged in.
+	 * @author Steve "Uru" West
+	 * @version 2012-01-24
+	 */
+	public function getCurrentUser()
+	{
+		$userID = $this->CI->session->userdata('userID');
+		if(empty($userID))
+		{
+			echo 'logged out';
+		}
+		else
+		{
+			echo 'Logged in with: '.$this->CI->session->userdata('nickname');
+		}
 	}
 }
 
