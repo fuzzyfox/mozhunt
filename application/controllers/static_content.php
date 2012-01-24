@@ -4,7 +4,7 @@
  * Deals with the loading of static content on the site.
  *
  * @author William "FuzzyFox" Duyck <william@mozhunt.com>
- * @version 2012-01-22
+ * @version 2012-01-24
  */
 class Static_content extends CI_Controller
 {
@@ -16,14 +16,16 @@ class Static_content extends CI_Controller
 	 */
 	public function index()
 	{
-		// code to come
+		$this->load->view('theme/header', array('stylesheets' => array('homepage')));
+		$this->load->view('static/homepage');
+		$this->load->view('theme/footer');
 	}
 	
 	/**
 	 * Loads the legal information for the site
 	 *
 	 * @author William "FuzzyFox" Duyck <william@mozhunt.com>
-	 * @version 2012-01-22
+	 * @version 2012-01-24
 	 *
 	 * @param string $doc The legal document to load.
 	 */
@@ -32,7 +34,7 @@ class Static_content extends CI_Controller
 		switch($doc)
 		{
 			// landing page
-			case '':
+			case 'landing':
 				
 			break;
 			// terms of service
@@ -49,11 +51,54 @@ class Static_content extends CI_Controller
 			break;
 			// disclaimers
 			case 'disclaimers':
-				
+				$this->load->view('theme/header', array('page_title' => 'Disclaimers'));
+				$this->load->view('static/disclaimers');
+				$this->load->view('theme/footer');
 			break;
 			// 404 page not found
 			default:
 				show_404("/legal/$doc/");
+			break;
+		}
+	}
+	
+	/**
+	 * Loads the about information for the site
+	 *
+	 * @author William "FuzzyFox" Duyck <william@mozhunt.com>
+	 * @version 2012-01-24
+	 *
+	 * @param string $doc The about page to load.
+	 */
+	public function about($page = '')
+	{
+		switch($page)
+		{
+			// landing page
+			case 'landing':
+				
+			break;
+			// history of mozhunt
+			case 'history':
+				$this->load->view('theme/header', array('page_title' => 'History'));
+				$this->load->view('static/history');
+				$this->load->view('theme/footer');
+			break;
+			// how to play play mozhunt
+			case 'howto':
+				$this->load->view('theme/header', array('page_title' => 'How To Play'));
+				$this->load->view('static/howto');
+				$this->load->view('theme/footer');
+			break;
+			// the rules of engagement
+			case 'rules':
+				$this->load->view('theme/header', array('page_title' => 'The Rules'));
+				$this->load->view('static/rules');
+				$this->load->view('theme/footer');
+			break;
+			// 404 page not found
+			default:
+				show_404("/about/$page/");
 			break;
 		}
 	}

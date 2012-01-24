@@ -19,7 +19,7 @@
 			{
 				foreach($scripts as $script)
 				{
-					echo '<script defer src="asset/js/'.$script.'.js"></script>';
+					echo '<script defer src="asset/js/'.$script.'.js"></script>' . "\r\n";
 				}
 			}
 		?>

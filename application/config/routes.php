@@ -38,8 +38,25 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "static_content";
 $route['404_override'] = '';
+
+/*
+| -------------------------------------------------------------------------
+| MOZHUNT ROUTES
+| -------------------------------------------------------------------------
+*/
+
+// legal documents
+$route['legal'] = 'static_content/legal/landing';
+$route['legal/tos'] = 'static_content/legal/tos';
+$route['legal/privacy'] = 'static_content/legal/privacy';
+
+// about pages
+$route['about'] = 'static_content/about/landing';
+$route['about/history'] = 'static_content/about/history';
+$route['about/howto'] = 'static_content/about/howto';
+$route['about/rules'] = 'static_content/about/rules'
 
 
 /* End of file routes.php */

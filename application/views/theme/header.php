@@ -8,7 +8,7 @@
     <head>
         <meta charset="utf-8">
         
-        <title><?php echo $page_title; ?> - mozhunt</title>
+        <title><?php echo (isset($page_title))? $page_title.' - ' : ''; ?>mozhunt</title>
         
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
         <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -16,8 +16,16 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
         
         <!-- CSS: implied media=all -->
-        <!-- CSS concatenated and minified via ant build script-->
         <link rel="stylesheet" href="asset/css/style.css">
+        <?php
+            if(isset($stylesheets))
+            {
+                foreach($stylesheets as $stylesheet)
+                {
+                    echo '<link rel="stylesheet" href="asset/css/'.$stylesheet.'.css">' . "\r\n";
+                }
+            }
+        ?>
         <!-- end CSS-->
         
         <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
