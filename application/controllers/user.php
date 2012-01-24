@@ -188,11 +188,6 @@ class User extends CI_Controller
 		//Compare the result and return
 		return $newPW == $user['password'];
 	}
-
-
-	public function foo(){
-		$this->user_session->getCurrentUser();
-	}
 }
 
 

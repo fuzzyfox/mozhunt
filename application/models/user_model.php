@@ -68,7 +68,7 @@ class User_model extends CI_Model
 	 * @author Steve "Uru" West
 	 * @version 2012-01-22
 	 */
-	public function update($data)
+	public function updateUser($data)
 	{
 		$this->db->where('userID', $data['userID']);
 		$this->db->update('user', $data);

@@ -24,8 +24,11 @@ class User_session
 			//If they are grab their information and load it into the session
 			$user = $this->CI->user_model->getUserBy('userID', $userID);
 			$user = $user[0];
+			//Update the user table with the current time
+			$user['lastActive'] = time();
+			$this->CI->user_model->updateUser($user);
+			//Finally update the session
 			$this->CI->session->set_userdata($user);
-			//TODO: Update the user table with the current time
 		}
 	}
 
@@ -37,8 +40,6 @@ class User_session
 	 */
 	public function generateAuthKey()
 	{
-		$this->CI->load->model('user_model');
-
 		do{
 			$newKey = $this->generateRandomString();
 		} while($this->CI->user_model->authKeyExists($newKey));
@@ -115,22 +116,15 @@ class User_session
 	}
 
 	/**
-	 * Gets all the information about the currently logged in user.
-	 * @return FALSE if there is no user logged in or the user information if there is a user logged in.
+	 * Checks to see if a user is logged in or not
+	 * @return boolean TRUE if there is a user logged in (Well, at least a userID set in the session)
 	 * @author Steve "Uru" West
 	 * @version 2012-01-24
 	 */
-	public function getCurrentUser()
+	public function isUserLoggedIn()
 	{
 		$userID = $this->CI->session->userdata('userID');
-		if(empty($userID))
-		{
-			echo 'logged out';
-		}
-		else
-		{
-			echo 'Logged in with: '.$this->CI->session->userdata('nickname');
-		}
+		return !empty($userID);
 	}
 }
 
