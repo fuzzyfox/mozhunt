@@ -183,6 +183,20 @@ class User extends CI_Controller
 		}
 		//Make sure we have only one user
 		$user = $user[0];
+
+		//Check to see if the user has a "good" status
+		if($user['userStatus'] == User_session::$USER_PENDING)
+		{
+			$this->form_validation->set_message('validLogin', 'Your email is awating activation.');
+			return FALSE;
+		}
+
+		if($user['userStatus'] == User_session::$USER_INACTIVE)
+		{
+			$this->form_validation->set_message('validLogin', 'Your account is currently flagged as inactive');
+			return FALSE;
+		}
+
 		//Hash the password we have been given and see if it matches
 		$newPW = sha1($password+$user['registeredAt']);
 		//Compare the result and return

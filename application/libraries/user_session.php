@@ -11,6 +11,14 @@ class User_session
 {
 	private $CI;
 
+	public static $USER_ADMIN = 0;
+	public static $USER_SUPPORT = 1;
+	public static $USER_HIDER = 2;
+	public static $USER_PLAYER = 3;
+	public static $USER_PENDING = 4;
+	public static $USER_INACTIVE = 5;
+	public static $USER_GUEST = 100;
+
 	public function __construct()
 	{
 		$this->CI =& get_instance();
@@ -125,6 +133,22 @@ class User_session
 	{
 		$userID = $this->CI->session->userdata('userID');
 		return !empty($userID);
+	}
+
+	/**
+	 * Returns the level of this user.
+	 * @return int The level of this user
+	 * @author Steve "Uru" West
+	 * @version 2012-01-24
+	 */
+	public function getUserLevel()
+	{
+		$userLevel = $this->CI->session->userdata('userStatus');
+		if(!empty($userLevel))
+		{
+			return self::$USER_GUEST;
+		}
+		return $userLevel;
 	}
 }
 
