@@ -162,6 +162,19 @@ class User_session
 	{
 		return preg_match('/^[\da-z-A-Z0-9_\-\[\]\(\)"\'\| ]*$/', $nickname);
 	}
+
+	/**
+	 * Hashes the given string with the given salt. Uses sha1()
+	 * @param string password The string to hash
+	 * @param string salt The salt to add to the password
+	 * @return string The final hashed string
+	 * @author Steve "Uru" West
+	 * @version 2012-01-30
+	 */
+	public function hashPassword($password, $salt)
+	{
+		return sha1($password.$salt);
+	}
 }
 
 // End of file user_session.php

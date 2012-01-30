@@ -6,7 +6,7 @@
  * Deals with logging in/out and creating new users.
  * @see useradmin.php for user administration
  * @author Steve "Uru" West <uru@mozhunt.com>
- * @version 2012-01-29
+ * @version 2012-01-30
  */
 class User extends CI_Controller
 {
@@ -22,7 +22,7 @@ class User extends CI_Controller
 	/**
 	 * Controls the creation of users and validating input from the user create view
 	 * @author Steve "Uru" West
-	 * @version 2012-01-22
+	 * @version 2012-01-30
 	 */
 	public function create()
 	{
@@ -37,7 +37,7 @@ class User extends CI_Controller
 		//Needs to be a valid and unique email with a max length of 254
 		$this->form_validation->set_rules('email', 'email', 'required|valid_email|is_unique[user.email]|max_length[254]');
 		//Needs to match pw2
-
+		$this->form_validation->set_rules('pw1', 'password', 'required|matches[pw2]');
 		$this->form_validation->set_rules('pw2', 'password comfirmation', 'required');
 
 		//Check to see if the form was submitted and all was found to be ok
@@ -52,12 +52,10 @@ class User extends CI_Controller
 			$dor = time();
 			//Clean up the password first
 			$password = $this->input->post('pw1');
-			//Now hash the password with the time to get the actual password that we store
-			$password = sha1($password.$dor);
 			//There where no problems co clean up the data and request the model for a new user
 			$data = array(
 				'email' => $this->input->post('email'),
-				'password' => $password,
+				'password' => $this->user_session->hashPassword($password, $dor),
 				'nickname' => $this->input->post('nickname'),
 				'lastActive' => time(),
 				'registeredAt' => $dor,
