@@ -162,7 +162,7 @@ class User extends CI_Controller
 	 * @param string password The user-inputted password
 	 * @param string email The user's email address
 	 * @author Steve "Uru" West
-	 * @version 2012-01-23
+	 * @version 2012-01-30
 	 */
 	public function validLogin($password, $email)
 	{
@@ -192,7 +192,7 @@ class User extends CI_Controller
 		}
 
 		//Hash the password we have been given and see if it matches
-		$newPW = sha1($password+$user['registeredAt']);
+		$newPW = $this->user_session->hashPassword($password, $user['registeredAt']);
 		//Compare the result and return
 		return $newPW == $user['password'];
 	}

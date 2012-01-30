@@ -40,11 +40,36 @@ class UserPanel extends CI_Controller
 	/**
 	 * Allows the user to change their passoword
 	 * @author Steve "Uru" West
-	 * @version 2012-01-27
+	 * @version 2012-01-30
 	 */
 	public function password()
 	{
+		//Set up the validation rules
+		$this->form_validation->set_rules('cpw', 'current password', 'required'); //Add a check to see if this is the right password
+		$this->form_validation->set_rules('pw1', 'new password', 'required|matches[pw2]');
+		$this->form_validation->set_rules('pw2', 'password re-entry', 'required');
 
+		if($this->form_validation->run() === FALSE)
+		{
+			$this->load->view('userPanel/password');
+		}
+		else
+		{
+			//Hash that password!
+			$newPW = $this->user_session->hashPassword($this->input->post('pw1'), $this->session->userdata('registeredAt'));
+			$data = array(
+				'userID' => $this->session->userdata('userID'),
+				'password' => $newPW,
+			);
+			$this->user_model->updateUser($data);
+			redirect('userPanel/index');
+		}
+	}
+
+	public function passwordValid($password)
+	{
+		$this->form_validation->set_message('passwordValid', 'Your current password is invalid');
+		return $this->user_session->validPassword($password);
 	}
 
 	/**

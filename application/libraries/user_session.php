@@ -5,7 +5,7 @@ if( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * Defines useful features for dealing with users and sessions
  * @author Steve "Uru" West <uru@mozhunt.com>
- * @version 2012-01-29
+ * @version 2012-01-30
  */
 class User_session
 {
@@ -116,11 +116,11 @@ class User_session
 	/**
 	 * Logs a user out of the system if one is logged in
 	 * @author Steve "Uru" West
-	 * @version 2012-01-24
+	 * @version 2012-01-30
 	 */
 	public function logUserOut()
 	{
-		$this->CI->session->set_userdata(array('userID' => ''));
+		$this->CI->session->sess_destroy();
 	}
 
 	/**
@@ -174,6 +174,24 @@ class User_session
 	public function hashPassword($password, $salt)
 	{
 		return sha1($password.$salt);
+	}
+
+	/**
+	 * Checks to see if the given password is valid for the currenly logged in user
+	 * @param string password The password to check
+	 * @return TRUE if the password is good. FALSE if the password is incorrect or there is no user logged in
+	 * @author Steve "Uru" West
+	 * @version 2012-01-30
+	 */
+	public function validPassword($password)
+	{
+		$userID = $this->session->userdata('userID');
+		if(empty($userID))
+		{
+			return FALSE;
+		}
+
+		return $this->hashPassword($password, $this->session->userdata('registeredAt')) == $this->session->userdata('password');
 	}
 }
 

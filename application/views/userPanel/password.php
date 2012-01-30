@@ -12,8 +12,9 @@ echo validation_errors();
 echo form_open('userPanel/password');
 ?>
 	Current Password:<input type="password" name="cpw" /><br />
-	New Password:<input type="password" name="cp1" /><br />
-	Re-Enter Password:<input type="password" name="cp2" /><br />
+	New Password:<input type="password" name="pw1" /><br />
+	Re-Enter Password:<input type="password" name="pw2" /><br />
+	<input type="submit" name="submit" value="Save" />
 </form>
 <?
 // End of file password.php
