@@ -62,6 +62,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `nickname` varchar(30) NOT NULL,
   `userStatus` tinyint(4) DEFAULT '4' NOT NULL,
   `lastActive` int(4) unsigned NOT NULL,
+  `registeredAt` int(4) unsigned NOT NULL,
+  `activationKey` char(25) NULL,
   PRIMARY KEY (`userID`),
   UNIQUE KEY `email` (`email`,`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
