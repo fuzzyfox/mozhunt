@@ -11,7 +11,7 @@ echo validation_errors();
 
 echo form_open('userPanel/nickname');
 ?>
-	Nickname: <input type="text" name="newname" value="<?php $nickname; ?>" /><br />
+	Nickname: <input type="text" name="newname" value="<?php echo $nickname; ?>" /><br />
 	<input type="submit" name="submit" value="Save" />
 </form>
 <?php
