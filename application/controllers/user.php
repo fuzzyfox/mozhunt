@@ -6,7 +6,7 @@
  * Deals with logging in/out and creating new users.
  * @see useradmin.php for user administration
  * @author Steve "Uru" West <uru@mozhunt.com>
- * @version 2012-01-24
+ * @version 2012-01-29
  */
 class User extends CI_Controller
 {
@@ -78,17 +78,13 @@ class User extends CI_Controller
 	 * @param string nickname The name to check agaist
 	 * @return FALSE if nickname contains anything other than 0-9, a-z, A-Z, _-[]()"'| and space
 	 * @author Steve "Uru" West
-	 * @version 2012-01-21
+	 * @version 2012-01-29
 	 */
 	public function nicknameValid($nickname)
 	{
 		//Returns true if the nickname only contains alpha-numeric or _ - [ ] ( ) " " ' ' | (and space)
-		if(preg_match('/^[\da-zA-Z_\-\[\]\(\)"\'\| ]*$/', $nickname))
-		{
-			return TRUE;
-		}
 		$this->form_validation->set_message('nicknameValid', 'The %s you entered contains invalid characters');
-		return FALSE;
+		return $this->user_session->nicknameValid($nickname);
 	}
 
 	/**

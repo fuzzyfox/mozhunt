@@ -5,7 +5,7 @@ if( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * Defines useful features for dealing with users and sessions
  * @author Steve "Uru" West <uru@mozhunt.com>
- * @version 2012-01-24
+ * @version 2012-01-29
  */
 class User_session
 {
@@ -149,6 +149,18 @@ class User_session
 			return self::$USER_GUEST;
 		}
 		return $userLevel;
+	}
+
+	/**
+	 * Checks to see if the given nickname contains only valid characters
+	 * @param string nickname The name/string to check
+	 * @return TRUE if the given nickname only contains a-z, A-Z, 0-9 []()'"-_ or space
+	 * @author Steve "Uru" West
+	 * @version 2012-01-29
+	 */
+	public function nicknameValid($nickname)
+	{
+		return preg_match('/^[\da-z-A-Z0-9_\-\[\]\(\)"\'\| ]*$/', $nickname);
 	}
 }
 
