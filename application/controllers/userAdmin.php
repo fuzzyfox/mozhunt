@@ -14,6 +14,13 @@ class UserAdmin extends CI_Controller
 		$this->load->model('user_model');
 		$this->load->library('form_validation');
 		$this->load->helper('url');
+
+		//Check that an admin is logged in
+		if(!$this->user_session->isUserLoggedIn() || $this->user_session->getUserLevel() != User_session::$USER_ADMIN)
+		{
+			redirect('user/login', 'location');
+		}
+
 	}
 
 	/**
