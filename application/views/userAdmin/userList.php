@@ -4,7 +4,7 @@
 /**
  * Shows a list of users
  * @author Steve "Uru" West <uru@mozhunt.com>
- * @version 2012-02-05
+ * @version 2012-02-06
  */
 
 ?>
@@ -15,6 +15,7 @@
 			<th>Email</th>
 			<th>Last Activity</th>
 			<th>Registered</th>
+			<th>&nbsp;</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -26,6 +27,7 @@
 				<td><?= $user['email']; ?></td>
 				<td><?= date('Y-m-d H:i', $user['lastActive']); ?></td>
 				<td><?= date('Y-m-d H:i', $user['registeredAt']); ?></td>
+				<td><?= $user['deleteLink']; ?></td>
 			</tr>
 			<?php
 		}

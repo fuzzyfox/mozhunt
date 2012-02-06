@@ -4,7 +4,7 @@
 /**
  * Contains the various models for reading and writing user data
  * @author Steve "Uru" West <uru@mozhunt.com>
- * @version 2012-02-05
+ * @version 2012-02-06
  */
 class User_model extends CI_Model
 {
@@ -82,6 +82,17 @@ class User_model extends CI_Model
 	public function getAllUsers()
 	{
 		return $this->db->get('user')->result_array();
+	}
+
+	/**
+	 * Deletes the given user
+	 * @param int userID The ID of the user to delete
+	 * @author Steve "Uru" West
+	 * @version 2012-02-06
+	 */
+	public function deleteUser($userID)
+	{
+		$this->db->delete('user', array('userID' => $userID));
 	}
 }
 
