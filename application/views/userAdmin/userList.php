@@ -16,6 +16,7 @@
 			<th>Last Activity</th>
 			<th>Registered</th>
 			<th>&nbsp;</th>
+			<th>&nbsp;</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -27,6 +28,7 @@
 				<td><?= $user['email']; ?></td>
 				<td><?= date('Y-m-d H:i', $user['lastActive']); ?></td>
 				<td><?= date('Y-m-d H:i', $user['registeredAt']); ?></td>
+				<th><?= $user['editLink']; ?></td>
 				<td><?= $user['deleteLink']; ?></td>
 			</tr>
 			<?php
