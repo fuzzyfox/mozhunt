@@ -65,7 +65,7 @@ So where to begin? Well… like this maybe?
 * **/contact/** - static page controller, contact landing page
 
 ## Controllers
-* **static** - static pages are pulled into the site template using this controller
+* **static_content** - static pages are pulled into the site template using this controller
 * **user** - deals with everything to do with user management and user dashboards
 * **token** - controls token creation and management
 * **api** - deals with all api interaction

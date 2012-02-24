@@ -34,7 +34,7 @@ html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-
 
 body { margin: 0; font-size: 13px; line-height: 1.231; }
 
-body, button, input, select, textarea { font-family: sans-serif; color: #222; }
+body, button, input, select, textarea { font-family: sans-serif; color: #3D3D3D; }
 
 /* 
  * Remove text-shadow in selection highlight: h5bp.com/i
@@ -42,8 +42,8 @@ body, button, input, select, textarea { font-family: sans-serif; color: #222; }
  * Also: hot pink! (or customize the background color to match your design)
  */
 
-::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
-::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+::-moz-selection { background: #89C2FE; color: #fff; text-shadow: none; }
+::selection { background: #89C2FE; color: #fff; text-shadow: none; }
 
 
 /* =============================================================================
@@ -208,20 +208,94 @@ td { vertical-align: top; }
 
 
 /* ==|== primary styles =====================================================
-   Author: 
+   Author: William "FuzzyFox" Duyck <william@mozhunt.com>
    ========================================================================== */
 
+body {
+  background : #E9E2C6;
+  color : #463838;
+}
+
+header {
+  background : #879ECA;
+  text-align : center;
+  padding : 20px 0 0 0;
+}
+  
+  header h1 {
+	font-size : 6em;
+	padding : 0;
+	margin : 100px 0 0 0;
+  }
+  header h2 {
+	font-size : 3em;
+	padding : 0;
+	margin : 0;
+  }
+  header nav {
+	background : #EBF1F1;
+	padding : 10px;
+	text-transform : lowercase;
+	margin : 20px auto;
+  }
+	header nav li {
+	  display : inline-block;
+	  padding : 1em;
+	  border-right : 1px solid #ccc;
+	  border-left : 1px solid #ccc;
+	}
+	header nav li:first-child {
+	  border-left : none;
+	}
+	header nav li:last-child {
+	  border-right : none;
+	}
+	header nav li:hover {
+	  background : #ccc;
+	}
+	  header nav li a {
+		padding : 0 20px;	
+		display : block;
+	  }
+	  header nav li a:hover, header nav li a:visited {
+		color : #6DA64B;
+		text-decoration : none;
+	  }
+
+.wrap {
+  width : 780px;
+  margin : auto;
+  padding : 20px;
+}
+
+footer {
+  background : #EBF1F1;
+  padding : 20px;
+  margin : 0;
+}
+footer:after {
+  clear : both;
+  display : block;
+  content : "";
+}
+  footer article {
+	width : 240px;
+	float : left;
+	padding : 10px;
+  }
 
 
+.wordmark { color : #737373; }
+.wordmark .blue { color : #87B6F2; }
 
-
-
-
-
-
-
-
-
+a {
+  color : #6DA64B;
+  text-decoration : none;
+}
+a:hover, a:visited {
+  color : #40622C;
+  text-decoration : underline;
+}
 
 
 

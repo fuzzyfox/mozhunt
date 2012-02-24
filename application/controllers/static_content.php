@@ -68,7 +68,7 @@ class Static_content extends CI_Controller
 	 * @author William "FuzzyFox" Duyck <william@mozhunt.com>
 	 * @version 2012-01-24
 	 *
-	 * @param string $doc The about page to load.
+	 * @param string $page The about page to load.
 	 */
 	public function about($page = '')
 	{
@@ -99,6 +99,41 @@ class Static_content extends CI_Controller
 			// 404 page not found
 			default:
 				show_404("/about/$page/");
+			break;
+		}
+	}
+	
+	/**
+	 * Loads the contact pages for the site
+	 *
+	 * @author William "FuzzyFox" Duyck <william@mozhunt.com>
+	 * @version 2012-01-24
+	 *
+	 * @param string $page The contact page to load
+	 */
+	public function contact($page = '')
+	{
+		switch($page)
+		{
+			// contact landing page
+			case 'landing':
+				
+			break;
+			// support page
+			case 'support':
+				$this->load->view('theme/header', array('page_title' => 'Got an issue?'));
+				$this->load->view('static/contact/support');
+				$this->load->view('theme/footer');
+			break;
+			// feedback page
+			case 'feedback':
+				$this->load->view('theme/header', array('page_title' => 'Feedback'));
+				$this->load->view('static/contact/feedback');
+				$this->load->view('theme/footer');
+			break;
+			// contact page not found
+			default:
+				show_404("/contact/$page/");
 			break;
 		}
 	}

@@ -15,6 +15,8 @@
         
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
         
+        <base href="<?php echo $this->config->base_url(); ?>">
+        
         <!-- CSS: implied media=all -->
         <link rel="stylesheet" href="asset/css/style.css">
         <?php
@@ -38,6 +40,18 @@
 
     <body>
         <header>
-            <!-- header to go here with automagical navigation -->
+            <h1 class="wordmark"><span class="blue">moz</span>hunt</h1>
+            <h2>if we need a slogan it goes here</h2>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li class="active"><a href="#">About</a></li>
+                    <li><a href="#">Play</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
         </header>
         <!-- end of header -->
+        
+        <!-- start main content -->
+        <div id="main-content" class="wrap">

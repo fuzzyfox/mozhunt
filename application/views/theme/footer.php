@@ -1,6 +1,27 @@
-        <!-- start of footer -->
+        
+		</div>
+		<!-- end main content -->
+		
+		<!-- start of footer -->
         <footer>
-            <!-- footer to go here -->
+            <section id="footer-main" class="wrap">
+                <article>
+                    <img src="asset/img/panda/sleep.png" alt="Sleeping mozhunt panda" />
+                </article>
+                <article>
+                    <p>Except where otherwise noted all content on this site is licensed
+                    under the <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative
+                    Commons Attribution-NonCommercial-ShareAlike 3.0</a> license.</p>
+                </article>
+                <article>
+                    <ul>
+                        <li><a href="#">Terms Of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Disclaimers</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </article>
+            </section>
         </footer>
         
         <!-- JavaScript at the bottom for fast page loading -->
