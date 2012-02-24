@@ -357,6 +357,17 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+/*
+|--------------------------------------------------------------------------
+| Language
+|--------------------------------------------------------------------------
+|
+| This allows you to set the language to be used across your installation
+| to help ease localization and transalation of your site. It will also be
+| used to set which language files are needed when using the language class.
+|
+*/
+$config['language'] = 'en';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
