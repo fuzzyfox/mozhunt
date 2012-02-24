@@ -9,16 +9,14 @@
                     <img src="asset/img/panda/sleep.png" alt="Sleeping mozhunt panda" />
                 </article>
                 <article>
-                    <p>Except where otherwise noted all content on this site is licensed
-                    under the <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative
-                    Commons Attribution-NonCommercial-ShareAlike 3.0</a> license.</p>
+                    <p><?php echo $this->lang->line('theme_footer_legal'); ?></p>
                 </article>
                 <article>
                     <ul>
-                        <li><a href="#">Terms Of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Disclaimers</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="legal/tos"><?php echo $this->lang->line('theme_footer_nav_tos'); ?></a></li>
+                        <li><a href="legal/privacy"><?php echo $this->lang->line('theme_fotoer_nav_privacy'); ?></a></li>
+                        <li><a href="legal/disclaimers"><?php echo $this->lang->line('theme_footer_nav_disclaimers'); ?></a></li>
+                        <li><a href="#"><?php echo $this->lang->line('theme_footer_nav_contact'); ?></a></li>
                     </ul>
                 </article>
             </section>

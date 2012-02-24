@@ -41,13 +41,13 @@
     <body>
         <header>
             <h1 class="wordmark"><span class="blue">moz</span>hunt</h1>
-            <h2>if we need a slogan it goes here</h2>
+            <h2><?php echo $this->lang->line('theme_header_slogan'); ?></h2>
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li class="active"><a href="#">About</a></li>
-                    <li><a href="#">Play</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#"><?php echo $this->lang->line('theme_nav_home'); ?></a></li>
+                    <li class="active"><a href="#"><?php echo $this->lang->line('theme_nav_about'); ?></a></li>
+                    <li><a href="#"><?php echo $this->lang->line('theme_nav_play'); ?></a></li>
+                    <li><a href="#"><?php echo $this->lang->line('theme_nav_contact'); ?></a></li>
                 </ul>
             </nav>
         </header>

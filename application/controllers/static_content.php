@@ -17,7 +17,7 @@ class Static_content extends CI_Controller
 	public function index()
 	{
 		$this->load->view('theme/header', array('stylesheets' => array('homepage')));
-		$this->load->view('static/homepage');
+		$this->load->view('static/'.$this->config->item('language').'/homepage');
 		$this->load->view('theme/footer');
 	}
 	
@@ -39,20 +39,20 @@ class Static_content extends CI_Controller
 			break;
 			// terms of service
 			case 'tos':
-				$this->load->view('theme/header', array('page_title' => 'Terms Of Service'));
-				$this->load->view('static/tos');
+				$this->load->view('theme/header', array('page_title' => $this->lang->line('view_tos')));
+				$this->load->view('static/'.$this->config->item('language').'/tos');
 				$this->load->view('theme/footer');
 			break;
 			// privacy policy
 			case 'privacy':
-				$this->load->view('theme/header', array('page_title' => 'Privacy Policy'));
-				$this->load->view('static/privacy');
+				$this->load->view('theme/header', array('page_title' => $this->lang->line('view_privacy')));
+				$this->load->view('static/'.$this->config->item('language').'/privacy');
 				$this->load->view('theme/footer');
 			break;
 			// disclaimers
 			case 'disclaimers':
-				$this->load->view('theme/header', array('page_title' => 'Disclaimers'));
-				$this->load->view('static/disclaimers');
+				$this->load->view('theme/header', array('page_title' => $this->lang->line('view_disclaimers')));
+				$this->load->view('static/'.$this->config->item('language').'/disclaimers');
 				$this->load->view('theme/footer');
 			break;
 			// 404 page not found
@@ -81,19 +81,19 @@ class Static_content extends CI_Controller
 			// history of mozhunt
 			case 'history':
 				$this->load->view('theme/header', array('page_title' => 'History'));
-				$this->load->view('static/history');
+				$this->load->view('static/'.$this->config->item('language').'/history');
 				$this->load->view('theme/footer');
 			break;
 			// how to play play mozhunt
 			case 'howto':
 				$this->load->view('theme/header', array('page_title' => 'How To Play'));
-				$this->load->view('static/howto');
+				$this->load->view('static/'.$this->config->item('language').'/howto');
 				$this->load->view('theme/footer');
 			break;
 			// the rules of engagement
 			case 'rules':
 				$this->load->view('theme/header', array('page_title' => 'The Rules'));
-				$this->load->view('static/rules');
+				$this->load->view('static/'.$this->config->item('language').'/rules');
 				$this->load->view('theme/footer');
 			break;
 			// 404 page not found
@@ -122,13 +122,13 @@ class Static_content extends CI_Controller
 			// support page
 			case 'support':
 				$this->load->view('theme/header', array('page_title' => 'Got an issue?'));
-				$this->load->view('static/contact/support');
+				$this->load->view('static/'.$this->config->item('language').'/contact/support');
 				$this->load->view('theme/footer');
 			break;
 			// feedback page
 			case 'feedback':
 				$this->load->view('theme/header', array('page_title' => 'Feedback'));
-				$this->load->view('static/contact/feedback');
+				$this->load->view('static/'.$this->config->item('language').'/contact/feedback');
 				$this->load->view('theme/footer');
 			break;
 			// contact page not found

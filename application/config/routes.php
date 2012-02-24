@@ -51,6 +51,7 @@ $route['404_override'] = '';
 $route['legal'] = 'static_content/legal/landing';
 $route['legal/tos'] = 'static_content/legal/tos';
 $route['legal/privacy'] = 'static_content/legal/privacy';
+$route['legal/disclaimers'] = 'static_content/legal/disclaimers';
 
 // about pages
 $route['about'] = 'static_content/about/landing';

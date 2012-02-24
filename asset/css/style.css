@@ -297,6 +297,26 @@ a:hover, a:visited {
   text-decoration : underline;
 }
 
+.left { float : left; }
+.right { float : right; }
+img.left {
+  float : left;
+  margin : 10px 20px 10px 0;
+}
+img.right {
+  float : right;
+  margin : 10px 0 10px 20px;
+}
+.clear { clear : both; }
+.clear:after {
+  content : '';
+  width : 0px;
+  height : 0px;
+  margin : 0;
+  padding : 0;
+  clear : both;
+  visibility : hidden;
+}
 
 
 
