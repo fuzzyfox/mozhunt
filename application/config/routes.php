@@ -48,16 +48,16 @@ $route['404_override'] = '';
 */
 
 // legal documents
-$route['legal'] = 'static_content/legal/landing';
-$route['legal/tos'] = 'static_content/legal/tos';
-$route['legal/privacy'] = 'static_content/legal/privacy';
+$route['legal'] 			= 'static_content/legal/landing';
+$route['legal/tos'] 		= 'static_content/legal/tos';
+$route['legal/privacy'] 	= 'static_content/legal/privacy';
 $route['legal/disclaimers'] = 'static_content/legal/disclaimers';
 
 // about pages
-$route['about'] = 'static_content/about/landing';
+$route['about'] 		= 'static_content/about/landing';
 $route['about/history'] = 'static_content/about/history';
-$route['about/howto'] = 'static_content/about/howto';
-$route['about/rules'] = 'static_content/about/rules';
+$route['about/howto'] 	= 'static_content/about/howto';
+$route['about/rules'] 	= 'static_content/about/rules';
 
 
 /* End of file routes.php */

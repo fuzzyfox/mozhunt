@@ -23,18 +23,18 @@
 	$lang['theme_nav_home'] 		= 'Home';
 	$lang['theme_nav_about'] 		= 'About';
 	$lang['theme_nav_play'] 		= 'Play';
-	$lang['theme_nav_contact'] 	= 'Contact';
+	$lang['theme_nav_contact'] 		= 'Contact';
 	
 	/*
 	 footer
 	*/
 	$lang['theme_footer_legal'] 			= 'Except where otherwise noted all content on this site is licensed
-										under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative
-										Commons Attribution-ShareAlike 3.0</a> license.';
-	$lang['theme_footer_nav_tos'] 		= 'Terms Of Service';
-	$lang['theme_fotoer_nav_privacy'] 	= 'Privacy Policy';
-	$lang['theme_footer_nav_disclaimers'] = 'Disclaimers';
-	$lang['theme_footer_nav_contact'] 	= 'Contact Us';
+												under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative
+												Commons Attribution-ShareAlike 3.0</a> license.';
+	$lang['theme_footer_nav_tos'] 			= 'Terms Of Service';
+	$lang['theme_fotoer_nav_privacy'] 		= 'Privacy Policy';
+	$lang['theme_footer_nav_disclaimers'] 	= 'Disclaimers';
+	$lang['theme_footer_nav_contact'] 		= 'Contact Us';
 	
 /* End of file theme_lang.php */
 /* Location: ./application/language/en/theme_lang.php */
