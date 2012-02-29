@@ -13,7 +13,7 @@
                     
                     <h2>Use License</h2>
                     <p>mozhunt allows you all the freedoms of the Creative Commons Attribution
-                    NonCommercial ShareAlike 3.0 license. This means that:</p>
+                    ShareAlike 3.0 license. This means that:</p>
                     <h3>You are free:</h3>
                     <ul>
                         <li><strong>to Share</strong> - to copy, distribute, and transmit the work</li>
@@ -38,9 +38,6 @@
                                 these Terms Of Service.</li>
                             </ul>
                         </li>
-                        <li><strong>Noncommercial</strong> - You may not use this work for commercial
-                        purposes unless you are a non-profit organisation and have seeked or been offered,
-                        prior consent to use the work.</li>
                         <li><strong>Share Alike</strong> - If you alter, transform, or build upon this work,
                         you may distribute the resulting work only under the same or similar license to this one.</li>
                     </ul>
@@ -65,7 +62,7 @@
                     
                     <p><strong>Notice</strong> - For any reuse of distribution, you must make clear to others the
                     license terms of this work. The best way to do that is with a link to
-                    <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">https://creativecommons.org/licenses/by-nc-sa/3.0/</a></p>
+                    <a href="https://creativecommons.org/licenses/by-sa/3.0/">https://creativecommons.org/licenses/by-sa/3.0/</a>.</p>
                     
                     <h2>Disclaimer</h2>
                     <p>The materials on mozhunt&rsquo;s web site are provided &ldquo;as is&rdquo;. mozhunt
@@ -129,6 +126,6 @@
                     these terms and/or privacy policy. This may be caused legal obligations to mozhunt
                     and or mozhunt&rsquo;s web host.</p>
                     
-                    <small>Last modified 2012-02-05</small>
+                    <small>Last modified 2012-02-28</small>
                 </article>
             </section>
