@@ -20,13 +20,18 @@
   General Coding: Steve "Uru" Wolf
   Location: Kent, United Kingdom
 
+  Procrastinating Coder: Joe "JoeHazzers" Harrison
+  Site: www.joehazzers.com
+  Twitter: @JoeHazzers
+  Location: Canterbury, Kent, United Kingdom
+
 /* THANKS */
   Names (& URL): 
 
 /* SITE */
   Standards: HTML5, CSS3
   Components: Modernizr, jQuery
-  Software:
+  Software: Vim
   
 
                                     
