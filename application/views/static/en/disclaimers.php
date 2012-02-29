@@ -46,6 +46,8 @@
 				<p>Boilerplate is not a framework, nor does it prescribe any philosophy
 				of development, it's just got some tricks to get your project off
 				the ground quickly and right-footed.</p>
+				
+				<small>Last modified 2012-02-28</small>
 			</article>
 		</section>
 		<!-- end main content -->
