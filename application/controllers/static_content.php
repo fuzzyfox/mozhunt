@@ -39,19 +39,19 @@ class Static_content extends CI_Controller
 			break;
 			// terms of service
 			case 'tos':
-				$this->load->view('theme/header', array('page_title' => $this->lang->line('view_tos')));
+				$this->load->view('theme/header', array('page_title' => $this->lang->line('view.tos')));
 				$this->load->view('static/'.$this->config->item('language').'/tos');
 				$this->load->view('theme/footer');
 			break;
 			// privacy policy
 			case 'privacy':
-				$this->load->view('theme/header', array('page_title' => $this->lang->line('view_privacy')));
+				$this->load->view('theme/header', array('page_title' => $this->lang->line('view.privacy')));
 				$this->load->view('static/'.$this->config->item('language').'/privacy');
 				$this->load->view('theme/footer');
 			break;
 			// disclaimers
 			case 'disclaimers':
-				$this->load->view('theme/header', array('page_title' => $this->lang->line('view_disclaimers')));
+				$this->load->view('theme/header', array('page_title' => $this->lang->line('view.disclaimers')));
 				$this->load->view('static/'.$this->config->item('language').'/disclaimers');
 				$this->load->view('theme/footer');
 			break;
@@ -72,35 +72,9 @@ class Static_content extends CI_Controller
 	 */
 	public function about($page = '')
 	{
-		switch($page)
-		{
-			// landing page
-			case 'landing':
-				
-			break;
-			// history of mozhunt
-			case 'history':
-				$this->load->view('theme/header', array('page_title' => 'History'));
-				$this->load->view('static/'.$this->config->item('language').'/history');
-				$this->load->view('theme/footer');
-			break;
-			// how to play play mozhunt
-			case 'howto':
-				$this->load->view('theme/header', array('page_title' => 'How To Play'));
-				$this->load->view('static/'.$this->config->item('language').'/howto');
-				$this->load->view('theme/footer');
-			break;
-			// the rules of engagement
-			case 'rules':
-				$this->load->view('theme/header', array('page_title' => 'The Rules'));
-				$this->load->view('static/'.$this->config->item('language').'/rules');
-				$this->load->view('theme/footer');
-			break;
-			// 404 page not found
-			default:
-				show_404("/about/$page/");
-			break;
-		}
+		$this->load->view('theme/header', array('page_title' => $this->lang->line('view.about')));
+		$this->load->view('static/'.$this->config->item('language').'/about');
+		$this->load->view('theme/footer');
 	}
 	
 	/**
@@ -115,21 +89,15 @@ class Static_content extends CI_Controller
 	{
 		switch($page)
 		{
-			// contact landing page
-			case 'landing':
-				
-			break;
-			// support page
-			case 'support':
-				$this->load->view('theme/header', array('page_title' => 'Got an issue?'));
-				$this->load->view('static/'.$this->config->item('language').'/contact/support');
+			// view the contact page
+			case 'view':
+				$this->load->view('theme/header', array('page_title' => $this->lang->line('view.contact')));
+				$this->load->view('static/'.$this->config->item('language').'/contact');
 				$this->load->view('theme/footer');
 			break;
-			// feedback page
-			case 'feedback':
-				$this->load->view('theme/header', array('page_title' => 'Feedback'));
-				$this->load->view('static/'.$this->config->item('language').'/contact/feedback');
-				$this->load->view('theme/footer');
+			// process the contact form
+			case 'process':
+				// processing code
 			break;
 			// contact page not found
 			default:

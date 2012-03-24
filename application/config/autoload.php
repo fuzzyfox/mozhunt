@@ -64,7 +64,7 @@ $autoload['libraries'] = array('user_session');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array();
+$autoload['helper'] = array('form');
 
 
 /*
@@ -96,7 +96,7 @@ $autoload['config'] = array();
 |
 */
 
-$autoload['language'] = array('theme', 'views');
+$autoload['language'] = array('theme', 'views', 'forms');
 
 
 /*

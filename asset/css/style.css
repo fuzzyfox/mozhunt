@@ -10,7 +10,6 @@
  * ==|== normalize ==========================================================
  */
 
-
 /* =============================================================================
    HTML5 display definitions
    ========================================================================== */
@@ -34,7 +33,7 @@ html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-
 
 body { margin: 0; font-size: 13px; line-height: 1.231; }
 
-body, button, input, select, textarea { font-family: sans-serif; color: #3D3D3D; }
+body, button, input, select, textarea { font-family: sans-serif; color: #463838; }
 
 /* 
  * Remove text-shadow in selection highlight: h5bp.com/i
@@ -50,9 +49,14 @@ body, button, input, select, textarea { font-family: sans-serif; color: #3D3D3D;
    Links
    ========================================================================== */
 
-a { color: #00e; }
-a:visited { color: #551a8b; }
-a:hover { color: #06e; }
+a {
+  color: #6DA64B;
+  text-decoration : none;
+}
+a:hover, a:visited {
+  color: #40622C;
+  text-decoration : underline;
+}
 a:focus { outline: thin dotted; }
 
 /* Improve readability when focused and hovered in all browsers: h5bp.com/h */
@@ -207,14 +211,11 @@ table { border-collapse: collapse; border-spacing: 0; }
 td { vertical-align: top; }
 
 
-/* ==|== primary styles =====================================================
+/* ==|== primary styles ========================================================
    Author: William "FuzzyFox" Duyck <william@mozhunt.com>
    ========================================================================== */
 
-body {
-  background : #E9E2C6;
-  color : #463838;
-}
+body { background : #E9E2C6; }
 
 header {
   background : #879ECA;
@@ -288,15 +289,6 @@ footer:after {
 .wordmark { color : #737373; }
 .wordmark .blue { color : #87B6F2; }
 
-a {
-  color : #6DA64B;
-  text-decoration : none;
-}
-a:hover, a:visited {
-  color : #40622C;
-  text-decoration : underline;
-}
-
 .left { float : left; }
 .right { float : right; }
 img.left {
@@ -307,16 +299,29 @@ img.right {
   float : right;
   margin : 10px 0 10px 20px;
 }
-.clear { clear : both; }
-.clear:after {
-  content : '';
-  width : 0px;
-  height : 0px;
-  margin : 0;
-  padding : 0;
-  clear : both;
-  visibility : hidden;
+
+form {
+  display : block;
+  background : #EBF1F1;
+  padding : 20px;
+  margin : 20px auto;
 }
+  label {
+	font-size : 1.2em;
+	font-weight : bold;
+  }
+  input, select, textarea, button {
+	border : 2px solid #879ECA;
+	display : block;
+	padding : 4px;
+	margin : 10px;
+	width : 60%;
+	clear : both;
+  }
+  button {
+	background : #87B6F2;
+	color : #fff;
+  }
 
 
 
@@ -341,9 +346,9 @@ img.right {
 .invisible { visibility: hidden; }
 
 /* Contain floats: h5bp.com/q */ 
-.clearfix:before, .clearfix:after { content: ""; display: table; }
-.clearfix:after { clear: both; }
-.clearfix { zoom: 1; }
+.clear:before, .clear:after { content: ""; display: table; }
+.clear:after { clear: both; }
+.clear { zoom: 1; }
 
 
 

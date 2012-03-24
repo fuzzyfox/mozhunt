@@ -9,14 +9,14 @@
                     <img src="asset/img/panda/sleep.png" alt="Sleeping mozhunt panda" />
                 </article>
                 <article>
-                    <p><?php echo $this->lang->line('theme_footer_legal'); ?></p>
+                    <p><?php echo $this->lang->line('theme.footer.legal'); ?></p>
                 </article>
                 <article>
                     <ul>
-                        <li><a href="legal/tos"><?php echo $this->lang->line('theme_footer_nav_tos'); ?></a></li>
-                        <li><a href="legal/privacy"><?php echo $this->lang->line('theme_fotoer_nav_privacy'); ?></a></li>
-                        <li><a href="legal/disclaimers"><?php echo $this->lang->line('theme_footer_nav_disclaimers'); ?></a></li>
-                        <li><a href="#"><?php echo $this->lang->line('theme_footer_nav_contact'); ?></a></li>
+                        <li><a href="legal/tos"><?php echo $this->lang->line('theme.footer.nav.tos'); ?></a></li>
+                        <li><a href="legal/privacy"><?php echo $this->lang->line('theme.fotoer.nav.privacy'); ?></a></li>
+                        <li><a href="legal/disclaimers"><?php echo $this->lang->line('theme.footer.nav.disclaimers'); ?></a></li>
+                        <li><a href="#"><?php echo $this->lang->line('theme.footer.nav.contact'); ?></a></li>
                     </ul>
                 </article>
             </section>
