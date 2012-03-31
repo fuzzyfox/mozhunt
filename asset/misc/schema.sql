@@ -91,17 +91,19 @@ CREATE TABLE IF NOT EXISTS `userToken` (
 -- Constraints for table `domain`
 --
 ALTER TABLE `domain`
-  ADD CONSTRAINT `domain_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
+  ADD FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
 
 --
 -- Constraints for table `token`
 --
 ALTER TABLE `token`
-  ADD CONSTRAINT `token_ibfk_1` FOREIGN KEY (`domainID`) REFERENCES `domain` (`domainID`);
+  ADD FOREIGN KEY (`domainID`) REFERENCES `domain` (`domainID`);
 
 --
 -- Constraints for table `userToken`
 --
 ALTER TABLE `userToken`
-  ADD CONSTRAINT `userToken_ibfk_2` FOREIGN KEY (`tokenID`) REFERENCES `token` (`tokenID`),
-  ADD CONSTRAINT `userToken_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
+  ADD FOREIGN KEY (`tokenID`) REFERENCES `token` (`tokenID`)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD FOREIGN KEY (`userID`) REFERENCES `user` (`userID`)
+    ON DELETE CASCADE ON UPDATE CASCADE;
