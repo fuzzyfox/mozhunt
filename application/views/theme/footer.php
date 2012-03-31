@@ -19,6 +19,7 @@
 			<script type="text/javascript">
 				$(document).ready(function(){
 					$(".alert").alert();
+					$(".modal").modal({show:false});
 				});
 			</script>
 			

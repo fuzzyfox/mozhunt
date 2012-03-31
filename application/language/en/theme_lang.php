@@ -24,6 +24,8 @@
 	$lang['theme.nav.about'] 		= 'About';
 	$lang['theme.nav.play'] 		= 'Play';
 	$lang['theme.nav.contact'] 		= 'Contact';
+	$lang['theme.nav.login'] 		= 'Sign in';
+	$lang['theme.nav.logout'] 		= 'Sign out';
 	
 	/*
 	 footer

@@ -31,9 +31,9 @@
 				<div class="navbar-inner">
 					<div class="container">
 						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-							<span class="iconbar"></span>
-							<span class="iconbar"></span>
-							<span class="iconbar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
 						</a>
 						<a href="./" class="brand">mozhunt</a>
 						<div class="nav-collapse">
@@ -43,10 +43,73 @@
 								<li><a href="play"><?php echo $this->lang->line('theme.nav.play'); ?></a></li>
 								<li><a href="contact"><?php echo $this->lang->line('theme.nav.contact'); ?></a></li>
 							</ul>
-						</div><!--/.nav-collapse -->
+							<?php if(!$this->user_session->isUserLoggedIn()): ?>
+							<a href="#modal-login" class="btn btn-primary pull-right" data-toggle="modal"><?php echo $this->lang->line('theme.nav.login'); ?></a>
+							<?php else: ?>
+								<div class="pull-right">
+									<p class="navbar-text" style="display:inline-block;margin-right:-14px;">Hey</p>
+									<ul class="nav pull-right">
+										<li class="dropdown" id="userNav">
+											<a class="dropdown-toggle" data-toggle="dropdown" href="#userNav">
+											<?php
+												$user = $this->user_model->getUserBy('userID', $this->session->userdata('userID'));
+												echo $user[0]['nickname'];
+											?>
+											<b class="caret"></b>
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="user/account">Account</a></li>
+											<?php if($user[0]['userStatus'] == 0): ?>
+											<li class="divider"></li>
+											<li><a href="user/admin">Admin</a></li>
+											<?php endif; ?>
+											<li class="divider"></li>
+											<li><a href="user/logout"><?php echo $this->lang->line('theme.nav.logout'); ?></a></li>
+										</ul>
+										</li>
+									</ul>
+								</div>
+							<?php endif; ?>
+						</div>
 					</div>
 				</div>
 			</div>
 			
+			<?php if(!$this->user_session->isUserLoggedIn()): ?>
+			<div id="modal-login" class="modal hide fade">
+				<div class="modal-header">
+					<a class="close" data-dismiss="modal">&times;</a>
+					<h3>Sign in</h3>
+				</div>
+				<?php echo form_open('user/login', array('class'=>'form-horizontal')); ?>
+					<div class="modal-body">
+						<div class="control-group">
+							<label for="email" class="control-label"><?php echo $this->lang->line('form.login.email.label'); ?></label>
+							<div class="controls">
+								<input type="text" name="email" class="span3" placeholder="<?php echo $this->lang->line('form.login.email.placeholder'); ?>" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label for="password" class="control-label"><?php echo $this->lang->line('form.login.password.label'); ?></label>
+							<div class="controls">
+								<input type="password" name="password" class="span3" placeholder="<?php echo $this->lang->line('form.login.password.placeholder'); ?>" />
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer form-actions">
+						<p><?php echo $this->lang->line('form.login.new'); ?></p>
+						<button type="submit" class="btn btn-primary"><?php echo $this->lang->line('form.login.submit'); ?></button>
+						<a class="btn" data-dismiss="modal"><?php echo $this->lang->line('form.login.cancel'); ?></a>
+					</div>
+				</form>
+			</div>
+			<?php endif; ?>
+			
 			<div class="container">
+				<?php if($this->input->get('logout') == true): ?>
+				<div class="alert alert-info">
+					<a class="close" data-dismiss="alert">&times;</a>
+					You were successfully logged out.
+				</div>
+				<?php endif; ?>
 				

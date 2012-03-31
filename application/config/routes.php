@@ -59,5 +59,14 @@ $route['about'] = 'static_content/about';
 // contact pages
 $route['contact'] = 'static_content/contact';
 
+// user pages
+$route['user'] 			= 'userPanel';
+$route['user/account/(:any)'] 	= 'userPanel/$1';
+$route['logout'] 			= 'static_content';
+
+// admin pages
+$route['user/admin'] = 'userAdmin';
+$route['user/admin/(:any)'] = 'userAdmin/$1';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
