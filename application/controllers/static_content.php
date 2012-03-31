@@ -97,6 +97,7 @@ class Static_content extends CI_Controller
 		$this->form_validation->set_rules('email', 'lang:form.contact.email.label', 'required|valid_email');
 		$this->form_validation->set_rules('subject', 'lang:form.contact.subject.label', 'required');
 		$this->form_validation->set_rules('message', 'lang:form.contact.message.label', 'required');
+		$this->form_validation->set_rules('privacy', 'lang:form.contact.privacy.label', 'required');
 		
 		if($this->form_validation->run() === false)
 		{
@@ -113,7 +114,7 @@ class Static_content extends CI_Controller
 			$this->email->send();
 			
 			$this->load->view('theme/header', array('page_title' => $this->lang->line('view.contact')));
-			$this->load->view('static/'.$this->config->item('language').'/contact');
+			$this->load->view('static/'.$this->config->item('language').'/contact', array('success'=>true));
 			$this->load->view('theme/footer');
 		}
 	}

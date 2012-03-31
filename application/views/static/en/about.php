@@ -121,8 +121,8 @@
 					all that good :P</li>
 				</ul>
 				
-				<p>So what are you waiting for?! Go on and join in with the fun!
-				<a href="#"><strong>Sign up now!</strong></a></p>
+				<p>So what are you waiting for?! Go on and join in with the fun! <br/>
+				<a href="play/join" class="btn btn-primary"><strong>Sign up now!</strong></a></p>
 			</article>
 		</section>
 		<!-- end main content -->
