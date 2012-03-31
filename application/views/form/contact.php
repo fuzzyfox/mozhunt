@@ -1,4 +1,4 @@
-<?php echo form_open('contact/process', array('id' => 'contactForm')); ?>
+<?php echo form_open('contact', array('id' => 'contactForm')); ?>
 	<label for="name"><?php echo $this->lang->line('form.contact.name.label'); ?></label>
 	<input type="text" name="name" placeholder="<?php echo $this->lang->line('form.contact.name.placeholder'); ?>" id="name" />
 	
@@ -11,7 +11,7 @@
 		<option value="enquiry"><?php echo $this->lang->line('form.contact.subject.enquiry'); ?></option>
 		<option value="problem"><?php echo $this->lang->line('form.contact.subject.problem'); ?></option>
 	</select>
-	<label for="message"><?php echo $this->lang->line('form.contact.messege.label'); ?></label>
+	<label for="message"><?php echo $this->lang->line('form.contact.message.label'); ?></label>
 	<textarea name="message" id="message" cols="30" rows="10" placeholder="<?php echo $this->lang->line('form.contact.messege.placeholder'); ?>"></textarea>
-	<button type="submit" name="submit" id="submit"><?php echo $this->lang->line('form.contact.submit'); ?></button>
+	<button type="submit"><?php echo $this->lang->line('form.contact.submit'); ?></button>
 </form>

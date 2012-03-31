@@ -57,8 +57,7 @@ $route['legal/disclaimers'] = 'static_content/legal/disclaimers';
 $route['about'] = 'static_content/about';
 
 // contact pages
-$route['contact'] 			= 'static_content/contact/view';
-$route['contact/process'] 	= 'static_content/contact/process';
+$route['contact'] = 'static_content/contact';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -28,8 +28,8 @@
 	$lang['form.contact.subject.enquiry'] 		= 'Asking a Question';
 	$lang['form.contact.subject.problem'] 		= 'Reporting a Problem';
 	// messege
-	$lang['form.contact.messege.label'] 		= 'Messege';
-	$lang['form.contact.messege.placeholder'] 	= 'Loved playing mozhunt... thanks for all the hard work!';
+	$lang['form.contact.message.label'] 		= 'Message';
+	$lang['form.contact.message.placeholder'] 	= 'Loved playing mozhunt... thanks for all the hard work!';
 	// controls
 	$lang['form.contact.submit'] 				= 'Send';
 	
