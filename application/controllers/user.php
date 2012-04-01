@@ -68,7 +68,7 @@ class User extends CI_Controller
 
 			$this->user_session->sendActivationEmail($data['nickname'], $data['email'], $data['activationKey']);
 			//Then direct the user to the thank you page
-			$this->load->view('user/userCreated', $data);
+			redirect('user/login?account=created');
 		}
 	}
 
@@ -105,12 +105,9 @@ class User extends CI_Controller
 
 		$user['activationKey'] = '';
 		$user['userStatus'] = 3;
-		$this->user_model->update($user);
-
-		$data = array(
-			'nickname' => $user['nickname'],
-		);
-		$this->load->view('user/userActivated', $data);
+		$this->user_model->updateUser($user);
+		
+		redirect('user/login/?account=activated');
 	}
 
 	/**
@@ -128,9 +125,9 @@ class User extends CI_Controller
 		}
 
 		//Set up the validation rules
-		$this->form_validation->set_rules('email', 'email', 'required|max_length[254]|valid_email');
+		$this->form_validation->set_rules('email', 'lang:form.login.email.label', 'required|max_length[254]|valid_email');
 		$email = $this->input->post('email');
-		$this->form_validation->set_rules('password', 'password', "required|callback_validLogin[$email]");
+		$this->form_validation->set_rules('password', 'lang:form.login.password.label', "required|callback_validLogin[$email]");
 
 		if($this->form_validation->run() === FALSE)
 		{

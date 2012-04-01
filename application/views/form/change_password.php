@@ -23,8 +23,8 @@
 			</div>
 		</div>
 		<div class="form-actions">
-			<button type="submit" class="btn btn-primary"><?php echo $this->lang->line('form.change.password.submit'); ?></button>
-			<a href="user" class="btn"><?php echo $this->lang->line('form.change.password.cancel'); ?></a>
+			<button type="submit" class="btn btn-primary"><?php echo $this->lang->line('form.change.submit'); ?></button>
+			<a href="user" class="btn"><?php echo $this->lang->line('form.change.cancel'); ?></a>
 		</div>
 	</fieldset>
 </form>

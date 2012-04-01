@@ -1,6 +1,21 @@
+<?php	
+	if($this->input->get('account') == 'activated')
+	{
+		echo '<div class="alert alert-success"><a class="close" data-dismiss="alert">&times;</a><strong>Your account is now active!</strong> You can now login and start finding them easter eggs!</div>';
+	}
+	elseif($this->input->get('account') == 'created')
+	{
+		echo '<div class="alert alert-info"><a class="close" data-dismiss="alert">&times;</a><strong>Your account has been created!</strong> An activation email was just sent to your email. Your almost there!</div>';
+	}
+?>
 <?php echo form_open('user/login', array('class'=>'form-horizontal')); ?>
 	<fieldset>
 		<legend><?php echo $this->lang->line('form.login.legend'); ?></legend>
+		<?php if(validation_errors()): ?>
+		<div class="alert alert-error">
+			<?php echo validation_errors(); ?>
+		</div>
+		<?php endif; ?>
 		<div class="control-group<?php echo (form_error('email'))?' error':null; ?>">
 			<label for="email" class="control-label"><?php echo $this->lang->line('form.login.email.label'); ?></label>
 			<div class="controls">
