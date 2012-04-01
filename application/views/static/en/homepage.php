@@ -16,6 +16,7 @@
 	its all about them easter eggs! With just a few days to go we are looking
 	for those who think they have what it takes to hide easter eggs, and hide
 	them well. So... do you think you have what it takes?</p>
+	<a href="//twitter.com/mozhunt" class="btn btn-primary btn-large">Follow us on twitter</a>
 	
 	<?php foreach($stage as $heading => $percentage): ?>
 	<h2><?php echo $heading?></h2>
