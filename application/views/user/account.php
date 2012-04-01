@@ -90,6 +90,17 @@
 			}
 		?>
 		</ul>
+		<?php if(count($gitIssues) == 0): ?>
+		<div class="alert alert-block alert-success">
+			<h4>Yay! No open development issues right now!</h4>
+			Good job! Thanks for helping make mozhunt even more awesome but helping
+			clear all the open issues. So... guess all that's left to do is put your
+			feet up, and have a nice cup of coffee don't you?
+		</div>
+		<?php endif; ?>
+		<p>If you spot any issues that could be related to the develoment of mozhunt
+		then please do not hesitate to tell the develment team by opening a
+		<a href="https://github.com/fuzzyfox/mozhunt/issues/new">new issue</a> over on github.</p>
 	</section>
 	
 	<section class="span3">

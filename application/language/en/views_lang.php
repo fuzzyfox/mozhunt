@@ -21,6 +21,7 @@
 	$lang['view.login'] 		= 'Sign In';
 	$lang['view.user.account'] 	= 'Account';
 	$lang['view.admin.user'] 	= 'User Management';
+	$lang['view.admin'] 		= 'Admin Dashboard';
 	
 /* End of file views_lang.php */
 /* Location: ./application/language/en/views_lang.php */

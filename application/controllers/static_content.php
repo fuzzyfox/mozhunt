@@ -13,7 +13,7 @@ class Static_content extends CI_Controller
 		parent::__construct();
 		
 		$this->load->library(array('form_validation', 'email', 'theme'));
-		$this->load->helper('date');
+		$this->load->helper(array('date', 'url'));
 	}
 	
 	/**
@@ -105,6 +105,55 @@ class Static_content extends CI_Controller
 			
 			$this->theme->view('static/contact', array('page_title'=>'view.contact', 'data'=>array('success'=>true)));
 		}
+	}
+	
+	/**
+	 * Provides a basic admin dashboard
+	 *
+	 * @author William Duyck <william@mozhunt.com>
+	 * @version 2012.04.01
+	 */
+	public function admin()
+	{
+		// get utility library for twitter related stuff
+		$this->load->library('twitter');
+		
+		// things to get for admins
+		if($this->session->userdata('userStatus') == 0)
+		{
+			// get some users from the database
+			$this->db->order_by('registeredAt', 'desc');
+			$data['latestUsers'] = $this->db->get('user', 5);
+			
+			// setup validation for tweet widget
+			$this->form_validation->set_rules('tweet', 'message', 'required|max_length['.(138 - strlen($this->session->userdata('nickname'))).']');
+		}
+		
+		if($this->session->userdata('userStatus') < 2)
+		{
+			// get latest @mentions
+			$data['mentions'] = $this->twitter->mentions(5);
+		}
+		
+		if($this->form_validation->run() === false)
+		{
+			$this->theme->view('static/admin', array('page_title'=>'view.admin', 'data'=>$data));
+		}
+		else
+		{
+			$status = ($this->twitter->tweet($this->input->post('tweet').' ^'.$this->session->userdata('nickname')))?'success':'fail';
+			redirect('admin?tweet='.$status);
+		}
+	}
+	
+	/**
+	 * For now this provides a url alias to the github issue tracker. In future
+	 * it will contain the administration pages for the issue tracker that will
+	 * be built into mozhunt.
+	 */
+	public function issue()
+	{
+		redirect('http://www.github.com/fuzzyfox/mozhunt/issues');
 	}
 }
 

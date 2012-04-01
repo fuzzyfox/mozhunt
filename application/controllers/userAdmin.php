@@ -31,11 +31,6 @@ class UserAdmin extends CI_Controller
 	public function index()
 	{
 		$users = $this->user_model->getAllUsers();
-		for($u=0; $u<count($users); $u++)
-		{
-			$users[$u]['deleteLink'] = anchor('user/admin/remove/'.$users[$u]['userID'], 'Delete');
-			$users[$u]['editLink'] = anchor('user/admin/edit/'.$users[$u]['userID'], 'Edit');
-		}
 		$this->theme->view('admin/users', array('page_title'=>'view.admin.user', 'data'=>array('users' => $users)));
 	}
 	

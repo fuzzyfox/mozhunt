@@ -69,7 +69,7 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language']	= 'english';
+$config['language']	= 'en';
 
 /*
 |--------------------------------------------------------------------------
@@ -359,15 +359,20 @@ $config['proxy_ips'] = '';
 
 /*
 |--------------------------------------------------------------------------
-| Language
+| Twitter Keys
 |--------------------------------------------------------------------------
 |
-| This allows you to set the language to be used across your installation
-| to help ease localization and transalation of your site. It will also be
-| used to set which language files are needed when using the language class.
+| Sets the authorization values in keeping with the OAuth tradition of
+| maximum confusion, the names of some of these values are different from the
+| Twitter Dev interface.
 |
 */
-$config['language'] = 'en';
+$config['twitter'] = array(
+	'consumer_key' 		=> '',
+	'consumer_secret' 	=> '',
+	'user_token' 		=> '',
+	'user_secret' 		=> ''
+);
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

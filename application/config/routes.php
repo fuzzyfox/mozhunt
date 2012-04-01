@@ -60,12 +60,14 @@ $route['about'] = 'static_content/about';
 $route['contact'] = 'static_content/contact';
 
 // user pages
-$route['user'] 			= 'userPanel';
+$route['user'] 					= 'userPanel';
 $route['user/account/(:any)'] 	= 'userPanel/$1';
-$route['logout'] 			= 'static_content';
+$route['logout'] 				= 'static_content';
 
 // admin pages
-$route['admin/user'] = 'userAdmin';
+$route['admin'] 			= 'static_content/admin';
+$route['admin/issue'] 		= 'static_content/issue';
+$route['admin/user'] 		= 'userAdmin';
 $route['admin/user/(:any)'] = 'userAdmin/$1';
 
 /* End of file routes.php */
