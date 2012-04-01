@@ -12,9 +12,8 @@ class Static_content extends CI_Controller
 	{
 		parent::__construct();
 		
-		$this->load->library('form_validation');
-		$this->load->library('email');
-		$this->load->library('theme');
+		$this->load->library(array('form_validation', 'email', 'theme'));
+		$this->load->helper('date');
 	}
 	
 	/**
