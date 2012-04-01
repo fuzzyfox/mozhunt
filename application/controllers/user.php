@@ -6,7 +6,7 @@
  * Deals with logging in/out and creating new users.
  * @see useradmin.php for user administration
  * @author Steve "Uru" West <uru@mozhunt.com>, William Duyck <william@mozhunt.com>
- * @version 2012-03-31
+ * @version 2012-04-01
  */
 class User extends CI_Controller
 {
@@ -22,12 +22,18 @@ class User extends CI_Controller
 	/**
 	 * Controls the creation of users and validating input from the user create view
 	 * @author Steve "Uru" West, William Duyck <william@mozhunt.com>
-	 * @version 2012-03-31
+	 * @version 2012-04-01
 	 */
 	public function join()
 	{
 		//Load up the helpers we need
 		$this->load->helper('form');
+		
+		// check if the user already is logged in to prevent them creating another account
+		if($this->session->userdata('nickname'))
+		{
+			redirect('user');
+		}
 
 		//Set up the validation
 		//Usernames have to have a min length of 3, max of 30 and be unique

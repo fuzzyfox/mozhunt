@@ -3,7 +3,16 @@
 	/*
 	 get user details
 	*/
-	$user = $this->user_model->getUserBy('userID', $this->session->userdata('userID'));
+	if(($this->uri->segment(1) == 'admin') && ($this->uri->segment(3) == 'view'))
+	{
+		$user = $this->user_model->getUserBy('userID', $this->uri->segment(4));
+		echo '<div class="alert alert-info clearfix"><a href="admin/user" class="btn btn-primary pull-right">Go Back</a>This is just a snapshot of what the user <strong>'.$user[0]['nickname'].'</strong> can see.
+		You are unable to change any settings from here. Clicking any of the buttons bellow will act as if this is <strong>YOUR</strong> user account page.</div>';
+	}
+	else
+	{
+		$user = $this->user_model->getUserBy('userID', $this->session->userdata('userID'));
+	}
 	$user = (object)$user[0];
 	
 	// check for messages
@@ -14,7 +23,14 @@
 ?>
 <section class="row">
 	<h1>Account</h1>
-	<img src="http://www.gravatar.com/avatar/<?php echo md5($user->email); ?>?s=512" alt="<?php echo $user->nickname; ?>'s Gravatar" class="span2" />
+	<section class="span2">
+		<div class="thumbnail">
+			<img src="http://www.gravatar.com/avatar/<?php echo md5($user->email); ?>?s=512" alt="<?php echo $user->nickname; ?>'s Gravatar" />
+			<div class="caption">
+				Photo via <a href="//www.gravatar.com">Gravatar</a>.
+			</div>
+		</div>
+	</section>
 	<section class="span6">
 		<h2>Profile</h2>
 		<dl>

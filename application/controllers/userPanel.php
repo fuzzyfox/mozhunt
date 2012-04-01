@@ -46,7 +46,7 @@ class UserPanel extends CI_Controller
 	public function password()
 	{
 		//Set up the validation rules
-		$this->form_validation->set_rules('cpw', 'lang:form.change.password.current.label', 'required'); //Add a check to see if this is the right password
+		$this->form_validation->set_rules('cpw', 'lang:form.change.password.current.label', 'required|callback_passwordValid[cpw]'); //Add a check to see if this is the right password
 		$this->form_validation->set_rules('pw1', 'lang:form.change.password.new.label', 'required');
 		$this->form_validation->set_rules('pw2', 'lang:form.change.password.newconf.label', 'required|matches[pw1]');
 
@@ -109,6 +109,39 @@ class UserPanel extends CI_Controller
 		//Returns true if the nickname only contains alpha-numeric or _ - [ ] ( ) " " ' ' | (and space)
 		$this->form_validation->set_message('nicknameValid', $this->lang->line('form.invalid.chars'));
 		return $this->user_session->nicknameValid($nickname);
+	}
+	
+	/**
+	 * Allows the user to change their email address on the priviso that their
+	 * account is susspended till the new email is verified
+	 *
+	 * @author William Duyck <william@mozhunt.com>
+	 * @version 2012.04.01
+	 */
+	public function email()
+	{
+		$this->form_validation->set_rules('email', 'lang:form.change.email.label', 'required|valid_email|is_unique[user.email]|max_length[254]');
+		$this->form_validation->set_rules('emailconf', 'lang:form.change.emailconf.label', 'required|valid_email|matches[email]|max_length[254]');
+		$this->form_validation->set_rules('password', 'lang:form.change.password.label', "required|callback_passwordValid[password]");
+		
+		if($this->form_validation->run() === false)
+		{
+			$this->theme->view('form/change_email');
+		}
+		else
+		{
+			//Update user's email
+			$data = array(
+				'userID' => $this->session->userdata('userID'),
+				'email' => $this->input->post('email'),
+				'userStatus' => 4,
+				'activationKey' => $this->user_session->generateAuthKey()
+			);
+			$this->user_session->sendActivationEmail($this->session->userdata('nickname'), $this->input->post('email'), $data['activationKey']);
+			$this->user_model->updateUser($data);
+			$this->user_session->logUserOut();
+			redirect('user/login?change=email', 'location');
+		}
 	}
 }
 

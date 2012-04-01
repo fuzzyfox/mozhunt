@@ -65,8 +65,8 @@ $route['user/account/(:any)'] 	= 'userPanel/$1';
 $route['logout'] 			= 'static_content';
 
 // admin pages
-$route['user/admin'] = 'userAdmin';
-$route['user/admin/(:any)'] = 'userAdmin/$1';
+$route['admin/user'] = 'userAdmin';
+$route['admin/user/(:any)'] = 'userAdmin/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

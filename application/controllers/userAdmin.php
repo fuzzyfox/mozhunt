@@ -12,7 +12,7 @@ class UserAdmin extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('user_model');
-		$this->load->library('form_validation');
+		$this->load->library(array('form_validation', 'theme'));
 		$this->load->helper('url');
 
 		//Check that an admin is logged in
@@ -33,10 +33,18 @@ class UserAdmin extends CI_Controller
 		$users = $this->user_model->getAllUsers();
 		for($u=0; $u<count($users); $u++)
 		{
-			$users[$u]['deleteLink'] = anchor('userAdmin/remove/'.$users[$u]['userID'], 'Delete');
-			$users[$u]['editLink'] = anchor('userAdmin/edit/'.$users[$u]['userID'], 'Edit');
+			$users[$u]['deleteLink'] = anchor('user/admin/remove/'.$users[$u]['userID'], 'Delete');
+			$users[$u]['editLink'] = anchor('user/admin/edit/'.$users[$u]['userID'], 'Edit');
 		}
-		$this->load->view('userAdmin/userList', array('users' => $users));
+		$this->theme->view('admin/users', array('page_title'=>'view.admin.user', 'data'=>array('users' => $users)));
+	}
+	
+	/**
+	 * Alows the admin to see the users account page.
+	 */
+	public function view()
+	{
+		$this->theme->view('user/account', array('page_title'=>'view.admin.user'));
 	}
 	
 	/**
@@ -55,12 +63,12 @@ class UserAdmin extends CI_Controller
 			$data['email'] = $user[0]['email'];
 			$data['badID'] = $badID;
 
-			$this->load->view('userAdmin/remove', $data);
+			$this->theme->view('admin/remove_user', array('page_title'=>'view.admin.user','data'=>$data));
 		}
 		else
 		{
 			$this->user_model->deleteUser($badID);
-			redirect('userAdmin/index', 'location');
+			redirect('admin/user', 'location');
 		}
 	}
 
@@ -68,7 +76,7 @@ class UserAdmin extends CI_Controller
 	{
 		//Set up the validation
 		//Usernames have to have a min length of 3, max of 30
-		$newNick = $this->input->post('newname');
+		$newNick = $this->input->post('nickname');
 		$user = $this->user_model->getUserBy('userID', $editID);
 		$data = array(
 			'nickname' => $user[0]['nickname'],
@@ -78,18 +86,17 @@ class UserAdmin extends CI_Controller
 
 		//The validation does something weird that I don't understand
 		//After processing the newname/nickname becomes 1, so grabbing it here before it gets mangled.
-		$this->form_validation->set_rules('newname', 'nickname', 'required|min_length[3]|max_length[30]|callback_nicknameValid');
+		$this->form_validation->set_rules('nickname', 'nickname', 'required|min_length[3]|max_length[30]|callback_nicknameValid');
 		//Needs to be a valid and unique email with a max length of 254
 		$this->form_validation->set_rules('email', 'email', 'required|valid_email|max_length[254]');
-		$pw = $this->input->post('pw1');
-		if(!empty($pw)){
+		if($this->input->post('pw1')){
 			//Needs to match pw2
-			$this->form_validation->set_rules('pw1', 'password', 'required|matches[pw2]');
-			$this->form_validation->set_rules('pw2', 'password comfirmation', 'required');
-}
+			$this->form_validation->set_rules('pw1', 'password', 'required');
+			$this->form_validation->set_rules('pw2', 'confirm password', 'required|matches[pw1]');
+		}
 		if($this->form_validation->run() === FALSE)
 		{
-			$this->load->view('userAdmin/edit', $data);
+			$this->theme->view('admin/edit_user', array('page_title'=>'view.admin.user','data'=>$data));
 		}
 		else
 		{
@@ -98,11 +105,10 @@ class UserAdmin extends CI_Controller
 			$data['email'] = $this->input->post('email');
 			
 			//Check if we need to update the password too
-			$newPW = $this->input->post('pw1');
-			if(!empty($newPW))
+			if($this->input->post('pw1'))
 				$data['password'] = $this->user_session->hashPassword($newPW, $user[0]['registeredAt']);
 			$this->user_model->updateUser($data);
-			redirect('userAdmin/index', 'location');
+			redirect('admin/user', 'location');
 		}
 	}
 	
@@ -110,13 +116,13 @@ class UserAdmin extends CI_Controller
 	 * Checks to see if the given name contains only valid characters
 	 * @param string nickname The name to check agaist
 	 * @return FALSE if nickname contains anything other than 0-9, a-z, A-Z, _-[]()"'| and space
-	 * @author Steve "Uru" West
-	 * @version 2012-02-06
+	 * @author Steve "Uru" West, William Duyck <william@mozhunt.com>
+	 * @version 2012-04-01
 	 */
 	public function nicknameValid($nickname)
 	{
 		//Returns true if the nickname only contains alpha-numeric or _ - [ ] ( ) " " ' ' | (and space)
-		$this->form_validation->set_message('nicknameValid', 'The %s you entered contains invalid characters');
+		$this->form_validation->set_message('nicknameValid', $this->lang->line('form.invalid.chars'));
 		return $this->user_session->nicknameValid($nickname);
 	}
 }

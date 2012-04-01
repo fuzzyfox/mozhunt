@@ -10,7 +10,7 @@
 			<div class="controls">
 				<input type="text" name="nickname" value="<?php echo set_value('nickname'); ?>" placeholder="<?php echo $this->lang->line('form.join.nickname.placeholder'); ?>" />
 				<?php echo form_error('nickname', '<span class="help-inline">', '</span>'); ?>
-				<p class="help-block"><strong>Note:</strong> This will be your publicly visible identity</p>
+				<p class="help-block"><?php echo $this->lang->line('form.join.nickname.help'); ?></p>
 			</div>
 		</div>
 		
@@ -19,6 +19,7 @@
 			<div class="controls">
 				<input type="text" name="email" value="<?php echo set_value('email'); ?>" placeholder="<?php echo $this->lang->line('form.join.email.placeholder'); ?>" />
 				<?php echo form_error('email', '<span class="help-inline">', '</span>'); ?>
+				<p class="help-block"><?php echo $this->lang->line('form.join.email.help'); ?></p>
 			</div>
 		</div>
 		

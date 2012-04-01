@@ -18,7 +18,9 @@
 	$lang['view.about'] 		= 'About';
 	$lang['view.contact'] 		= 'Contact Us';
 	$lang['view.join'] 			= 'Join Now';
+	$lang['view.login'] 		= 'Sign In';
 	$lang['view.user.account'] 	= 'Account';
+	$lang['view.admin.user'] 	= 'User Management';
 	
 /* End of file views_lang.php */
 /* Location: ./application/language/en/views_lang.php */

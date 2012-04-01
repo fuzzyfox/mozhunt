@@ -66,8 +66,10 @@
 	$lang['form.join.legend'] 				= 'Join now!';
 	$lang['form.join.nickname.label'] 		= 'Nickname';
 	$lang['form.join.nickname.placeholder'] = 'j.doe';
+	$lang['form.join.nickname.help'] 		= '<strong>Note:</strong> This will be your publicly visible identity';
 	$lang['form.join.email.label'] 			= 'Email';
 	$lang['form.join.email.placeholder'] 	= 'j.doe@example.com';
+	$lang['form.join.email.help'] 			= '<strong>Note:</strong> This will used in with your password for signing in';
 	$lang['form.join.password.label'] 		= 'Password';
 	$lang['form.join.passwordconf.label'] 	= 'Confirm Password';
 	$lang['form.join.legal.label'] 			= 'Agreements';
@@ -91,6 +93,14 @@
 	$lang['form.change.nickname.legend'] 	= 'Change nickname';
 	$lang['form.change.nickname.label'] 	= 'New nickname';
 	$lang['form.change.nickname.current'] 	= 'Current nickname';
+	
+	/*
+	 Change Email Form
+	*/
+	$lang['form.change.email.legend'] 		= 'Change email';
+	$lang['form.change.email.label'] 		= 'New email';
+	$lang['form.change.emailconf.label'] 	= 'Confirm new email';
+	$lang['form.change.password.label'] 	= 'Password';
 	
 /* End of file forms_lang.php */
 /* Location: ./application/language/en/forms_lang.php */

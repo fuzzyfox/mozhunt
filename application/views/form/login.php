@@ -7,6 +7,10 @@
 	{
 		echo '<div class="alert alert-info"><a class="close" data-dismiss="alert">&times;</a><strong>Your account has been created!</strong> An activation email was just sent to your email. Your almost there!</div>';
 	}
+	elseif($this->input->get('change') == 'email')
+	{
+		echo '<div class="alert alert-info"><a class="close" data-dismiss="alert">&times;</a><strong>Your account has been email has been changed!</strong> A reactivation email was just sent to your email. Your almost done!</div>';
+	}
 ?>
 <?php echo form_open('user/login', array('class'=>'form-horizontal')); ?>
 	<fieldset>

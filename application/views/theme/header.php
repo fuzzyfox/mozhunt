@@ -61,9 +61,17 @@
 										</a>
 										<ul class="dropdown-menu">
 											<li><a href="user">Account</a></li>
-											<?php if($user[0]['userStatus'] == 0): ?>
+											<?php if($user[0]['userStatus'] < 1): ?>
 											<li class="divider"></li>
-											<li><a href="user/admin">Admin</a></li>
+											<li>
+												<a href="admin">Admin</a>
+												<ul class="unstyled" style="margin-left:10px;">
+													<li><a href="admin/issue">Issue Management</a></li>
+													<?php if($user[0]['userStatus'] == 0): ?>
+													<li><a href="admin/user">User Management</a></li>
+													<?php endif; ?>
+												</ul>
+											</li>
 											<?php endif; ?>
 											<li class="divider"></li>
 											<li><a href="user/logout"><?php echo $this->lang->line('theme.nav.logout'); ?></a></li>

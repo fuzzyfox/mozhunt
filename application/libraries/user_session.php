@@ -186,12 +186,12 @@ class User_session
 	 */
 	public function validPassword($password)
 	{
-		$userID = $this->session->userdata('userID');
+		$userID = $this->CI->session->userdata('userID');
 		if(empty($userID))
 		{
 			return FALSE;
 		}
-		return $this->hashPassword($password, $this->session->userdata('registeredAt')) == $this->session->userdata('password');
+		return $this->hashPassword($password, $this->CI->session->userdata('registeredAt')) == $this->CI->session->userdata('password');
 	}
 }
 
