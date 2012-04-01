@@ -1,11 +1,12 @@
 <?php
 	
 	// currnet progress
+	date_default_timezone_set('UTC');
 	$stage = array(
 		'Kick-Off Sprint' => 100,
 		'Primary Development' => 100,
-		'Final Development Sprint' => ((now() - local_to_gmt(strtotime('April 1st, 2012')))/(strtotime('April 4th, 2012') - strtotime('April 1st, 2012'))) * 100,
-		'Soft Launch' => ((now() - local_to_gmt(strtotime('April 4th, 2012')))/(strtotime('April 8th, 2012') - strtotime('April 4th, 2012'))) * 100
+		'Final Development Sprint' => ((time() - strtotime('April 1st, 2012'))/(strtotime('April 4th, 2012') - strtotime('April 1st, 2012'))) * 100,
+		'Soft Launch' => ((time() - strtotime('April 4th, 2012'))/(strtotime('April 8th, 2012') - strtotime('April 4th, 2012'))) * 100
 	);
 	
 ?>
