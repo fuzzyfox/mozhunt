@@ -16,7 +16,7 @@
 	/*
 	 Contact Form
 	*/
-	$lang['form.contact.lgend'] 				= 'Send us an email';
+	$lang['form.contact.legend'] 				= 'Send us an email';
 	// name
 	$lang['form.contact.name.label'] 			= 'Name';
 	$lang['form.contact.name.placeholder'] 		= 'Jo Doe';

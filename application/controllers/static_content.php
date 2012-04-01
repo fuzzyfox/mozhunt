@@ -14,6 +14,7 @@ class Static_content extends CI_Controller
 		
 		$this->load->library('form_validation');
 		$this->load->library('email');
+		$this->load->library('theme');
 	}
 	
 	/**
@@ -24,9 +25,7 @@ class Static_content extends CI_Controller
 	 */
 	public function index()
 	{
-		$this->load->view('theme/header', array('stylesheets' => array('homepage')));
-		$this->load->view('static/'.$this->config->item('language').'/homepage');
-		$this->load->view('theme/footer');
+		$this->theme->view('static/homepage');
 	}
 	
 	/**
@@ -43,21 +42,15 @@ class Static_content extends CI_Controller
 		{
 			// terms of service
 			case 'tos':
-				$this->load->view('theme/header', array('page_title' => $this->lang->line('view.tos')));
-				$this->load->view('static/'.$this->config->item('language').'/tos');
-				$this->load->view('theme/footer');
+				$this->theme->view('static/tos', array('page_title'=>'view.tos'));
 			break;
 			// privacy policy
 			case 'privacy':
-				$this->load->view('theme/header', array('page_title' => $this->lang->line('view.privacy')));
-				$this->load->view('static/'.$this->config->item('language').'/privacy');
-				$this->load->view('theme/footer');
+				$this->theme->view('static/privacy', array('page_title'=>'view.privacy'));
 			break;
 			// disclaimers
 			case 'disclaimers':
-				$this->load->view('theme/header', array('page_title' => $this->lang->line('view.disclaimers')));
-				$this->load->view('static/'.$this->config->item('language').'/disclaimers');
-				$this->load->view('theme/footer');
+				$this->theme->view('static/disclaimers', array('page_title'=>'view.disclaimers'));
 			break;
 			// 404 page not found
 			default:
@@ -76,9 +69,9 @@ class Static_content extends CI_Controller
 	 */
 	public function about($page = '')
 	{
-		$this->load->view('theme/header', array('page_title' => $this->lang->line('view.about')));
-		$this->load->view('static/'.$this->config->item('language').'/about');
-		$this->load->view('theme/footer');
+		$this->theme->view('static/about', array(
+			'page_title' => 'view.about'
+		));
 	}
 	
 	/**
@@ -101,9 +94,7 @@ class Static_content extends CI_Controller
 		
 		if($this->form_validation->run() === false)
 		{
-			$this->load->view('theme/header', array('page_title' => $this->lang->line('view.contact')));
-			$this->load->view('static/'.$this->config->item('language').'/contact');
-			$this->load->view('theme/footer');
+			$this->theme->view('static/contact', array('page_title'=>'view.contact'));
 		}
 		else
 		{
@@ -113,9 +104,7 @@ class Static_content extends CI_Controller
 			$this->email->message($this->input->post('message'));
 			$this->email->send();
 			
-			$this->load->view('theme/header', array('page_title' => $this->lang->line('view.contact')));
-			$this->load->view('static/'.$this->config->item('language').'/contact', array('success'=>true));
-			$this->load->view('theme/footer');
+			$this->theme->view('static/contact', array('page_title'=>'view.contact', 'data'=>array('success'=>true)));
 		}
 	}
 }
