@@ -16,7 +16,7 @@ class User extends CI_Controller
 
 		$this->load->model('user_model');
 		$this->load->helper(array('security', 'url'));
-		$this->load->library('form_validation');
+		$this->load->library(array('form_validation', 'theme'));
 	}
 
 	/**
@@ -45,9 +45,7 @@ class User extends CI_Controller
 		if($this->form_validation->run() === FALSE)
 		{
 			//It was not submitted or that was a problem so show the create page
-			$this->load->view('theme/header', array('page_title' => $this->lang->line('view.join')));
-			$this->load->view('static/'.$this->config->item('language').'/join');
-			$this->load->view('theme/footer');
+			$this->theme->view('static/join', array('page_title'=>'view.join'));
 		}
 		else
 		{
@@ -137,9 +135,7 @@ class User extends CI_Controller
 		if($this->form_validation->run() === FALSE)
 		{
 			//Show the log in form
-			$this->load->view('theme/header', array('page_title' => $this->lang->line('view.login')));
-			$this->load->view('form/login');
-			$this->load->view('theme/footer');
+			$this->theme->view('form/login', array('page_title'=>'view.login'));
 		}
 		else
 		{

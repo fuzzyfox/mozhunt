@@ -191,7 +191,6 @@ class User_session
 		{
 			return FALSE;
 		}
-
 		return $this->hashPassword($password, $this->session->userdata('registeredAt')) == $this->session->userdata('password');
 	}
 }

@@ -17,6 +17,8 @@
 	 Generic Form Strings
 	*/
 	$lang['form.invalid.chars'] = 'The %s you entered contains invalid characters';
+	$lang['form.change.submit'] = 'Change';
+	$lang['form.change.cancel'] = 'Cancel';
 	
 	/*
 	 Contact Form
@@ -74,6 +76,21 @@
 	$lang['form.join.tos.statement'] 		= 'I have read and agree to the mozhunt <a href="legal/tos" target="_blank">Terms Of Service</a>';
 	$lang['form.join.submit'] 				= 'Join';
 	$lang['form.join.error'] 				= '<strong>Oops!</strong> Looks like there was a problem. Check below for more.';
+	
+	/*
+	 Change Password Form
+	*/
+	$lang['form.change.password.legend'] 		= 'Change password';
+	$lang['form.change.password.current.label'] = 'Current password';
+	$lang['form.change.password.new.label'] 	= 'New password';
+	$lang['form.change.password.newconf.label'] = 'Confirm new password';
+	
+	/*
+	 Change Nickname Form
+	*/
+	$lang['form.change.nickname.legend'] 	= 'Change nickname';
+	$lang['form.change.nickname.label'] 	= 'New nickname';
+	$lang['form.change.nickname.current'] 	= 'Current nickname';
 	
 /* End of file forms_lang.php */
 /* Location: ./application/language/en/forms_lang.php */

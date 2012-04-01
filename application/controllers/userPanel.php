@@ -3,8 +3,8 @@
 
 /**
  * Contains the code for allowing the user to modify their information
- * @author Steve "Uru" West <uru@mozhunt.com>
- * @version 2012-01-30
+ * @author Steve "Uru" West <uru@mozhunt.com>, William Duyck <william@mozhunt.com>
+ * @version 2012-04-01
  */
 class UserPanel extends CI_Controller
 {
@@ -13,7 +13,7 @@ class UserPanel extends CI_Controller
 		parent::__construct();
 		$this->load->model('user_model');
 		$this->load->helper(array('url', 'form'));
-		$this->load->library(array('user_session', 'form_validation'));
+		$this->load->library(array('user_session', 'form_validation', 'theme'));
 
 		if(!$this->user_session->isUserLoggedIn())
 		{
@@ -23,8 +23,8 @@ class UserPanel extends CI_Controller
 
 	/**
 	 * Shows the user an overview of their account
-	 * @author Steve "Uru" West
-	 * @version 2012-01-27
+	 * @author Steve "Uru" West, William Duyck <william@mozhunt.com>
+	 * @version 2012-04-01
 	 */
 	public function index()
 	{
@@ -34,24 +34,25 @@ class UserPanel extends CI_Controller
 			'nickLink' => anchor('userPanel/nickname', 'Change Nickname'),
 			'passLink' => anchor('userPanel/password', 'Change Password'),
 		);
-		$this->load->view('userPanel/accountOverview', $data);
+		//$this->load->view('userPanel/accountOverview', $data);
+		$this->theme->view('user/account', array('page_title'=>'view.user.account'));
 	}
 	
 	/**
 	 * Allows the user to change their passoword
-	 * @author Steve "Uru" West
-	 * @version 2012-01-30
+	 * @author Steve "Uru" West, William Duyck <william@mozhunt.com>
+	 * @version 2012-04-01
 	 */
 	public function password()
 	{
 		//Set up the validation rules
-		$this->form_validation->set_rules('cpw', 'current password', 'required'); //Add a check to see if this is the right password
-		$this->form_validation->set_rules('pw1', 'new password', 'required|matches[pw2]');
-		$this->form_validation->set_rules('pw2', 'password re-entry', 'required');
+		$this->form_validation->set_rules('cpw', 'lang:form.change.password.current.label', 'required'); //Add a check to see if this is the right password
+		$this->form_validation->set_rules('pw1', 'lang:form.change.password.new.label', 'required');
+		$this->form_validation->set_rules('pw2', 'lang:form.change.password.newconf.label', 'required|matches[pw1]');
 
 		if($this->form_validation->run() === FALSE)
 		{
-			$this->load->view('userPanel/password');
+			$this->theme->view('form/change_password');
 		}
 		else
 		{
@@ -62,7 +63,7 @@ class UserPanel extends CI_Controller
 				'password' => $newPW,
 			);
 			$this->user_model->updateUser($data);
-			redirect('userPanel/index');
+			redirect('user');
 		}
 	}
 
@@ -79,37 +80,34 @@ class UserPanel extends CI_Controller
 	 */
 	public function nickname()
 	{
-		$data = array(
-			'nickname' => $this->session->userdata('nickname'),
-		);
-
-		$this->form_validation->set_rules('newname', 'nickname', 'required|min_length[3]|max_length[30]|callback_newnameValid|is_unique[user.nickname]');
+		$this->form_validation->set_rules('nickname', 'lang:form.change.nickname.label', 'required|min_length[3]|max_length[30]|callback_nicknameValid|is_unique[user.nickname]');
 		if($this->form_validation->run() === FALSE)
 		{
-			$this->load->view('userPanel/nickname', $data);
+			$this->theme->view('form/change_nickname');
 		}
 		else
 		{
 			//Update user's nickname
 			$data = array(
 				'userID' => $this->session->userdata('userID'),
-				'nickname' => $this->input->post('newname'),
+				'nickname' => $this->input->post('nickname'),
 			);
 			$this->user_model->updateUser($data);
-			redirect('userPanel/index', 'location');
+			redirect('user?change=nickname', 'location');
 		}
 	}
 	
 	/**
-	 * Performs a check on the given nickname to see if it contains invalid characters
-	 * @param string nickname The name to check
-	 * @return TRUE if the name does not contain invalid characters
-	 * @author Steve "Uru" West
-	 * @version 2012-01-29
+	 * Checks to see if the given name contains only valid characters
+	 * @param string nickname The name to check agaist
+	 * @return FALSE if nickname contains anything other than 0-9, a-z, A-Z, _-[]()"'| and space
+	 * @author Steve "Uru" West, William Duyck <william@mozhunt.com>
+	 * @version 2012-04-01
 	 */
 	public function nicknameValid($nickname)
 	{
-		$this->form_validation->set_rules('nicknameValid', 'The %s you entered contains invalid characters');
+		//Returns true if the nickname only contains alpha-numeric or _ - [ ] ( ) " " ' ' | (and space)
+		$this->form_validation->set_message('nicknameValid', $this->lang->line('form.invalid.chars'));
 		return $this->user_session->nicknameValid($nickname);
 	}
 }

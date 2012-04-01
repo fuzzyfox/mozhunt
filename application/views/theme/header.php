@@ -43,8 +43,10 @@
 								<li><a href="play"><?php echo $this->lang->line('theme.nav.play'); ?></a></li>
 								<li><a href="contact"><?php echo $this->lang->line('theme.nav.contact'); ?></a></li>
 							</ul>
-							<?php if(!$this->user_session->isUserLoggedIn()): ?>
+							<?php if(!$this->user_session->isUserLoggedIn() && ($this->uri->segment(2) != 'login')): ?>
 							<a href="#modal-login" class="btn btn-primary pull-right" data-toggle="modal"><?php echo $this->lang->line('theme.nav.login'); ?></a>
+							<?php elseif($this->uri->segment(2) == 'login'): ?>
+							<a href="user/join" class="btn btn-success pull-right"><?php echo $this->lang->line('theme.nav.join'); ?></a>
 							<?php else: ?>
 								<div class="pull-right">
 									<p class="navbar-text" style="display:inline-block;margin-right:-14px;">Hey</p>
@@ -58,7 +60,7 @@
 											<b class="caret"></b>
 										</a>
 										<ul class="dropdown-menu">
-											<li><a href="user/account">Account</a></li>
+											<li><a href="user">Account</a></li>
 											<?php if($user[0]['userStatus'] == 0): ?>
 											<li class="divider"></li>
 											<li><a href="user/admin">Admin</a></li>
@@ -75,7 +77,7 @@
 				</div>
 			</div>
 			
-			<?php if(!$this->user_session->isUserLoggedIn()): ?>
+			<?php if(!$this->user_session->isUserLoggedIn() && ($this->uri->segment(2) != 'login')): ?>
 			<div id="modal-login" class="modal hide fade">
 				<div class="modal-header">
 					<a class="close" data-dismiss="modal">&times;</a>

@@ -26,6 +26,7 @@
 	$lang['theme.nav.contact'] 		= 'Contact';
 	$lang['theme.nav.login'] 		= 'Sign in';
 	$lang['theme.nav.logout'] 		= 'Sign out';
+	$lang['theme.nav.join'] 		= 'Join now!';
 	
 	/*
 	 footer
