@@ -25,7 +25,7 @@ class Static_content extends CI_Controller
 	 */
 	public function index()
 	{
-		$this->theme->view('static/homepage');
+		$this->theme->view('static/homepage', array('scripts'=>array('homepage')));
 	}
 	
 	/**
