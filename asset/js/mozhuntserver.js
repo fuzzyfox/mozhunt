@@ -114,12 +114,9 @@ if(typeof $mozhunt !== 'undefined')
 	};
 	
 	/**
-	 * initializes the mozhunt js, verifies token, does some back and forth to
-	 * determine which image to show to the current user
-	 *
-	 * @param {Object} config The needed configuration information specific to the site implimenting this
+	 * initializes the mozhunt js
 	 */
-	$mozhunt.init = function(config){
+	$mozhunt.init = function(){
 		var parentURL = decodeURIComponent(document.location.hash.replace(/^#/, ''));
 		$mozhunt.comm.postMessage({
 			status : '',
