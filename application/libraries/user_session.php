@@ -4,8 +4,8 @@ if( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  * Defines useful features for dealing with users and sessions
- * @author Steve "Uru" West <uru@mozhunt.com>
- * @version 2012-01-30
+ * @author Steve "Uru" West <uru@mozhunt.com>, William Duyck <william@mozhunt.com>
+ * @version 2012-03-31
  */
 class User_session
 {
@@ -154,13 +154,14 @@ class User_session
 	/**
 	 * Checks to see if the given nickname contains only valid characters
 	 * @param string nickname The name/string to check
-	 * @return TRUE if the given nickname only contains a-z, A-Z, 0-9 []()'"-_ or space
-	 * @author Steve "Uru" West
-	 * @version 2012-01-29
+	 * @return FALSE if the given nickname contains anything other than a-z, A-Z, 0-9 []()'"-_ or space
+	 * @return string the given nickname to check if it is valid
+	 * @author Steve "Uru" West, William Duyck <william@mozhunt.com>
+	 * @version 2012-03-31
 	 */
 	public function nicknameValid($nickname)
 	{
-		return preg_match('/^[\da-z-A-Z0-9_\-\[\]\(\)"\'\| ]*$/', $nickname);
+		return (preg_match('/^[\da-z-A-Z0-9_\-\[\]\(\)"\'\| ]*$/', $nickname))?$nickname:false;
 	}
 
 	/**
@@ -185,13 +186,12 @@ class User_session
 	 */
 	public function validPassword($password)
 	{
-		$userID = $this->session->userdata('userID');
+		$userID = $this->CI->session->userdata('userID');
 		if(empty($userID))
 		{
 			return FALSE;
 		}
-
-		return $this->hashPassword($password, $this->session->userdata('registeredAt')) == $this->session->userdata('password');
+		return $this->hashPassword($password, $this->CI->session->userdata('registeredAt')) == $this->CI->session->userdata('password');
 	}
 }
 

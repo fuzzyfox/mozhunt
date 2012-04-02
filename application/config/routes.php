@@ -54,11 +54,21 @@ $route['legal/privacy'] 	= 'static_content/legal/privacy';
 $route['legal/disclaimers'] = 'static_content/legal/disclaimers';
 
 // about pages
-$route['about'] 		= 'static_content/about/landing';
-$route['about/history'] = 'static_content/about/history';
-$route['about/howto'] 	= 'static_content/about/howto';
-$route['about/rules'] 	= 'static_content/about/rules';
+$route['about'] = 'static_content/about';
 
+// contact pages
+$route['contact'] = 'static_content/contact';
+
+// user pages
+$route['user'] 					= 'userPanel';
+$route['user/account/(:any)'] 	= 'userPanel/$1';
+$route['logout'] 				= 'static_content';
+
+// admin pages
+$route['admin'] 			= 'static_content/admin';
+$route['admin/issue'] 		= 'static_content/issue';
+$route['admin/user'] 		= 'userAdmin';
+$route['admin/user/(:any)'] = 'userAdmin/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

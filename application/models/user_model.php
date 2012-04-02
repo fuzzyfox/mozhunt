@@ -3,8 +3,8 @@
 
 /**
  * Contains the various models for reading and writing user data
- * @author Steve "Uru" West <uru@mozhunt.com>
- * @version 2012-02-06
+ * @author Steve "Uru" West <uru@mozhunt.com>, William Duyck <william@mozhunt.com>
+ * @version 2012-04-01
  */
 class User_model extends CI_Model
 {
@@ -93,6 +93,24 @@ class User_model extends CI_Model
 	public function deleteUser($userID)
 	{
 		$this->db->delete('user', array('userID' => $userID));
+	}
+	
+	/**
+	 * Gets a human readable version of the users status code
+	 *
+	 * @author William Duyck <william@mozhunt.com>
+	 * @version 2012.04.01
+	 * 
+	 * @param int userID The user to get the status for
+	 * @return string Human readable version of the users status
+	 */
+	public function getHumanStatus($userID)
+	{
+		$user = $this->getUserBy('userID', $userID);
+		$userStatus = $user[0]['userStatus'];
+		$this->config->load('status_codes');
+		$codes = $this->config->item('status_codes');
+		return $codes['user'][$userStatus];
 	}
 }
 

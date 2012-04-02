@@ -5,8 +5,8 @@
 /**
  * Deals with logging in/out and creating new users.
  * @see useradmin.php for user administration
- * @author Steve "Uru" West <uru@mozhunt.com>
- * @version 2012-01-30
+ * @author Steve "Uru" West <uru@mozhunt.com>, William Duyck <william@mozhunt.com>
+ * @version 2012-04-01
  */
 class User extends CI_Controller
 {
@@ -16,35 +16,42 @@ class User extends CI_Controller
 
 		$this->load->model('user_model');
 		$this->load->helper(array('security', 'url'));
-		$this->load->library('form_validation');
+		$this->load->library(array('form_validation', 'theme'));
 	}
 
 	/**
 	 * Controls the creation of users and validating input from the user create view
-	 * @author Steve "Uru" West
-	 * @version 2012-01-30
+	 * @author Steve "Uru" West, William Duyck <william@mozhunt.com>
+	 * @version 2012-04-01
 	 */
-	public function create()
+	public function join()
 	{
 		//Load up the helpers we need
 		$this->load->helper('form');
+		
+		// check if the user already is logged in to prevent them creating another account
+		if($this->session->userdata('nickname'))
+		{
+			redirect('user');
+		}
 
 		//Set up the validation
-		//Specify some more user firendly messages for is_unique
-		$this->form_validation->set_message('is_unique', 'That %s is already in use');
 		//Usernames have to have a min length of 3, max of 30 and be unique
-		$this->form_validation->set_rules('nickname', 'nickname', 'required|min_length[3]|max_length[30]|callback_nicknameValid|is_unique[user.nickname]');
+		$this->form_validation->set_rules('nickname', 'lang:form.join.nickname.label', 'required|min_length[3]|max_length[30]|callback_nicknameValid|is_unique[user.nickname]');
 		//Needs to be a valid and unique email with a max length of 254
-		$this->form_validation->set_rules('email', 'email', 'required|valid_email|is_unique[user.email]|max_length[254]');
+		$this->form_validation->set_rules('email', 'lang:form.join.email.label', 'required|valid_email|is_unique[user.email]|max_length[254]');
 		//Needs to match pw2
-		$this->form_validation->set_rules('pw1', 'password', 'required|matches[pw2]');
-		$this->form_validation->set_rules('pw2', 'password comfirmation', 'required');
+		$this->form_validation->set_rules('pw1', 'lang:form.join.password.label', 'required');
+		$this->form_validation->set_rules('pw2', 'lang:form.join.passwordconf.label', 'required|matches[pw1]');
+		// ensure user has agreed to the tos and priv policy
+		$this->form_validation->set_rules('privacy', 'lang:form.join.privacy.statement', 'required');
+		$this->form_validation->set_rules('tos', 'lang:form.join.tos.statement', 'required');
 
 		//Check to see if the form was submitted and all was found to be ok
 		if($this->form_validation->run() === FALSE)
 		{
 			//It was not submitted or that was a problem so show the create page
-			$this->load->view('user/create');
+			$this->theme->view('static/join', array('page_title'=>'view.join'));
 		}
 		else
 		{
@@ -67,7 +74,7 @@ class User extends CI_Controller
 
 			$this->user_session->sendActivationEmail($data['nickname'], $data['email'], $data['activationKey']);
 			//Then direct the user to the thank you page
-			$this->load->view('user/userCreated', $data);
+			redirect('user/login?account=created');
 		}
 	}
 
@@ -81,7 +88,7 @@ class User extends CI_Controller
 	public function nicknameValid($nickname)
 	{
 		//Returns true if the nickname only contains alpha-numeric or _ - [ ] ( ) " " ' ' | (and space)
-		$this->form_validation->set_message('nicknameValid', 'The %s you entered contains invalid characters');
+		$this->form_validation->set_message('nicknameValid', $this->lang->line('form.invalid.chars'));
 		return $this->user_session->nicknameValid($nickname);
 	}
 
@@ -104,12 +111,9 @@ class User extends CI_Controller
 
 		$user['activationKey'] = '';
 		$user['userStatus'] = 3;
-		$this->user_model->update($user);
-
-		$data = array(
-			'nickname' => $user['nickname'],
-		);
-		$this->load->view('user/userActivated', $data);
+		$this->user_model->updateUser($user);
+		
+		redirect('user/login/?account=activated');
 	}
 
 	/**
@@ -127,14 +131,14 @@ class User extends CI_Controller
 		}
 
 		//Set up the validation rules
-		$this->form_validation->set_rules('email', 'email', 'required|max_length[254]|valid_email');
+		$this->form_validation->set_rules('email', 'lang:form.login.email.label', 'required|max_length[254]|valid_email');
 		$email = $this->input->post('email');
-		$this->form_validation->set_rules('password', 'password', "required|callback_validLogin[$email]");
+		$this->form_validation->set_rules('password', 'lang:form.login.password.label', "required|callback_validLogin[$email]");
 
 		if($this->form_validation->run() === FALSE)
 		{
 			//Show the log in form
-			$this->load->view('user/login');
+			$this->theme->view('form/login', array('page_title'=>'view.login'));
 		}
 		else
 		{
@@ -147,14 +151,14 @@ class User extends CI_Controller
 
 	/**
 	 * Logs the user out of the system
-	 * @author Steve "Uru" West
-	 * @version 2012-01-24
+	 * @author Steve "Uru" West, William Duyck <william@mozhunt.com>
+	 * @version 2012-03-31
 	 */
 	public function logout()
 	{
 		//Ask the user_session to invalidate the user
 		$this->user_session->logUserOut();
-		$this->load->view('user/loggedOut');
+		redirect('?logout=true');
 	}
 
 	/**

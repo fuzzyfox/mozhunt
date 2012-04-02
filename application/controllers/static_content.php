@@ -4,10 +4,18 @@
  * Deals with the loading of static content on the site.
  *
  * @author William "FuzzyFox" Duyck <william@mozhunt.com>
- * @version 2012-01-24
+ * @version 2012-03-28
  */
 class Static_content extends CI_Controller
 {
+	public function __construct()
+	{
+		parent::__construct();
+		
+		$this->load->library(array('form_validation', 'email', 'theme'));
+		$this->load->helper(array('date', 'url'));
+	}
+	
 	/**
 	 * Loads the homepage of the site
 	 *
@@ -16,9 +24,7 @@ class Static_content extends CI_Controller
 	 */
 	public function index()
 	{
-		$this->load->view('theme/header', array('stylesheets' => array('homepage')));
-		$this->load->view('static/'.$this->config->item('language').'/homepage');
-		$this->load->view('theme/footer');
+		$this->theme->view('static/homepage', array('scripts'=>array('homepage')));
 	}
 	
 	/**
@@ -33,27 +39,17 @@ class Static_content extends CI_Controller
 	{
 		switch($doc)
 		{
-			// landing page
-			case 'landing':
-				
-			break;
 			// terms of service
 			case 'tos':
-				$this->load->view('theme/header', array('page_title' => $this->lang->line('view_tos')));
-				$this->load->view('static/'.$this->config->item('language').'/tos');
-				$this->load->view('theme/footer');
+				$this->theme->view('static/tos', array('page_title'=>'view.tos'));
 			break;
 			// privacy policy
 			case 'privacy':
-				$this->load->view('theme/header', array('page_title' => $this->lang->line('view_privacy')));
-				$this->load->view('static/'.$this->config->item('language').'/privacy');
-				$this->load->view('theme/footer');
+				$this->theme->view('static/privacy', array('page_title'=>'view.privacy'));
 			break;
 			// disclaimers
 			case 'disclaimers':
-				$this->load->view('theme/header', array('page_title' => $this->lang->line('view_disclaimers')));
-				$this->load->view('static/'.$this->config->item('language').'/disclaimers');
-				$this->load->view('theme/footer');
+				$this->theme->view('static/disclaimers', array('page_title'=>'view.disclaimers'));
 			break;
 			// 404 page not found
 			default:
@@ -72,70 +68,92 @@ class Static_content extends CI_Controller
 	 */
 	public function about($page = '')
 	{
-		switch($page)
-		{
-			// landing page
-			case 'landing':
-				
-			break;
-			// history of mozhunt
-			case 'history':
-				$this->load->view('theme/header', array('page_title' => 'History'));
-				$this->load->view('static/'.$this->config->item('language').'/history');
-				$this->load->view('theme/footer');
-			break;
-			// how to play play mozhunt
-			case 'howto':
-				$this->load->view('theme/header', array('page_title' => 'How To Play'));
-				$this->load->view('static/'.$this->config->item('language').'/howto');
-				$this->load->view('theme/footer');
-			break;
-			// the rules of engagement
-			case 'rules':
-				$this->load->view('theme/header', array('page_title' => 'The Rules'));
-				$this->load->view('static/'.$this->config->item('language').'/rules');
-				$this->load->view('theme/footer');
-			break;
-			// 404 page not found
-			default:
-				show_404("/about/$page/");
-			break;
-		}
+		$this->theme->view('static/about', array(
+			'page_title' => 'view.about'
+		));
 	}
 	
 	/**
-	 * Loads the contact pages for the site
+	 * Allows users to submit feedback via a contact form as well as provide
+	 * information on how to get in contact via other channels.
 	 *
 	 * @author William "FuzzyFox" Duyck <william@mozhunt.com>
-	 * @version 2012-01-24
+	 * @version 2012-03-28
 	 *
 	 * @param string $page The contact page to load
 	 */
 	public function contact($page = '')
 	{
-		switch($page)
+		// validation rules
+		$this->form_validation->set_rules('name', 'lang:form.contact.name.label', 'required');
+		$this->form_validation->set_rules('email', 'lang:form.contact.email.label', 'required|valid_email');
+		$this->form_validation->set_rules('subject', 'lang:form.contact.subject.label', 'required');
+		$this->form_validation->set_rules('message', 'lang:form.contact.message.label', 'required');
+		$this->form_validation->set_rules('privacy', 'lang:form.contact.privacy.label', 'required');
+		
+		if($this->form_validation->run() === false)
 		{
-			// contact landing page
-			case 'landing':
-				
-			break;
-			// support page
-			case 'support':
-				$this->load->view('theme/header', array('page_title' => 'Got an issue?'));
-				$this->load->view('static/'.$this->config->item('language').'/contact/support');
-				$this->load->view('theme/footer');
-			break;
-			// feedback page
-			case 'feedback':
-				$this->load->view('theme/header', array('page_title' => 'Feedback'));
-				$this->load->view('static/'.$this->config->item('language').'/contact/feedback');
-				$this->load->view('theme/footer');
-			break;
-			// contact page not found
-			default:
-				show_404("/contact/$page/");
-			break;
+			$this->theme->view('static/contact', array('page_title'=>'view.contact'));
 		}
+		else
+		{
+			$this->email->from($this->input->post('email'), $this->input->post('name'));
+			$this->email->to('contact@mozhunt.com');
+			$this->email->subject($this->input->post('subject'));
+			$this->email->message($this->input->post('message'));
+			$this->email->send();
+			
+			$this->theme->view('static/contact', array('page_title'=>'view.contact', 'data'=>array('success'=>true)));
+		}
+	}
+	
+	/**
+	 * Provides a basic admin dashboard
+	 *
+	 * @author William Duyck <william@mozhunt.com>
+	 * @version 2012.04.01
+	 */
+	public function admin()
+	{
+		// get utility library for twitter related stuff
+		$this->load->library('twitter');
+		
+		// things to get for admins
+		if($this->session->userdata('userStatus') == 0)
+		{
+			// get some users from the database
+			$this->db->order_by('registeredAt', 'desc');
+			$data['latestUsers'] = $this->db->get('user', 5);
+			
+			// setup validation for tweet widget
+			$this->form_validation->set_rules('tweet', 'message', 'required|max_length['.(138 - strlen($this->session->userdata('nickname'))).']');
+		}
+		
+		if($this->session->userdata('userStatus') < 2)
+		{
+			// get latest @mentions
+			$data['mentions'] = $this->twitter->mentions(5);
+		}
+		
+		if($this->form_validation->run() === false)
+		{
+			$this->theme->view('static/admin', array('page_title'=>'view.admin', 'data'=>$data));
+		}
+		else
+		{
+			$status = ($this->twitter->tweet($this->input->post('tweet').' ^'.$this->session->userdata('nickname')))?'success':'fail';
+			redirect('admin?tweet='.$status);
+		}
+	}
+	
+	/**
+	 * For now this provides a url alias to the github issue tracker. In future
+	 * it will contain the administration pages for the issue tracker that will
+	 * be built into mozhunt.
+	 */
+	public function issue()
+	{
+		redirect('http://www.github.com/fuzzyfox/mozhunt/issues');
 	}
 }
 
