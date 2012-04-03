@@ -15,6 +15,10 @@ class Token extends CI_Controller
         $this->load->model(array('domain_model', 'token_model', 'find_model'));
         $this->load->helper(array('url', 'date'));
         $this->load->library(array('token_management', 'domain_management', 'form_validation'));
+        if(ENVIRONMENT === 'testing' || ENVIRONMENT === 'development')
+		{
+			$this->output->enable_profiler(TRUE);
+		}
     }
     
     public function generate($apiKey, $tokenID)
@@ -77,6 +81,8 @@ class Token extends CI_Controller
     
     public function api($action, $tokenID, $apikey)
     {
+        $this->output->set_content_type('text/javascript');
+        $this->load->library('domain_management');
         if($action == 'verify')
         {
             // check api key is valid as is token id

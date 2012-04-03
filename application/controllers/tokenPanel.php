@@ -25,6 +25,11 @@ class TokenPanel extends CI_Controller
         else {
             $this->userID = $this->session->userdata('userID');
         }
+        
+        if(ENVIRONMENT === 'testing' || ENVIRONMENT === 'development')
+		{
+			$this->output->enable_profiler(TRUE);
+		}
     }
     
     public function index()

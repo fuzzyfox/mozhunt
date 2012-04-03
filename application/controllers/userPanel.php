@@ -19,6 +19,11 @@ class UserPanel extends CI_Controller
 		{
 			redirect('user/login', 'location');
 		}
+		
+		if(ENVIRONMENT === 'testing' || ENVIRONMENT === 'development')
+		{
+			$this->output->enable_profiler(TRUE);
+		}
 	}
 
 	/**

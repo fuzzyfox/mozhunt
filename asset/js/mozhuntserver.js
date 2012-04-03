@@ -125,3 +125,5 @@ if(typeof $mozhunt !== 'undefined')
 		return false;
 	}
 }
+
+$mozhunt.init();

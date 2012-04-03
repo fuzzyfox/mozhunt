@@ -20,6 +20,11 @@ class DomainPanel extends CI_Controller
         if(!$this->user_session->isUserLoggedIn()) {
                 redirect('user/login/' . htmlentities(uri_string()), 'location');
         }
+        
+        if(ENVIRONMENT === 'testing' || ENVIRONMENT === 'development')
+		{
+			$this->output->enable_profiler(TRUE);
+		}
     }
     
     public function index()

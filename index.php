@@ -18,7 +18,19 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
-	define('ENVIRONMENT', 'development');
+	switch($_SERVER['HTTP_HOST'])
+	{
+		case 'www.mozhunt.com':
+			define('ENVIRONMENT', 'production');
+		break;
+		case 'stage.mozhunt.com':
+			define('ENVIRONMENT', 'testing');
+		break;
+		case 'localhost':
+		default:
+			define('ENVIRONMENT', 'development');
+		break;
+	}
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING

@@ -14,6 +14,10 @@ class Static_content extends CI_Controller
 		
 		$this->load->library(array('form_validation', 'email', 'theme'));
 		$this->load->helper(array('date', 'url'));
+		if(ENVIRONMENT === 'testing' || ENVIRONMENT === 'development')
+		{
+			$this->output->enable_profiler(TRUE);
+		}
 	}
 	
 	/**

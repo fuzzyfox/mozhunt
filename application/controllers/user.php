@@ -17,6 +17,10 @@ class User extends CI_Controller
 		$this->load->model('user_model');
 		$this->load->helper(array('security', 'url'));
 		$this->load->library(array('form_validation', 'theme'));
+		if(ENVIRONMENT === 'testing' || ENVIRONMENT === 'development')
+		{
+			$this->output->enable_profiler(TRUE);
+		}
 	}
 
 	/**

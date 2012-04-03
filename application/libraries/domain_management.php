@@ -20,7 +20,7 @@ class Domain_management
     {
         $this->CI =& get_instance();
         $this->CI->load->library('user_session');
-        $this->CI->load->model('domain_model');
+        $this->CI->load->model(array('domain_model', 'token_model'));
         $this->CI->config->load('domains');
     }
     
@@ -61,7 +61,7 @@ class Domain_management
     
     public function userOwnsDomain($domainID)
     {
-        return !empty($this->domain_model->getUserDomain($domainID, $this->CI->session->userdata('userID')));
+        return ($this->CI->domain_model->getUserDomain($domainID, $this->CI->session->userdata('userID')))?true:false;
     }
     
     public function getMaxDomains()
@@ -71,7 +71,7 @@ class Domain_management
     
     public function domainIsActive($domainID)
     {
-        $domain = $this->domain_model->getDomainByID($domainID);
+        $domain = $this->CI->domain_model->getDomainByID($domainID);
         if(empty($domain)) {
             return FALSE;
         }
@@ -80,8 +80,8 @@ class Domain_management
     
     public function getDomainByToken($tokenID)
     {
-        $token = $this->token_model->getTokenByID($tokenID);
-        return $this->domain_model->getDomainByID($token['domainID']);
+        $token = $this->CI->token_model->getTokenByID($tokenID);
+        return $this->CI->domain_model->getDomainByID($token['domainID']);
     }
     
 }
