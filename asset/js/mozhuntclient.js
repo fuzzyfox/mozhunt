@@ -213,7 +213,7 @@ if(typeof $mozhunt === 'undefined')
 		}
 		
 		// create iframe and destroy the create method
-		$mozhunt.iframe = $mozhunt.iframe('//www.mozhunt.com/api/'+(config.apikey)+'/token/'+(config.tokenid));
+		$mozhunt.iframe = $mozhunt.iframe('//www.mozhunt.com/token/api/verify/'+(config.tokenid)+'/'+(config.apikey));
 		
 		// setup what to do when mozhunt.com responds
 		$mozhunt.comm.receiveMessage(function(msg){
@@ -235,11 +235,11 @@ if(typeof $mozhunt === 'undefined')
 				break;
 				// token not currently found by this user
 				case 'default':
-					$mozhunt.token.href = '//www.mozhunt.com/token/add/'+(data.addkey);
-					$mozhunt.token.img.src = '//www.mozhunt.com/token/'+(config.style)+'/default.png?s='+(config.size);
+					$mozhunt.token.href = '//www.mozhunt.com/token/find/'+(data.addkey);
+					$mozhunt.token.img.src = '//www.mozhunt.com/token/img/'+(config.style)+'/default.png?s='+(config.size);
 					// add click event + ajax
 					$mozhunt.addevent($mozhunt.token, 'click', function(e){
-						$mozhunt.ajax('POST', '//www.mozhunt.com/token/add/'+(data.addkey), function(addResponse){
+						$mozhunt.ajax('POST', '//www.mozhunt.com/token/find/'+(data.addkey), function(addResponse){
 							addResponse = JSON.parse(addResponse);
 							if(addResponse.success)
 							{

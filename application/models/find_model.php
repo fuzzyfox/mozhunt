@@ -7,7 +7,7 @@
  * @version 2012-03-20
  */
 
-class Token_model extends CI_Model{
+class Find_model extends CI_Model{
     
     public function find($userID, $tokenID)
     {
