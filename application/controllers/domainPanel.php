@@ -14,7 +14,7 @@ class DomainPanel extends CI_Controller
         parent::__construct();
         $this->load->model('domain_model');
         $this->load->helper(array('url', 'form'));
-        $this->load->library(array('domain_management', 'form_validation'));
+        $this->load->library(array('domain_management', 'form_validation', 'theme'));
         $this->config->load('domains');
         
         if(!$this->user_session->isUserLoggedIn()) {
@@ -34,10 +34,11 @@ class DomainPanel extends CI_Controller
                 'domainCount' => $this->domain_model->getUserDomainCount($this->session->userdata('userID')),
                 'maxDomainCount' => $this->domain_management->getMaxDomains(),
                 'createLink' => anchor('domainPanel/create', 'Create Domain'),
-                'manageLink' => anchor('domainPanel/manage', 'Manage Domains')
+                'manageLink' => anchor('domainPanel/manage', 'Manage Domains'),
+                'domains' => $this->domain_model->getUserDomains($this->session->userdata('userID'))
             );
             
-            $this->load->view('domainPanel/domainOverview', $data);
+            $this->theme->view('domain/overview', array('page_title' => 'view.domain.overview', 'data' => $data));
         }
         else {
             $data = array(
@@ -70,7 +71,7 @@ class DomainPanel extends CI_Controller
         $this->form_validation->set_rules('domain', 'domain name', 'required|is_unique[domain.url]');
         
         if($this->form_validation->run() == FALSE) {
-            $this->load->view('domainPanel/create');
+            $this->theme->view('domain/create');
         }
         else {
             $apiKey = $this->domain_management->generateApiKey();
@@ -82,8 +83,9 @@ class DomainPanel extends CI_Controller
                 'activationKey' => $this->domain_management->generateActivationKey(),
                 'domainStatus' => Domain_management::$DOMAIN_PENDING
             );
+            $this->domain_model->insert($data);
             $domainID = $this->domain_model->getDomainByField('apiKey', $apiKey);
-            $this->load->view('domainPanel/verify/'.$domainID[0]['domainID']);
+            redirect('domain/verify/'.$domainID[0]['domainID']);
         }
     }
     
@@ -143,12 +145,21 @@ class DomainPanel extends CI_Controller
     
     public function delete($domainID)
     {
-        if($this->domain_management->userOwnsDomain($domainID)) {
-            $this->domain_model->delete($domainID);
-            $data = array(
-                'backLink' => anchor('domainPanel/index', 'Back')
-            );
-            $this->load->view('domainPanel/deleted', $data);
+        $this->form_validation->set_rules('submit', 'submit', 'required');
+        if($this->form_validation->run() === false)
+        {
+            $data = $this->domain_model->getDomainByID($domainID);
+            $this->theme->view('domain/delete', array('data' => $data));
+        }
+        else
+        {
+            if($this->domain_management->userOwnsDomain($domainID)) {
+                $this->domain_model->delete($domainID);
+                $data = array(
+                    'backLink' => anchor('domainPanel/index', 'Back')
+                );
+                $this->load->view('domainPanel/deleted', $data);
+            }
         }
     }
     

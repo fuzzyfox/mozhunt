@@ -60,7 +60,14 @@
 											<b class="caret"></b>
 										</a>
 										<ul class="dropdown-menu">
-											<li><a href="user">Account</a></li>
+											<li>
+												<a href="user">Account</a>
+												<?php if($user[0]['userStatus'] < 3): ?>
+												<ul class="unstyled" style="margin-left:10px">
+													<li><a href="domain">Domain Mangement</a></li>
+												</ul>
+												<?php endif; ?>
+											</li>
 											<?php if($user[0]['userStatus'] < 1): ?>
 											<li class="divider"></li>
 											<li>

@@ -43,7 +43,7 @@ class Domain_management
     {
         do {
             $newKey = $this->CI->user_session->generateRandomString(30);
-        } while ($this->CI->domain_model->ApiKeyExists($newKey));
+        } while ($this->CI->domain_model->apiKeyExists($newKey));
         
         return $newKey;
     }

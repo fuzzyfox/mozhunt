@@ -12,16 +12,17 @@
 	 * @version 2012-02-24
 	 */
 	
-	$lang['view.disclaimers'] 	= 'Disclaimers';
-	$lang['view.privacy'] 		= 'Privacy Policy';
-	$lang['view.tos'] 			= 'Terms Of Service';
-	$lang['view.about'] 		= 'About';
-	$lang['view.contact'] 		= 'Contact Us';
-	$lang['view.join'] 			= 'Join Now';
-	$lang['view.login'] 		= 'Sign In';
-	$lang['view.user.account'] 	= 'Account';
-	$lang['view.admin.user'] 	= 'User Management';
-	$lang['view.admin'] 		= 'Admin Dashboard';
+	$lang['view.disclaimers'] 		= 'Disclaimers';
+	$lang['view.privacy'] 			= 'Privacy Policy';
+	$lang['view.tos'] 				= 'Terms Of Service';
+	$lang['view.about'] 			= 'About';
+	$lang['view.contact'] 			= 'Contact Us';
+	$lang['view.join'] 				= 'Join Now';
+	$lang['view.login'] 			= 'Sign In';
+	$lang['view.user.account'] 		= 'Account';
+	$lang['view.admin.user'] 		= 'User Management';
+	$lang['view.admin'] 			= 'Admin Dashboard';
+	$lang['view.domain.overview'] 	= 'Domain Overview';
 	
 /* End of file views_lang.php */
 /* Location: ./application/language/en/views_lang.php */

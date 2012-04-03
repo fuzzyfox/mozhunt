@@ -63,7 +63,13 @@ class Domain_model extends CI_Model
     
     public function authKeyExists($key)
     {
-        $result = $this->getDomainBy('activationKey', $key);
+        $result = $this->getDomainByField('activationKey', $key);
+        return !empty($result) ? TRUE : FALSE;        
+    }
+    
+    public function apiKeyExists($key)
+    {
+        $result = $this->getDomainByField('apiKey', $key);
         return !empty($result) ? TRUE : FALSE;        
     }
     
