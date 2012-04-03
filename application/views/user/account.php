@@ -57,10 +57,23 @@
 		</dl>
 	</section>
 </section>
-<?php if($user->userStatus < 3): ?>
+<?php if($user->userStatus < 4): ?>
 <section class="row">
 	<section class="span6 offset2">
 		<h2>Domains</h2>
+		<?php if($this->domain_model->getUserDomainCount($user->userID) > 0): ?>
+		<p>So, <?php echo $this->domain_model->getUserDomainCount($user->userID); ?> domain<?php echo ($this->domain_model->getUserDomainCount($user->userID) > 1)?'s':null; ?>
+		linked to this account... need to <a href="domain">manage them</a>?</p>
+		<?php elseif($user->userStatus < 3): ?>
+		<p>Hmmm.... looks like you can hide some tokens... just need to
+		<a href="domain/create">add a domain to your account</a>.</p>
+		<?php else: ?>
+		<p>The one and only, cross domain treasure hunt is back, and this time its
+		all about them easter eggs! With just a few days to go we are looking for
+		those who think they have what it takes to hide easter eggs, and hide them
+		well. So... do you think you have what it takes?</p>
+		<a href="domain/register" class="btn btn-success">Upgrade your account for free</a>
+		<?php endif; ?>
 	</section>
 </section>
 <?php endif; ?>

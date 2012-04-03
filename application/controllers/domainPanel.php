@@ -60,7 +60,7 @@ class DomainPanel extends CI_Controller
             $this->load->view('domainPanel/limitReached');
         }
         else {
-            _create_form($userID);
+            $this->_create_form($userID);
         }
     }
     
@@ -227,6 +227,23 @@ class DomainPanel extends CI_Controller
        );
        
        $this->domain_model->update($data);
+    }
+    
+    public function register()
+    {
+        if($this->session->userdata('userStatus') > 2)
+        {
+            $this->session->set_userdata('userStatus', 2);
+            $this->user_model->updateUser(array(
+                'userID' => $this->session->userdata('userID'),
+                'userStatus' => 2
+            ));
+            redirect('user?upgrade=success');
+        }
+        else
+        {
+            // error message
+        }
     }
 
 }

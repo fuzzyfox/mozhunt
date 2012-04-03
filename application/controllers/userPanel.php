@@ -11,9 +11,9 @@ class UserPanel extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('user_model');
+		$this->load->model(array('user_model', 'domain_model'));
 		$this->load->helper(array('url', 'form'));
-		$this->load->library(array('user_session', 'form_validation', 'theme'));
+		$this->load->library(array('user_session', 'form_validation', 'theme', 'domain_management'));
 
 		if(!$this->user_session->isUserLoggedIn())
 		{
@@ -33,12 +33,6 @@ class UserPanel extends CI_Controller
 	 */
 	public function index()
 	{
-
-		$data = array(
-			'nickname' => $this->session->userdata('nickname'),
-			'nickLink' => anchor('userPanel/nickname', 'Change Nickname'),
-			'passLink' => anchor('userPanel/password', 'Change Password'),
-		);
 		//$this->load->view('userPanel/accountOverview', $data);
 		$this->theme->view('user/account', array('page_title'=>'view.user.account'));
 	}

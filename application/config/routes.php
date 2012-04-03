@@ -70,5 +70,9 @@ $route['admin/issue'] 		= 'static_content/issue';
 $route['admin/user'] 		= 'userAdmin';
 $route['admin/user/(:any)'] = 'userAdmin/$1';
 
+// domain pages
+$route['domain'] = 'domainPanel';
+$route['domain/(:any)'] = 'domainPanel/$1';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

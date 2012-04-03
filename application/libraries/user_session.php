@@ -144,7 +144,7 @@ class User_session
 	public function getUserLevel()
 	{
 		$userLevel = $this->CI->session->userdata('userStatus');
-		if(!empty($userLevel))
+		if($userLevel === false)
 		{
 			return self::$USER_GUEST;
 		}
