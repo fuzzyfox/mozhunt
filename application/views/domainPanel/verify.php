@@ -1,4 +1,4 @@
-<h1>Domain Verification</h1>
+<h1>Domain Verification for <?php echo htmlentities($domain['url']); ?></h1>
 <p>In order to authorize your domain and enable your tokens to be found, you
 must verify your domain</p>
 <h1><?php echo $dnsLink; ?></h1>

@@ -83,7 +83,7 @@ class DomainPanel extends CI_Controller
                 'domainStatus' => Domain_management::$DOMAIN_PENDING
             );
             $domainID = $this->domain_model->getDomainByField('apiKey', $apiKey);
-            $this->load->view('domainPanel/verify/'.$domainID[0]['domainID']);
+            redirect('domainPanel/verify/'.$domainID[0]['domainID'], 'Location');
         }
     }
     
@@ -112,7 +112,7 @@ class DomainPanel extends CI_Controller
                 $this->load->view('domainPanel/gone');
             }
             else {
-                $this->load->view('domainPanel/view', $domain);
+                $this->load->view('domainPanel/view', $domain[0]);
             }
         }
     }
@@ -123,7 +123,7 @@ class DomainPanel extends CI_Controller
         if($domainID === NULL) {
             $domains = $this->domain_model->getUserDomains($userID);
             foreach($domains as $domain) {
-                $domain['manageLink'] = anchor('domainPanel/manage/' . $domain['domainID'], 'Manage ' . $domain['url']);
+                $domain['manageLink'] = anchor('domainPanel/manage/' . $domain['domainID'], 'Manage ' . htmlentities($domain['url']));
             }
             $this->load->view('domainPanel/manageAll');
         }
@@ -134,7 +134,7 @@ class DomainPanel extends CI_Controller
             }
             else {
                 $data = array(
-                    'deleteLink' => anchor('domainPanel/delete/'.$domain[0]['domainID'], 'Delete')
+                    'deleteLink' => anchor('domainPanel/delete/'.$domain[0]['domainID'], 'Delete ' . htmlentities($domain['url']))
                 );
                 $this->load->view('domainPanel/manage', $data);
             }
@@ -146,7 +146,7 @@ class DomainPanel extends CI_Controller
         if($this->domain_management->userOwnsDomain($domainID)) {
             $this->domain_model->delete($domainID);
             $data = array(
-                'backLink' => anchor('domainPanel/index', 'Back')
+                'backLink' => anchor('domainPanel/index', 'Go back to your domains')
             );
             $this->load->view('domainPanel/deleted', $data);
         }
@@ -168,7 +168,7 @@ class DomainPanel extends CI_Controller
         else if(empty($method)) {
             $domain = $this->domain_model->getDomainByID($domainID);
             $data = array(
-                'domain' => $domain,
+                'domain' => $domain[0],
                 'textLink' => anchor('domainPanel/verify/'.$domainID.'/text', 'Text File'),
                 'dnsLink' => anchor('domainPanel/verify/'.$domainID.'/dns', 'TXT DNS Record')
             );
