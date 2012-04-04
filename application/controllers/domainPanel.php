@@ -41,10 +41,7 @@ class DomainPanel extends CI_Controller
             $this->theme->view('domain/overview', array('page_title' => 'view.domain.overview', 'data' => $data));
         }
         else {
-            $data = array(
-                'eligibilityLink' => anchor('domainPanel/register', 'upgrade')
-            );
-            $this->load->view('domainPanel/ineligible', $data);
+            show_error('you are not able to create domains at this time');
         }
     }
     
@@ -52,13 +49,10 @@ class DomainPanel extends CI_Controller
     {
         $userID = $this->session->userdata('userID');
         if(!$this->domain_management->userIsEligible()) {
-            $data = array(
-                'eligibilityLink' => anchor('domainPanel/register', 'upgrade')
-            );
-            $this->load->view('domainPanel/ineligible', $data);
+            show_error('you are not able to create domains at this time');
         }
         else if ($this->domain_model->getUserDomainCount($userID) >= $this->domain_management->getMaxDomains()) {
-            $this->load->view('domainPanel/limitReached');
+            show_error('limit reached... you cannot create any more domains');
         }
         else {
             $this->_create_form($userID);
@@ -111,7 +105,7 @@ class DomainPanel extends CI_Controller
         else {
             $domain = $this->domain_model->getUserDomain($domainID, $userID);
             if(count($domain) === 0) {
-                $this->load->view('domainPanel/gone');
+                show_error('domain not found');
             }
             else {
                 $this->load->view('domainPanel/view', $domain[0]);
@@ -132,7 +126,7 @@ class DomainPanel extends CI_Controller
         else {
             $domain = $this->domain_model->getUserDomain($domainID, $userID);
             if(empty($domain) === 0) {
-                $this->load->view('domainPanel/gone');
+                show_error('domain not found');
             }
             else {
                 $data = array(
@@ -166,15 +160,7 @@ class DomainPanel extends CI_Controller
     public function verify($domainID, $method)
     {
         if(empty($domainID)) {
-            $conditions = array(
-                'userID' => $this->session->userdata('userID'),
-                'domainStatus' => Domain_management::$DOMAIN_PENDING
-            );
-            $unverifiedDomains = $this->domain_model->getDomainByFields($conditions);
-
-            $data = array('domains' => $unverifiedDomains);
-            $this->load->view('domainPanel/verifyAll');
-
+            show_error('Missing a domain id to verify');
         }
         else if(empty($method)) {
             $domain = $this->domain_model->getDomainByID($domainID);
@@ -183,22 +169,22 @@ class DomainPanel extends CI_Controller
                 'textLink' => anchor('domainPanel/verify/'.$domainID.'/text', 'Text File'),
                 'dnsLink' => anchor('domainPanel/verify/'.$domainID.'/dns', 'TXT DNS Record')
             );
-            $this->load->view('domainPanel/verify', $data);
+            $this->theme->view('domain/verify', array('page_title'=>'view.domain.verify','data' => $domain[0]));
         }
         else {
             if($method == 'text') {
-                if(_textVerify($domainID)) {
-                    _setVerified($domainID);                    
+                if($this->_textVerify($domainID)) {
+                    $this->_setVerified($domainID);
+                    redirect('domain?verify=success');
                 }
-                $data = array('textError' => TRUE);
-                $this->load->view('domainPanel/verify', $data);
+                show_error('Failed to verify by text file... reload page to try again or go back to try another method.');
             }
             else if($method == 'dns') {
-                if(_dnsVerify($domainID)) {
-                    _setVerified($domainID);
+                if($this->_dnsVerify($domainID)) {
+                    $this->_setVerified($domainID);
+                    redirect('domain?verify=success');
                 }
-                $data = array('dnsError' => TRUE);
-                $this->load->view('domainPanel/verify', $data);
+                show_error('Failed to verify by dns record... reload page to try again or go back to try another method.');
             }
         }
     }
@@ -237,7 +223,7 @@ class DomainPanel extends CI_Controller
            'domainStatus' => Domain_management::$DOMAIN_REGULAR
        );
        
-       $this->domain_model->update($data);
+       $this->domain_model->updateDomain($data);
     }
     
     public function register()

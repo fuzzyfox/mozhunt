@@ -100,5 +100,23 @@ class Domain_model extends CI_Model
     {
         $this->db->delete('domain', array('domainID' => $domainID));
     }
+    
+    /**
+	 * Gets a human readable version of the domain status code
+	 *
+	 * @author William Duyck <william@mozhunt.com>
+	 * @version 2012.04.01
+	 * 
+	 * @param int domainID The domain to get the status for
+	 * @return string Human readable version of the domain status
+	 */
+	public function getHumanStatus($domainID)
+	{
+		$domain = $this->getDomainByField('domainID', $domainID);
+		$domainStatus = $domain[0]['domainStatus'];
+		$this->config->load('status_codes');
+		$codes = $this->config->item('status_codes');
+		return $codes['domain'][$domainStatus];
+	}
 }
 ?>

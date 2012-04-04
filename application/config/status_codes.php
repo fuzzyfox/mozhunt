@@ -17,10 +17,11 @@ $config['status_codes'] = array(
 		100 => 'Guest'
 	),
 	'domain' => array(
-		0 => 'Active',
-		1 => 'Pending',
-		2 => 'Revoked',
-		3 => 'Deleted'
+		0 => 'Master',
+		1 => 'Active',
+		2 => 'Pending',
+		3 => 'Revoked',
+		4 => 'Deleted'
 	),
 	'token' => array(
 		0 => 'Active',

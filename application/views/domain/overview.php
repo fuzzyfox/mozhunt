@@ -7,7 +7,7 @@
 		<thead>
 			<tr>
 				<th>URL</th>
-				<th>API Key</th>
+				<th>API Authentication</th>
 				<th>Atatus</th>
 				<th>Action</th>
 			</tr>
@@ -16,11 +16,21 @@
 			<?php foreach($domains as $domain): ?>
 			<tr>
 				<td><?php echo $domain['url']; ?></td>
-				<td><?php echo $domain['apiKey']; ?></td>
-				<td><?php echo $domain['domainStatus']; ?></td>
 				<td>
-					<a href="domain/view" class="btn"><i class="icon-eye-open"></i> View</a>
-					<a href="domain/delete" class="btn btn-danger"><i class="icon-remove icon-white"></i> Delete</a>
+					<dl class="dl-horizontal">
+						<dt>API Key</dt>
+						<dd><?php echo $domain['apiKey']; ?></dd>
+						<dt>API Secret</dt>
+						<dd><?php echo $domain['apiSecret']; ?></dd>
+					</dl>
+				</td>
+				<td><?php echo $this->domain_model->getHumanStatus($domain['domainStatus']); ?></td>
+				<td>
+					<a href="domain/view/<?php echo $domain['domainID']; ?>" class="btn"><i class="icon-eye-open"></i> View</a>
+					<?php if($domain['domainStatus'] == 2): ?>
+					<a href="domain/verify/<?php echo $domain['domainID']; ?>" class="btn btn-success"><i class="icon-ok icon-white"></i> Verify</a>
+					<?php endif; ?>
+					<a href="domain/delete/<?php echo $domain['domainID']; ?>" class="btn btn-danger"><i class="icon-remove icon-white"></i> Delete</a>
 				</td>
 			</tr>
 			<?php endforeach; ?>
