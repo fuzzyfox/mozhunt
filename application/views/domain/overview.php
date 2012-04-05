@@ -8,7 +8,7 @@
 			<tr>
 				<th>URL</th>
 				<th>API Authentication</th>
-				<th>Atatus</th>
+				<th>Status</th>
 				<th>Action</th>
 			</tr>
 		</thead>

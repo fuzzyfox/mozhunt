@@ -45,7 +45,7 @@ class TokenPanel extends CI_Controller
     public function create($domainID)
     {   
         if($this->domain_management->userOwnsDomain($domainID)) {
-            $tokenCount = $this->token_model-getDomainTokenCount($domainID);
+            $tokenCount = $this->token_model->getDomainTokenCount($domainID);
             if($tokenCount >= $this->token_management->getMaxTokens()) {
                 $this->load->view('tokenPanel/limitReached');
             }

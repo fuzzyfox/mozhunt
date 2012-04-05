@@ -108,7 +108,16 @@ class DomainPanel extends CI_Controller
                 show_error('domain not found');
             }
             else {
-                $this->load->view('domainPanel/view', $domain[0]);
+                $this->load->library('token_management');
+                $this->load->model('token_model');
+                $data = array(
+                    'domain' => $domain[0],
+                    'tokens' => $this->token_model->getTokensByDomain($domainID),
+                    'tokenCount' => $this->token_model->getTokensByDomain($domainID),
+                    'maxTokenCount' => $this->token_management->getMaxTokens()
+                );
+                
+                $this->theme->view('domain/view', array('data' => $data));
             }
         }
     }

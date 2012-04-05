@@ -74,5 +74,9 @@ $route['admin/user/(:any)'] = 'userAdmin/$1';
 $route['domain'] = 'domainPanel';
 $route['domain/(:any)'] = 'domainPanel/$1';
 
+// token pages
+$route['token'] = 'tokenPanel';
+$route['token/(:any)'] = 'tokenPanel/$1';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -17,12 +17,12 @@ class Token_management
         $this->CI =& get_instance();
         $this->CI->load->library('user_session');
         $this->CI->load->model(array('token_model', 'domain_model'));
-        $this->CI->config->load('tokens');
+        $this->CI->config->load('domains');
     }
     
     public function getMaxTokens()
     {
-        return $this->config->item('max_user_tokens', 'tokens');
+        return $this->CI->config->item('max_domain_tokens', 'domains');
     }
     
     public function generateTokenID()

@@ -59,6 +59,20 @@ class Token_model extends CI_Model{
         $this->db->delete('token', array('tokenID' => $tokenID));
     }
     
-    
+    /**
+	 * Gets a human readable version of the domain status code
+	 *
+	 * @author William Duyck <william@mozhunt.com>
+	 * @version 2012.04.01
+	 * 
+	 * @param int tokenStatus The status to translate
+	 * @return string Human readable version of the domain status
+	 */
+	public function getHumanStatus($tokenStatus)
+	{
+		$this->config->load('status_codes');
+		$codes = $this->config->item('status_codes');
+		return $codes['token'][$domainStatus];
+	}
 }
 ?>
