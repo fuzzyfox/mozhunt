@@ -76,11 +76,13 @@ $route['domain/(:any)'] = 'domainPanel/$1';
 
 // token pages
 $route['token'] 		= 'tokenPanel';
-$route['token/img'] 	= 'token/img';
-$route['token/api'] 	= 'token/api';
-$route['token/find'] 	= 'token/find';
+$route['token/img/(:any)'] 	= 'token/img/$1';
+$route['token/api/(:any)'] 	= 'token/api/$1';
+$route['token/find/(:any)'] 	= 'token/find/$1';
 $route['token/(:any)'] 	= 'tokenPanel/$1';
 
+// tmp till launch
+$route['user/join'] = 'static_content';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

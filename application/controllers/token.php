@@ -81,7 +81,6 @@ class Token extends CI_Controller
     
     public function api($action, $tokenID, $apikey)
     {
-        $this->output->set_content_type('text/javascript');
         $this->load->library('domain_management');
         if($action == 'verify')
         {
