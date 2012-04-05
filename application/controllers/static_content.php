@@ -119,6 +119,10 @@ class Static_content extends CI_Controller
 	 */
 	public function admin()
 	{
+		if($this->session->userdata('userStatus') > 1)
+		{
+			redirect('user');
+		}
 		// get utility library for twitter related stuff
 		$this->load->library('twitter');
 		
