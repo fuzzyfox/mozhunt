@@ -78,6 +78,7 @@ $route['domain/(:any)'] = 'domainPanel/$1';
 $route['token'] 		= 'tokenPanel';
 $route['token/img'] 	= 'token/img';
 $route['token/api'] 	= 'token/api';
+$route['token/find'] 	= 'token/find';
 $route['token/(:any)'] 	= 'tokenPanel/$1';
 
 

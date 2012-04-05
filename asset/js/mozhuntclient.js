@@ -193,7 +193,7 @@ if(typeof $mozhunt === 'undefined')
 	 */
 	$mozhunt.init = function(config){
 		// check config set and this method not called before
-		if((!config) || (typeof $mozhunt.iframe !== 'Function'))
+		if((!config) || (typeof $mozhunt.proxy !== 'undefined'))
 		{
 			return;
 		}
@@ -206,6 +206,7 @@ if(typeof $mozhunt === 'undefined')
 		{
 			$mozhunt.token = document.getElementById('mozhunttoken');
 			$mozhunt.token.img = document.getElementById('mozhunttokenimg');
+			console.log('token detected... initilising');
 		}
 		catch(e)
 		{
@@ -213,7 +214,7 @@ if(typeof $mozhunt === 'undefined')
 		}
 		
 		// create iframe and destroy the create method
-		$mozhunt.iframe = $mozhunt.iframe('//www.mozhunt.com/token/api/verify/'+(config.tokenid)+'/'+(config.apikey));
+		$mozhunt.proxy = $mozhunt.iframe('//www.mozhunt.com/token/api/verify/'+(config.tokenid)+'/'+(config.apikey));
 		
 		// setup what to do when mozhunt.com responds
 		$mozhunt.comm.receiveMessage(function(msg){
