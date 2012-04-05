@@ -16,7 +16,7 @@ class Token_management
     {
         $this->CI =& get_instance();
         $this->CI->load->library('user_session');
-        $this->CI->load->model(array('token_model', 'domain_model'));
+        $this->CI->load->model(array('token_model', 'domain_model', 'find_model'));
         $this->CI->config->load('domains');
     }
     
@@ -39,13 +39,18 @@ class Token_management
         return $this->CI->user_session->generateRandomString(30);
     }
     
+    public function generateRandomOTK()
+    {
+        return $this->CI->user_session->generateRandomString(30);
+    }
+    
     public function generateOTK()
     {
-       do {
-           $otk = $this->generateRandomOTK();
-       } while($this->CI->find_model->OTKExists($otk));
-       
-       return $otk;
+        do {
+            $otk = $this->generateRandomOTK();
+        } while($this->CI->find_model->OTKExists($otk));
+        
+        return $otk;
     }
     
     public function userOwnsToken($tokenID)

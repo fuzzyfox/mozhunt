@@ -9,7 +9,7 @@
 	 */
 	
 	// check for another instance of namespace
-	if(typeof $mozhunt !== 'undefined')
+	if(typeof $mozhunt === 'undefined')
 	{
 		var $mozhunt = {};
 		

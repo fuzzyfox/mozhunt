@@ -86,16 +86,20 @@ class Token extends CI_Controller
         {
             // check api key is valid as is token id
             $domain = $this->domain_management->getDomainByToken($tokenID);
-            if($domain && ($apikey == $domain['apiKey']))
+            if($domain && ($apikey == $domain[0]['apiKey']))
             {
                 // check user is logged in and has not already found this token
                 if($this->user_session->isUserLoggedIn($this->session->userdata('userID')))
                 {
-                    if(!$this->db->get_where('userToken', array('userID'=>$this->session->userdata('userID'), 'tokenID'=>$tokenID)))
+                    $test = $this->db->get_where('userToken', array('userID'=>$this->session->userdata('userID'), 'tokenID'=>$tokenID));
+                    print_r($test);
+                    if($test->num_rows != 1)
                     {
+                        $this->load->library('token_management');
+                        $otk = $this->token_management->generateOTK();
                         $data = array(
                             'status' => 'default',
-                            'otk' => $this->token_management->generateOTK()
+                            'otk' => $otk
                         );
                     }
                     else
