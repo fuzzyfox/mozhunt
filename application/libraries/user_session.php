@@ -132,7 +132,7 @@ class User_session
 	public function isUserLoggedIn()
 	{
 		$userID = $this->CI->session->userdata('userID');
-		return !empty($userID);
+		return ($userID !== false);
 	}
 
 	/**
