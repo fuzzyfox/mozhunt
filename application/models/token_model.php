@@ -29,6 +29,16 @@ class Token_model extends CI_Model{
         return $query->result_array();
     }
     
+    public function getDomainTokenCount($domainID)
+    {
+        $conditions = array(
+            'domainID' => $domainID
+        );
+        
+        $query = $this->db->get_where('token', $conditions);
+        return $query->num_rows();
+    }
+    
     public function getTokenByID($tokenID)
     {
         $result = $this->getTokenByField('tokenID', $tokenID);
@@ -72,7 +82,7 @@ class Token_model extends CI_Model{
 	{
 		$this->config->load('status_codes');
 		$codes = $this->config->item('status_codes');
-		return $codes['token'][$domainStatus];
+		return $codes['token'][$tokenStatus];
 	}
 }
 ?>

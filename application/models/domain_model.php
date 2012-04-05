@@ -101,6 +101,14 @@ class Domain_model extends CI_Model
         $this->db->delete('domain', array('domainID' => $domainID));
     }
     
+    public function getDomainByToken($tokenID)
+    {
+        $this->load->model('token_model');
+        $token = $this->token_model->getTokenByField('tokenID', $tokenID);
+        $domainID = $token[0]['domainID'];
+        return $this->getDomainByField('domainID', $domainID);
+    }
+    
     /**
 	 * Gets a human readable version of the domain status code
 	 *

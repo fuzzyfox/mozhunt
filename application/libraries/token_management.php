@@ -50,8 +50,9 @@ class Token_management
     
     public function userOwnsToken($tokenID)
     {
-        $domain = $this->domain_model->getDomainByToken($tokenID);
-        $result = $this->domain_management->userOwnsDomain($domain['domainID']);
+        $domain = $this->CI->domain_model->getDomainByToken($tokenID);
+        $result = $this->CI->domain_management->userOwnsDomain($domain[0]['domainID']);
+        return $result;
     }
 }
 ?>

@@ -7,6 +7,7 @@
 			<title><?php echo (isset($page_title)) ? $page_title . ' - ' : null; ?>mozhunt</title>
 			<link rel="stylesheet" href="asset/css/bootstrap.min.css" />
 			<link rel="stylesheet" href="asset/css/mozhunt.css" />
+			<link rel="stylesheet" href="http://yandex.st/highlightjs/6.1/styles/default.min.css">
 			<style type="text/css">
 				body {
 				  padding-top: 60px;

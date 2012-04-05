@@ -1,3 +1,9 @@
+<ul class="breadcrumb">
+    <li>
+	    <a href="domain">Domain Management</a> <span class="divider">/</span>
+    </li>
+    <li class="active">Domain</li>
+</ul>
 <h1><?php echo $domain['url']; ?> <small><?php echo $this->domain_model->getHumanStatus($domain['domainStatus']); ?></small></h1>
 <dl class="well dl-horizontal">
 	<dt>API Key</dt>
@@ -22,7 +28,7 @@
 				<td><?php echo $token['clue']; ?></td>
 				<td><?php echo $this->token_model->getHumanStatus($token['tokenStatus']); ?></td>
 				<td>
-					
+					<a href="token/view/<?php echo $token['tokenID'];?>" class="btn"><i class="icon-eye-open"></i> View</a>
 				</td>
 			</tr>
 			<?php endforeach; ?>

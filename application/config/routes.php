@@ -75,8 +75,11 @@ $route['domain'] = 'domainPanel';
 $route['domain/(:any)'] = 'domainPanel/$1';
 
 // token pages
-$route['token'] = 'tokenPanel';
-$route['token/(:any)'] = 'tokenPanel/$1';
+$route['token'] 		= 'tokenPanel';
+$route['token/img'] 	= 'token/img';
+$route['token/api'] 	= 'token/api';
+$route['token/(:any)'] 	= 'tokenPanel/$1';
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

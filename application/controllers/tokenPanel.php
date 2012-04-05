@@ -15,7 +15,7 @@ class TokenPanel extends CI_Controller
         parent::__construct();
         $this->load->model(array('domain_model', 'token_model'));
         $this->load->helper(array('url', 'form'));
-        $this->load->library(array('token_management', 'domain_management', 'form_validation'));
+        $this->load->library(array('token_management', 'domain_management', 'form_validation', 'theme'));
         if(!$this->user_session->isUserLoggedIn()) {
             redirect('user/login');
         }
@@ -47,26 +47,25 @@ class TokenPanel extends CI_Controller
         if($this->domain_management->userOwnsDomain($domainID)) {
             $tokenCount = $this->token_model->getDomainTokenCount($domainID);
             if($tokenCount >= $this->token_management->getMaxTokens()) {
-                $this->load->view('tokenPanel/limitReached');
+                show_error('Limit for the number of tokens has been reached for this domain.');
             }
             else {
                 $this->form_validation->set_rules('name', 'name', 'required');
-                $this->form_validation->set_rules('clue', 'clue', 'required');
+                $this->form_validation->set_rules('clue', 'clue', 'required|max_length[140]');
                 
                 if($this->form_validation->run() === FALSE) {
-                    $this->load->view('tokenPanel/create');
+                    $data['domainID'] = $domainID;
+                    $this->theme->view('token/create', array('data' => $data));
                 }
                 else {
-                    $tokenID = $this->token_management->getTokenID();
                     $data = array(
-                        'tokenID' => $tokenID,
                         'domainID' => $domainID,
                         'name' => $this->input->post('name'),
                         'clue' => $this->input->post('clue')
                     );
                     
                     $this->token_model->insert($data);
-                    redirect('tokenPanel/view/'.$tokenID, 'Location');
+                    redirect('domain/view/'.$domainID.'?token=success', 'Location');
                 }
             }
         }
@@ -115,10 +114,11 @@ class TokenPanel extends CI_Controller
     public function view($tokenID)
     {
         if($this->token_management->userOwnsToken($tokenID)) {
-            $token = $this->tokens->getTokenByID($tokenID);
-            $data = $token[0];
-            $data['deleteLink'] = anchor('tokenPanel/delete/'.$tokenID, 'Delete Token');
-            $this->load->view('tokenPanel/view', $data);
+            $token = $this->token_model->getTokenByID($tokenID);
+            $domain = $this->domain_model->getDomainByID($token['domainID']);
+            $data = $token;
+            $data['domain'] = $domain[0];
+            $this->theme->view('token/view', $data);
         }
     }
     

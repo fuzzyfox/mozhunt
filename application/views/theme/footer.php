@@ -14,13 +14,15 @@
 			<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 			<script>window.jQuery || document.write('<script src="asset/js/libs/jquery.min.js"><\/script>')</script>
-			
+			<script src="http://yandex.st/highlightjs/6.1/highlight.min.js"></script>
+
 			<script type="text/javascript" src="asset/js/bootstrap.min.js"></script>
 			<script type="text/javascript">
 				$(document).ready(function(){
 					$(".alert").alert();
 					$(".modal").modal({show:false});
 				});
+				hljs.initHighlightingOnLoad();
 			</script>
 			
 			<!-- dynamically loaded scripts -->

@@ -6,3 +6,6 @@
 .help-inline {
 	text-transform : lowercase;
 }
+pre code {
+	background : transparent !important;
+}
