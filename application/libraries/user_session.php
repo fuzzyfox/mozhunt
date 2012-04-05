@@ -95,7 +95,7 @@ class User_session
 		$this->CI->email->subject('Mozhunt account activation');
 
 		//Make the activation URL
-		$activationURL = site_url('user/acivate/'.$key);
+		$activationURL = site_url('user/activate/'.$key);
 
 		$this->CI->email->message("Welcome to Mozhunt, $nickname!\n\nTo finish your registration please click the link below or visit it in your browser.
 \n{unwrap}$activationURL{/unwrap}\n\nHappy hunting,\nThe Mozhunt team.");
