@@ -119,7 +119,6 @@
 		 * initializes the mozhunt js
 		 */
 		$mozhunt.init = function(){
-			alert('mozhunt.com loaded');
 			var parentURL = decodeURIComponent(document.location.hash.replace(/^#/, ''));
 			$mozhunt.comm.postMessage({
 				status : '<?php echo $status; ?>',
