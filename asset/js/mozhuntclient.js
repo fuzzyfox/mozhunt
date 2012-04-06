@@ -239,7 +239,7 @@ if(typeof $mozhunt === 'undefined')
 	 */
 	$mozhunt.tokenupdate = function(landingPage, config){
 		$mozhunt.token.href = '//www.mozhunt.com/landing/'+landingPage;
-		$mozhunt.token.img.src = '//www.mozhunt.com/token/'+(config.style)+'/'+landingPage+'.png?s='+(config.size);
+		$mozhunt.token.img.src = '//www.mozhunt.com/token/img/'+(config.style)+'/'+landingPage+'.png?s='+(config.size);
 	}
 	
 	/**
@@ -308,6 +308,7 @@ if(typeof $mozhunt === 'undefined')
 								$mozhunt.addevent($mozhunt.token, 'click', function(e){
 									alert(addResponse.alertString[1]);
 									console.log('token click event added');
+									e.preventDefault();
 									return false;
 								});
 							}
@@ -316,6 +317,7 @@ if(typeof $mozhunt === 'undefined')
 								alert(addResponse.alertString[0]);
 							}
 						});
+						e.preventDefault();
 						return false;
 					});
 				break;
