@@ -9,7 +9,9 @@
 				<p class="help-block">The domain should be the address users need
 				to enter to visit the homepage of your site. If the site is a subdomain
 				you intend to hide tokens on is a subdomain then please enter that
-				address.</p>
+				address.<br>
+				Please do <strong>not</strong> include a trailing slash <strong>or</strong>
+				the protocol (e.g. <code>http://</code>, <code>https://</code>)</p>
 			</div>
 			<div class="form-actions">
 				<button type="submit" class="btn btn-primary">Create</button>

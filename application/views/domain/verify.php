@@ -7,7 +7,9 @@ must verify your domain. You can choose to verify your domain via a TXT DNS reco
 for your domain. If you are unable to do this then please move to the next method
 of verification.</p>
 <div class="well clearfix">
-	<p>To verify using DNS please enter the following TXT DNS record to your domain.</p>
+	<p>To verify using DNS please enter the following TXT DNS record to your domain. <br>
+	<strong>Note:</strong> if verifying using this method the domain you entered must match
+	that of the domain the DNS record is set for.</p>
 	<pre><?php echo $activationKey;?></pre>
 	<p>Once this has been done click the verify button to your right.</p>
 	<a href="domain/verify/<?php echo $domainID;?>/dns" class="btn btn-primary pull-right">Verify via dns</a>
