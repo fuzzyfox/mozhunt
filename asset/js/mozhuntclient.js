@@ -330,4 +330,5 @@ $mozhuntpostmessage = function () {
 $mozhuntpostmessage.receiveMessage(function(msg){
 	msg = JSON.parse(msg);
 	console.log(msg);
+	return false;
 }, 'www.mozhunt.com');

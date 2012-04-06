@@ -186,6 +186,7 @@ $mozhuntpostmessage = function () {
 //	}
 //	
 //	$mozhunt.init();
+$mozhunt = {};
 $mozhunt.send = function(msg)
 {
 	var parentURL = decodeURIComponent(document.location.hash.replace(/^#/, ''));
