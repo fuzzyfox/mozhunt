@@ -49,44 +49,41 @@
 							<?php elseif($this->uri->segment(2) == 'login'): ?>
 							<a href="user/join" class="btn btn-success pull-right"><?php echo $this->lang->line('theme.nav.join'); ?></a>
 							<?php else: ?>
-								<div class="pull-right">
-									<p class="navbar-text" style="display:inline-block;margin-right:-14px;">Hey</p>
-									<ul class="nav pull-right">
-										<li class="dropdown" id="userNav">
-											<a class="dropdown-toggle" data-toggle="dropdown" href="#userNav">
-											<?php
-												$user = $this->user_model->getUserBy('userID', $this->session->userdata('userID'));
-												echo $user[0]['nickname'];
-											?>
-											<b class="caret"></b>
-										</a>
-										<ul class="dropdown-menu">
-											<li>
-												<a href="user">Account</a>
-												<?php if($user[0]['userStatus'] < 3): ?>
-												<ul class="unstyled" style="margin-left:10px">
-													<li><a href="domain">Domain Mangement</a></li>
-												</ul>
-												<?php endif; ?>
-											</li>
-											<?php if($user[0]['userStatus'] < 1): ?>
-											<li class="divider"></li>
-											<li>
-												<a href="admin">Admin</a>
-												<ul class="unstyled" style="margin-left:10px;">
-													<li><a href="admin/issue">Issue Management</a></li>
-													<?php if($user[0]['userStatus'] == 0): ?>
-													<li><a href="admin/user">User Management</a></li>
-													<?php endif; ?>
-												</ul>
-											</li>
+								<ul class="nav pull-right">
+									<li class="dropdown" id="userNav">
+										<a class="dropdown-toggle" data-toggle="dropdown" href="#userNav">
+										<?php
+											$user = $this->user_model->getUserBy('userID', $this->session->userdata('userID'));
+											echo $user[0]['nickname'];
+										?>
+										<b class="caret"></b>
+									</a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="user">Account</a>
+											<?php if($user[0]['userStatus'] < 3): ?>
+											<ul class="unstyled" style="margin-left:10px">
+												<li><a href="domain">Domain Mangement</a></li>
+											</ul>
 											<?php endif; ?>
-											<li class="divider"></li>
-											<li><a href="user/logout"><?php echo $this->lang->line('theme.nav.logout'); ?></a></li>
-										</ul>
 										</li>
+										<?php if($user[0]['userStatus'] < 1): ?>
+										<li class="divider"></li>
+										<li>
+											<a href="admin">Admin</a>
+											<ul class="unstyled" style="margin-left:10px;">
+												<li><a href="admin/issue">Issue Management</a></li>
+												<?php if($user[0]['userStatus'] == 0): ?>
+												<li><a href="admin/user">User Management</a></li>
+												<?php endif; ?>
+											</ul>
+										</li>
+										<?php endif; ?>
+										<li class="divider"></li>
+										<li><a href="user/logout"><?php echo $this->lang->line('theme.nav.logout'); ?></a></li>
 									</ul>
-								</div>
+									</li>
+								</ul>
 							<?php endif; ?>
 						</div>
 					</div>
