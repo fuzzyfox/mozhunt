@@ -1,9 +1,4 @@
-// check for namespace
-if(typeof $mozhunt === 'undefeined')
-{
-	var $mozhunt = {};
-}
-$mozhunt.comm = function () {
+$mozhuntpostmessage = function () {
 	var interval_id, last_hash, cache_bust = 1,
 		attached_callback, window = this;
 	return {
