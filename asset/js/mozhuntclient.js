@@ -297,7 +297,7 @@ if(typeof $mozhunt === 'undefined')
 					$mozhunt.token.img.src = '//www.mozhunt.com/token/img/'+(config.style)+'/default.png?s='+(config.size);
 					// add click event + ajax
 					$mozhunt.addevent($mozhunt.token, 'click', function(e){
-						$mozhunt.ajax('POST', '//www.mozhunt.com/token/find/'+(data.addkey), function(addResponse){
+						$mozhunt.ajax('GET', 'http://www.mozhunt.com/token/find/'+(data.addkey), function(addResponse){
 							addResponse = JSON.parse(addResponse);
 							if(addResponse.success)
 							{
@@ -306,6 +306,7 @@ if(typeof $mozhunt === 'undefined')
 								// add click event
 								$mozhunt.addevent($mozhunt.token, 'click', function(e){
 									alert(addResponse.alertString[1]);
+									console.log('token click event added');
 									return false;
 								});
 							}
