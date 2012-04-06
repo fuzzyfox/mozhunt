@@ -275,7 +275,7 @@ if(typeof $mozhunt === 'undefined')
 		
 		// setup what to do when mozhunt.com responds
 		$mozhunt.comm.receiveMessage(function(msg){
-			var data = msg.data;
+			var data = JSON.parse(msg.data);
 			switch(data.status)
 			{
 				// user is no a mozhunt player
