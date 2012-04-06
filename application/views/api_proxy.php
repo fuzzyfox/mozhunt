@@ -69,8 +69,8 @@ $mozhunt = {
 };
 
 $mozhunt.send({
-	status : <?php echo $status;?>
-	addkey : <?php echo $apiKey;?>
+	status : '<?php echo $status;?>',
+	addkey : '<?php echo $apiKey;?>'
 });
 
 </script>
