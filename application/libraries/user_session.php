@@ -174,7 +174,7 @@ class User_session
 	 */
 	public function hashPassword($password, $salt)
 	{
-		return sha1($password.$salt);
+		return hash('sha512', $password.$salt);
 	}
 
 	/**
