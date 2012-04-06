@@ -79,7 +79,7 @@ class DomainPanel extends CI_Controller
             );
             $this->domain_model->insert($data);
             $domainID = $this->domain_model->getDomainByField('apiKey', $apiKey);
-            redirect('domainPanel/verify/'.$domainID[0]['domainID'], 'Location');
+            redirect('domain/verify/'.$domainID[0]['domainID'], 'Location');
         }
     }
     
@@ -99,7 +99,7 @@ class DomainPanel extends CI_Controller
                 'numDomains' => $numDomains,
             );
             
-            $this->load->view('domainPanel/viewAll', $data);
+            $this->load->view('domain', $data);
             
         }
         else {
