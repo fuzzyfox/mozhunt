@@ -62,7 +62,7 @@ var XD = function () {
 
 $mozhunt = {
 	send : function(msg){
-		var parentURL = decodeURIComponent(document.location.hash.replace(/^#/, ''));
+		var parent_url = decodeURIComponent(document.location.hash.replace(/^#/, ''));
 		console.log(parent);
 		XD.postMessage(JSON.stringify(msg), parent_url, parent);
 	}
