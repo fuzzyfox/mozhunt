@@ -201,7 +201,7 @@ $mozhunt.send({
 
 $mozhuntpostmessage.receiveMessage(function(msg){
 	msg = JSON.parse(msg);
-	console.log(msg);
+	$mozhunt.send(msg);
 	return false;
 }, '*');
 </script>
