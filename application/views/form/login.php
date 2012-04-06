@@ -5,7 +5,7 @@
 	}
 	elseif($this->input->get('account') == 'created')
 	{
-		echo '<div class="alert alert-info"><a class="close" data-dismiss="alert">&times;</a><strong>Your account has been created!</strong> An activation email was just sent to your email. Your almost there!</div>';
+		echo '<div class="alert alert-info"><a class="close" data-dismiss="alert">&times;</a><strong>Your account has been created!</strong> An activation email was just sent to your email. You&rsquo;re almost there!</div>';
 	}
 	elseif($this->input->get('change') == 'email')
 	{
