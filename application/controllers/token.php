@@ -144,7 +144,7 @@ class Token extends CI_Controller
     {
         $this->load->helper('url');
         $img = substr($img, 0, strlen($img) - 4);
-        //$this->output->set_content_type('png');
+        $this->output->set_content_type('png');
         echo file_get_contents(site_url()."/asset/img/token/$style/$img".(($this->input->get('s'))?'_'.$this->input->get('s'):null).'.png');
     }
 }
