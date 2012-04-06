@@ -6,6 +6,7 @@ nbproject/*
 user_guide
 application/config/database.php
 application/config/config.php
+application/config/email.php
 .htaccess
 
 !asset/misc/schema.sql
