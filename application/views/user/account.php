@@ -27,7 +27,7 @@
 		<div class="thumbnail">
 			<img src="http://www.gravatar.com/avatar/<?php echo md5($user->email); ?>?s=512" alt="<?php echo $user->nickname; ?>'s Gravatar" />
 			<div class="caption">
-				Photo via <a href="//www.gravatar.com">Gravatar</a>.
+				Image via <a href="//www.gravatar.com">Gravatar</a>.
 			</div>
 		</div>
 	</section>
