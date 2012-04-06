@@ -4,7 +4,6 @@
 var XD = function () {
 	var interval_id, last_hash, cache_bust = 1,
 		attached_callback, window = this;
-	console.log(window);
 	return {
 		postMessage: function (message, target_url, target) {
 			if (!target_url) {
