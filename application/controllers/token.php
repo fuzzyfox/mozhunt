@@ -45,9 +45,10 @@ class Token extends CI_Controller
     
     public function find($otk)
     {
+        $this->load->model('find_model');
         $result = $this->find_model->getOTK($otk);
         if(!empty($result)) {
-            $timeTaken = now() - $result[0]['time'];
+            $timeTaken = time() - $result[0]['time'];
             if(!$this->user_session->isUserLoggedIn()) {
                 echo json_encode(array(
                     'success' => false,
@@ -96,6 +97,7 @@ class Token extends CI_Controller
                     {
                         $this->load->library('token_management');
                         $otk = $this->token_management->generateOTK();
+                        $this->find_model->insertOTK($tokenID, $otk, time());
                         $data = array(
                             'status' => 'default',
                             'otk' => $otk
