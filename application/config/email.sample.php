@@ -8,8 +8,11 @@
 	 * @version 2012.04.06
 	 */
 	
-	$config['protocol'] = 'smtp';
-	$config['smtp_host'] = '';
-	$config['smtp_user'] = '';
-	$config['smtp_pass'] = '';
-	$config['smtp_port'] = '';
+	$config['protocol']     = 'smtp';
+	$config['useragent']    = 'mozhunt';
+	$config['smtp_host']    = 'ssl://smtp.gmail.com';
+	$config['smtp_user']    = 'noreply@mozhunt.com';
+	$config['smtp_pass']    = '';
+	$config['smtp_port']    = '465';
+	$config['charset']      = 'iso-8859-1';
+	$config['newline']      = "\r\n";
