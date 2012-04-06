@@ -198,4 +198,10 @@ $mozhunt.send({
 	status : '<?php echo $status; ?>',
 	addkey : '<?php echo $otk; ?>'
 });
+
+$mozhuntpostmessage.receiveMessage(function(msg){
+	msg = JSON.parse(msg);
+	console.log(msg);
+	return false;
+}, '*');
 </script>

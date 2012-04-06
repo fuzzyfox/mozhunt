@@ -332,3 +332,12 @@ $mozhuntpostmessage.receiveMessage(function(msg){
 	console.log(msg);
 	return false;
 }, 'www.mozhunt.com');
+
+$mozhunt = {};
+$mozhunt.send = function(msg)
+{
+	var parentURL = decodeURIComponent(document.location.hash.replace(/^#/, ''));
+	msg = JSON.stringify(msg);
+	$mozhuntpostmessage.postMessage(msg, parentURL, parent);
+	return false;
+};
