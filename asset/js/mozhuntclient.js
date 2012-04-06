@@ -101,7 +101,7 @@ if(typeof $mozhunt === 'undefined')
 		else if(elem.attachEvent)
 		{ elem.attachEvent('on'+type, fn); }
 		else
-		{ elem['on'+type]; }
+		{ elem['on'+type] = fn; }
 		return this;
 	};
 	
@@ -287,7 +287,8 @@ if(typeof $mozhunt === 'undefined')
 					$mozhunt.tokenupdate(data.status, config);
 					// add click event
 					$mozhunt.addevent($mozhunt.token, 'click', function(e){
-						alert(data.alertString);
+						alert('oops... you already found that token');
+						e.preventDefault();
 						return false;
 					});
 				break;
