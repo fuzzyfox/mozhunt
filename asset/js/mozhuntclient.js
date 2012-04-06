@@ -357,6 +357,6 @@ $mozhunt = {
 };
 
 XD.receiveMessage(function(msg){
-	console.log(msg);
+	console.log('local', parent);
 	return false;
 }, 'www.mozhunt.com');
