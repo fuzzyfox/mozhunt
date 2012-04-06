@@ -70,7 +70,7 @@ $mozhunt = {
 
 $mozhunt.send({
 	status : '<?php echo $status;?>',
-	addkey : '<?php echo $apiKey;?>'
+	addkey : '<?php echo $otk;?>'
 });
 
 </script>
