@@ -82,7 +82,7 @@ $route['token/find/(:any)'] 	= 'token/find/$1';
 $route['token/(:any)'] 	= 'tokenPanel/$1';
 
 // tmp till launch
-$route['user/join'] = 'static_content';
+// $route['user/join'] = 'static_content';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

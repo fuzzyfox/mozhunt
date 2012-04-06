@@ -273,60 +273,69 @@ if(typeof $mozhunt === 'undefined')
 		// create iframe and destroy the create method
 		$mozhunt.proxy = $mozhunt.iframe('//www.mozhunt.com/token/api/verify/'+(config.tokenid)+'/'+(config.apikey));
 		
-		// setup what to do when mozhunt.com responds
-		$mozhunt.comm.receiveMessage(function(msg){
-			var data = JSON.parse(msg.data);
-			switch(data.status)
-			{
-				// user is no a mozhunt player
-				case 'guest':
-					$mozhunt.tokenupdate(data.status, config);
-				break;
-				// token has previously been found by this user
-				case 'found':
-					$mozhunt.tokenupdate(data.status, config);
-					// add click event
-					$mozhunt.addevent($mozhunt.token, 'click', function(e){
-						alert('oops... you already found that token');
-						e.preventDefault();
-						return false;
-					});
-				break;
-				// token not currently found by this user
-				case 'default':
-					$mozhunt.token.href = '//www.mozhunt.com/token/find/'+(data.addkey);
-					$mozhunt.token.img.src = '//www.mozhunt.com/token/img/'+(config.style)+'/default.png?s='+(config.size);
-					// add click event + ajax
-					$mozhunt.addevent($mozhunt.token, 'click', function(e){
-						$mozhunt.ajax('GET', 'http://www.mozhunt.com/token/find/'+(data.addkey), function(addResponse){
-							addResponse = JSON.parse(addResponse);
-							if(addResponse.success)
-							{
-								alert(addResponse.alertString[0]);
-								$mozhunt.tokenupdate('found', config);
-								// add click event
-								$mozhunt.addevent($mozhunt.token, 'click', function(e){
-									alert(addResponse.alertString[1]);
-									console.log('token click event added');
-									e.preventDefault();
-									return false;
-								});
-							}
-							else
-							{
-								alert(addResponse.alertString[0]);
-							}
+		var cDate = new Date();
+		var lDate = new Date('April 8, 2012 00:00:00');
+		if(cDate.UTC() > lDate.UTC())
+		{
+			// setup what to do when mozhunt.com responds
+			$mozhunt.comm.receiveMessage(function(msg){
+				var data = JSON.parse(msg.data);
+				switch(data.status)
+				{
+					// user is no a mozhunt player
+					case 'guest':
+						$mozhunt.tokenupdate(data.status, config);
+					break;
+					// token has previously been found by this user
+					case 'found':
+						$mozhunt.tokenupdate(data.status, config);
+						// add click event
+						$mozhunt.addevent($mozhunt.token, 'click', function(e){
+							alert('oops... you already found that token');
+							e.preventDefault();
+							return false;
 						});
-						e.preventDefault();
-						return false;
-					});
-				break;
-				// there was an error somewhere exit
-				default:
-					$mozhunt.tokenupdate('error', config);
-					alert(data.status);
-				break;
-			}
-		}, 'http://www.mozhunt.com');
+					break;
+					// token not currently found by this user
+					case 'default':
+						$mozhunt.token.href = '//www.mozhunt.com/token/find/'+(data.addkey);
+						$mozhunt.token.img.src = '//www.mozhunt.com/token/img/'+(config.style)+'/default.png?s='+(config.size);
+						// add click event + ajax
+						$mozhunt.addevent($mozhunt.token, 'click', function(e){
+							$mozhunt.ajax('GET', 'http://www.mozhunt.com/token/find/'+(data.addkey), function(addResponse){
+								addResponse = JSON.parse(addResponse);
+								if(addResponse.success)
+								{
+									alert(addResponse.alertString[0]);
+									$mozhunt.tokenupdate('found', config);
+									// add click event
+									$mozhunt.addevent($mozhunt.token, 'click', function(e){
+										alert(addResponse.alertString[1]);
+										console.log('token click event added');
+										e.preventDefault();
+										return false;
+									});
+								}
+								else
+								{
+									alert(addResponse.alertString[0]);
+								}
+							});
+							e.preventDefault();
+							return false;
+						});
+					break;
+					// there was an error somewhere exit
+					default:
+						$mozhunt.tokenupdate('error', config);
+						alert(data.status);
+					break;
+				}
+			}, 'http://www.mozhunt.com');
+		}
+		else
+		{
+			$mozhunt.token.style.display = "none";
+		}
 	}
 }

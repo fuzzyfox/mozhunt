@@ -45,37 +45,40 @@ class Token extends CI_Controller
     
     public function find($otk)
     {
-        $this->load->model('find_model');
-        $result = $this->find_model->getOTK($otk);
-        if(!empty($result)) {
-            $timeTaken = time() - $result[0]['time'];
-            if(!$this->user_session->isUserLoggedIn()) {
-                echo json_encode(array(
-                    'success' => false,
-                    'aletString' => array('visit www.mozhunt.com to find out more.')
-                ));
-            }
-            else if (empty($otk)) {
-                echo json_encode(array(
-                    'success' => false,
-                    'aletString' => array('The token key supplied is not valid.')
-                ));
-            }
-            else if ($timeTaken > 3600) {
-                echo json_encode(array(
-                    'success' => false,
-                    'aletString' => array('The token key expired... reload and try again.')
-                ));
-            }
-            else {
-                $userID = $this->session->userdata('userID');
-                $tokenID = $result[0]['tokenID'];
-                $this->find_model->find($userID, $tokenID);
-                $this->find_model->deleteOTK($otk);
-                echo json_encode(array(
-                    'success' => true,
-                    'aletString' => array('Token found!', 'Oops! Looks like you found this one already.')
-                ));
+        if(time() > strtotime('April 8, 2012 00:00:00'))
+        {
+            $this->load->model('find_model');
+            $result = $this->find_model->getOTK($otk);
+            if(!empty($result)) {
+                $timeTaken = time() - $result[0]['time'];
+                if(!$this->user_session->isUserLoggedIn()) {
+                    echo json_encode(array(
+                        'success' => false,
+                        'aletString' => array('visit www.mozhunt.com to find out more.')
+                    ));
+                }
+                else if (empty($otk)) {
+                    echo json_encode(array(
+                        'success' => false,
+                        'aletString' => array('The token key supplied is not valid.')
+                    ));
+                }
+                else if ($timeTaken > 3600) {
+                    echo json_encode(array(
+                        'success' => false,
+                        'aletString' => array('The token key expired... reload and try again.')
+                    ));
+                }
+                else {
+                    $userID = $this->session->userdata('userID');
+                    $tokenID = $result[0]['tokenID'];
+                    $this->find_model->find($userID, $tokenID);
+                    $this->find_model->deleteOTK($otk);
+                    echo json_encode(array(
+                        'success' => true,
+                        'aletString' => array('Token found!', 'Oops! Looks like you found this one already.')
+                    ));
+                }
             }
         }
     }
