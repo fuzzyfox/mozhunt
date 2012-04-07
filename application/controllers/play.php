@@ -17,7 +17,7 @@
 				$data = array(
 					'user' 		=> $this->user_model->getUserBy('userID', $this->session->userdata('userID')),
 					'user_rank' => $this->user_model->getUserRank($this->session->userdata('userID')),
-					'domains' 	=> $this->domain_model->getUserDomains($this->session->userdata('userID'))
+					'domains' 	=> $this->domain_model->getUserFoundDomains($this->session->userdata('userID'))
 				);
 			}
 			$data['leaders'] = $this->db->query('SELECT user.nickname, COUNT(*) \'token_count\'

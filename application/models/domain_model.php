@@ -109,6 +109,16 @@ class Domain_model extends CI_Model
         return $this->getDomainByField('domainID', $domainID);
     }
     
+    public function getUserFoundDomains($userID)
+    {
+        $domains = $this->db->query("SELECT * FROM domain
+                         INNER JOIN userToken ON userToken.userID = domain.userID
+                         WHERE userToken.userID = $userID
+                         GROUP BY userToken.userID
+                         ORDER BY COUNT(*)");
+        return $domains->result_array();
+    }
+    
     /**
 	 * Gets a human readable version of the domain status code
 	 *
