@@ -20,6 +20,10 @@
 	{
 		echo '<div class="alert alert-success"><a class="close" data-dismiss="alert">&times;</a>Your '.$this->input->get('change').' was successfully changed.</div>';
 	}
+	elseif($this->input->get('upgraded'))
+	{
+		echo '<div class="alert alert-success"><a class="close" data-dismiss="alert">&times;</a>Your '.$this->input->get('change').' was successfully upgraded.</div>';
+	}
 ?>
 <section class="row">
 	<h1>Account</h1>
