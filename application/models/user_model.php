@@ -112,6 +112,21 @@ class User_model extends CI_Model
 		$codes = $this->config->item('status_codes');
 		return $codes['user'][$userStatus];
 	}
+	
+	public function getUserRank($userID)
+	{
+		$this->db->query('SET @rownum := 0');
+		$rank = $this->db->query("SELECT *, rank FROM (
+				SELECT @rownum := @rownum + 1 AS rank, COUNT(*) 'token_count'
+				FROM userToken
+				WHERE userToken.userID = $userID
+				GROUP BY userToken.userID
+				ORDER BY token_count DESC
+				LIMIT 1
+			) AS result");
+		$rank = $rank->result_array();
+		return $rank[0]['rank'];
+	}
 }
 
 // End fo file user_model.php

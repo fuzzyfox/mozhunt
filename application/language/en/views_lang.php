@@ -24,6 +24,7 @@
 	$lang['view.admin'] 			= 'Admin Dashboard';
 	$lang['view.domain.overview'] 	= 'Domain Overview';
 	$lang['view.domain.verify'] 	= 'Verify Domain';
+	$lang['view.play'] 				= 'Play';
 	
 /* End of file views_lang.php */
 /* Location: ./application/language/en/views_lang.php */
