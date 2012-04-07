@@ -23,6 +23,7 @@
 			$data['leaders'] = $this->db->query('SELECT user.nickname, COUNT(*) \'token_count\'
 												FROM userToken
 												INNER JOIN user ON user.userID = userToken.userID
+												WHERE user.userStatus != 0
 												GROUP BY userToken.userID
 												ORDER BY token_count DESC
 												LIMIT 10');
