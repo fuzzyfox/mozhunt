@@ -152,16 +152,14 @@ class DomainPanel extends CI_Controller
         if($this->form_validation->run() === false)
         {
             $data = $this->domain_model->getDomainByID($domainID);
+            $data = $data[0];
             $this->theme->view('domain/delete', array('data' => $data));
         }
         else
         {
             if($this->domain_management->userOwnsDomain($domainID)) {
-                $this->domain_model->delete($domainID);
-                $data = array(
-                    'backLink' => anchor('domainPanel/index', 'Back')
-                );
-                $this->load->view('domainPanel/deleted', $data);
+                $this->domain_model->deleteDomain($domainID);
+                redirect('domain?deleted=true');
             }
         }
     }

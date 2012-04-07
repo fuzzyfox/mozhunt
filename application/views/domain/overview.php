@@ -1,3 +1,6 @@
+<?php if($this->input->get('deleted')): ?>
+<div class="alert alert-block alert-success"><a class="close" data-dismiss="alert">&times;</a><strong>Domain Deleted!</strong> This change is not reversable.</div>
+<?php endif; ?>
 <section>
 	<h1>Domain overview</h1>
 	<p>You currently have <?php echo $domainCount; ?> of <?php echo $maxDomainCount; ?>
