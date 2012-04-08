@@ -36,6 +36,12 @@ class Find_model extends CI_Model{
         return $this->db->insert_id();
     }
     
+    public function hasOTK($tokenID)
+    {
+        $query = $this->db->get_where('find', array('tokenID' => $tokenID));
+        return ($query->num_rows() == 1);
+    }
+    
     public function getOTK($otk)
     {
         $query = $this->db->get_where('find', array('key' => $otk));

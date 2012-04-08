@@ -99,7 +99,10 @@ class Token extends CI_Controller
                     if($test->num_rows != 1)
                     {
                         $this->load->library('token_management');
-                        $otk = $this->token_management->generateOTK();
+                        if(!$this->find_model->hasOTK($tokenID))
+                        {
+                            $otk = $this->token_management->generateOTK();
+                        }
                         $this->find_model->insertOTK($tokenID, $otk, time());
                         $data = array(
                             'status' => 'default',
