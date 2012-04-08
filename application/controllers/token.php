@@ -108,7 +108,7 @@ class Token extends CI_Controller
                         {
                             $otk = $this->db->get('find', array('tokenID'=>$tokenID));
                             $otk = $otk->result_array();
-                            $otk = $otk['key'];
+                            $otk = $otk['0']['key'];
                         }
                         $data = array(
                             'status' => 'default',
