@@ -118,6 +118,7 @@ class TokenPanel extends CI_Controller
             $domain = $this->domain_model->getDomainByID($token['domainID']);
             $data = $token;
             $data['domain'] = $domain[0];
+            $data['scripts'] = array('mozhuntclient', 'token_view');
             $this->theme->view('token/view', $data);
         }
     }

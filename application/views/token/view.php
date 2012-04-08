@@ -12,7 +12,7 @@
 as painless as possible. All you need to do is copy paste the code below into the
 webpage you wish to show to token on!</p>
 <section class="row">
-	<div class="span8">
+	<div class="span6">
 		<h2>Code</h2>
 		<p>This first block of code needs to be place either in the <code>&lt;head&gt;</code>
 		tag of your site <strong>OR</strong> as we recommend, last place in you <code>&lt;body&gt;</code>
@@ -22,21 +22,26 @@ webpage you wish to show to token on!</p>
 	$mozhunt.init({
 		tokenid : <?php echo $tokenID; ?>,
 		apikey : '<?php echo $domain['apiKey']; ?>',
-		style : 'default',
+		style : '<span class="tokenstyle">default</span>',
 		size : 'default'
 	});
 &lt/script&gt;</code></pre>
 		<p>Final step... see told you this was easy! This should be placed where ever
 		you wish the token to display on your site... it can be in a blog post,
 		the footer, sidebar... its up to you.</p>
-		<pre><code>&lt;a href="//www.mozhunt.com/landing/about"&gt;
-	&lt;img src="//www.mozhunt.com/token/img/default/default.png?s=default" alt="mozhunt token" /&gt;
+		<pre><code>&lt;a href="//www.mozhunt.com/landing/about" id="mozhunttoken"&gt;
+	&lt;img src="//www.mozhunt.com/token/img/<span class="tokenstyle">default</span>/default.png?s=default" alt="mozhunt token" id="mozhunttokenimg" /&gt;
 &lt;/a&gt;</code></pre>
 	</div>
-	<div class="span4">
+	<div class="span6">
 		<h2>Preview</h2>
-		<a href="//www.mozhunt.com/landing/about">
-			<img src="//www.mozhunt.com/token/img/default/default.png?s=default" alt="mozhunt token" />
-		</a>
+		<ul class="thumbnails">
+			<li class="span4"><a href="//www.mozhunt.com/landing/about" class="thumbnail" id="mozhunttoken"><img src="asset/img/token/explore/explore_large.png" alt="mozhunt token preview" id="mozhunttokenimg" style="max-height:268px;" /></a></li>
+			<li class="span2"><a href="#" class="thumbnail"><img src="asset/img/token/explore/explore_default.png" alt="mozhunt explore token" rel="explore" style="max-height:124px" /></a></li>
+			<li class="span2"><a href="#" class="thumbnail"><img src="asset/img/token/sleep/sleep_default.png" alt="mozhunt sleep token" rel="sleep" style="max-height:124px" /></a></li>
+			<li class="span2"><a href="#" class="thumbnail"><img src="asset/img/token/wave/wave_default.png" alt="mozhunt wave token" rel="wave" style="max-height:124px" /></a></li>
+			<li class="span2"><a href="#" class="thumbnail"><img src="asset/img/token/run/run_default.png" alt="mozhunt run token" rel="run" style="max-height:124px" /></a></li>
+			<li class="span2"><a href="#" class="thumbnail"><img src="asset/img/token/faceplant/faceplant_default.png" alt="mozhunt faceplant token" rel="faceplant" style="max-height:124px" /></a></li>
+		</ul>
 	</div>
 </section>
