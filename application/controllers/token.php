@@ -102,8 +102,14 @@ class Token extends CI_Controller
                         if(!$this->find_model->hasOTK($tokenID))
                         {
                             $otk = $this->token_management->generateOTK();
+                            $this->find_model->insertOTK($tokenID, $otk, time());
                         }
-                        $this->find_model->insertOTK($tokenID, $otk, time());
+                        else
+                        {
+                            $otk = $this->db->get('find', array('tokenID'=>$tokenID));
+                            $otk = $otk->result_array();
+                            $otk = $otk['key'];
+                        }
                         $data = array(
                             'status' => 'default',
                             'otk' => $otk
