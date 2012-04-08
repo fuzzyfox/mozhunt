@@ -26,7 +26,7 @@
 												WHERE user.userStatus != 0
 												GROUP BY userToken.userID
 												ORDER BY token_count DESC
-												LIMIT 10');
+												LIMIT 25');
 			$data['loggedIn'] = $this->user_session->isUserLoggedIn();
 			$this->theme->view('play', array('page_title'=>'view.play', 'data'=>$data));
 		}

@@ -9,3 +9,21 @@
 pre code {
 	background : transparent !important;
 }
+ol.howto {
+	list-style : none;
+	margin : 0;
+}
+ol.howto li h2:before {
+	content : counter(counter);
+	opacity : 0.4;
+	font-weight : bold;
+	float : left;
+	clear : both;
+	font-size : 3em;
+	padding : .2em .2em .2em 0;
+	
+}
+ol.howto li {
+	display : list-item;
+	counter-increment : counter;
+}

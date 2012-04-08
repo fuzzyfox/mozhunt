@@ -9,10 +9,6 @@
 			<link rel="stylesheet" href="asset/css/mozhunt.css" />
 			<link rel="stylesheet" href="http://yandex.st/highlightjs/6.1/styles/default.min.css">
 			<style type="text/css">
-				body {
-				  padding-top: 60px;
-				  padding-bottom: 40px;
-				}
 			</style>
 			<?php
 				if(isset($stylesheets))
@@ -96,7 +92,7 @@
 					<a class="close" data-dismiss="modal">&times;</a>
 					<h3>Sign in</h3>
 				</div>
-				<?php echo form_open('user/login', array('class'=>'form-horizontal')); ?>
+				<?php echo form_open('user/login/'.$this->uri->uri_string(), array('class'=>'form-horizontal')); ?>
 					<div class="modal-body">
 						<div class="control-group">
 							<label for="email" class="control-label"><?php echo $this->lang->line('form.login.email.label'); ?></label>

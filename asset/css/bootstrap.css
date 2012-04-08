@@ -3988,6 +3988,11 @@ a.thumbnail:hover {
 .collapse.in {
   height: auto;
 }
+
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
 /*!
  * Bootstrap Responsive v2.0.2
  *
