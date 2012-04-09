@@ -56,7 +56,6 @@
 					<li>William Duyck</li>
 					<li>Steve West</li>
 					<li>Joe Harrison</li>
-					<li>Aishling Mulhern</li>
 					<li>Majken Connor</li>
 				</ul>
 			</article>
@@ -67,58 +66,68 @@
 				on getting a high score and no prize :D</p>
 				
 				<h2>The aim of the game</h2>
-				<p>Simple as pie this one&hellip; find the easter eggs!</p>
+				<p>Simple as pie this one&hellip; find the pandas!</p>
 				<p>Okay&hellip; we will give you a little more than that. So hidden on
 				a collection of websites around the Mozilla ecosystem you will
-				find easter eggs that look a little like this:</p>
+				find pandas that look a little like this:</p>
 				
-				<img src="" alt="insert image of easter eggs here" class="center">
+				<ul class="row thumbnails">
+					<li class="thumbnail span2 offset1">
+						<img src="asset/img/token/explore/explore_default.png" alt="mozhunt panda" style="max-height:124px">
+					</li>
+					<li class="thumbnail span2">
+						<img src="asset/img/token/sleep/sleep_default.png" alt="mozhunt panda" style="max-height:124px">
+					</li>
+					<li class="thumbnail span2">
+						<img src="asset/img/token/wave/wave_default.png" alt="mozhunt panda" style="max-height:124px">
+					</li>
+					<li class="thumbnail span2">
+						<img src="asset/img/token/faceplant/faceplant_default.png" alt="mozhunt panda" style="max-height:124px">
+					</li>
+					<li class="thumbnail span2">
+						<img src="asset/img/token/run/run_default.png" alt="mozhunt panda" style="max-height:124px">
+					</li>
+				</ul>
 				
 				<p>Whenever you encounter one of these easter eggs there is one
 				simple thing you need to do in order to add it to your score. Give
-				it a click! <strong>However</strong> should you see an easter egg
-				like one of these:</p>
-				
-				<img src="" alt="insert image of found easter eggs">
-				
-				<p>Then there is no need to click it. You have already found it&hellip;
-				time to look for the rest!</p>
+				it a click!</p>
 				
 				<h2>Things not to do</h2>
 				<p>There are lot of things we encourage you to do while playing
-				the game. First of which is to read through the site you find easter
-				eggs on. However to ensure not only a fair game, but also that those
+				the game. First of which is to read through the site you find pandas
+				on. However to ensure not only a fair game, but also that those
 				really trying their best, we have some things that you may not do
 				during gameplay. Doing so will result in the loss of your account
 				as well as a disadvantage to other players as we may be forced to
-				remove easter eggs from them too.</p>
+				remove pandas from them too.</p>
 				
 				<ul>
 					<li>Under no circumstances can you reveal the location of any
-					easter eggs you find.</li>
-					<li>You may not collect the same easter eggs twice (and we will
+					pandas you find.</li>
+					<li>You may not collect the same pandas twice (and we will
 					do what we can to prevent you doing so).</li>
 					<li>You can only have one mozhunt account.</li>
-					<li>Those hiding easter eggs may not tell anyone where it is hidden.</li>
-					<li>If hiding an easter egg it you may not add it to your collection.</li>
+					<li>Those hiding pandas may not tell anyone where it is hidden.</li>
+					<li>If hiding an panda it you may not add it to your collection.</li>
 				</ul>
 				
 				<p>Its not all doom and gloom though!</p>
 				
 				<h2>Things you should do</h2>
 				<p>As we already mentioned we encourage you to read through the
-				site you find easter eggs on, but there is more!</p>
+				site you find pandas on, but there is more!</p>
 				
 				<ul>
-					<li>Read and explore the website you find easter eggs on.</li>
-					<li>Seek out as many tokens as possible.</li>
+					<li>Read and explore the website you find pandas on.</li>
+					<li>Seek out as many pandas as possible.</li>
 					<li>Continue to attend school/work/college/lectures/etc&hellip;
 					as normal. (We know some people didn&rsquo;t last time!)</li>
 					<li>Eat, sleep and drink! You need to stay alert and clear minded
 					if you have any chance of finding them all.</li>
-					<li>No trying to eat the easter eggs. They are just pictures
-					on your screen&hellip; Digital devices don&rsquo;t tend to taste
-					all that good :P</li>
+					<li>You can stroke and cuddle the pandas as much as you like...
+					just be aware that when you start getting strange looks from others...
+					the stroking and cuddling may be why. The pandas are just pictures. :P</li>
 				</ul>
 				
 				<p>So what are you waiting for?! Go on and join in with the fun! <br/>
