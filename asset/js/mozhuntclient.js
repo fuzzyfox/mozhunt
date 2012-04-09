@@ -275,7 +275,7 @@ if(typeof $mozhunt === 'undefined')
 		
 		var cDate = new Date();
 		var lDate = new Date('April 10, 2012 00:00:00');
-		if(cDate.UTC() > lDate.UTC())
+		if(cDate.getTime() > lDate.getTime())
 		{
 			// setup what to do when mozhunt.com responds
 			$mozhunt.comm.receiveMessage(function(msg){

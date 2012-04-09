@@ -36,7 +36,7 @@ webpage you wish to show to token on!</p>
 	<div class="span6">
 		<h2>Preview</h2>
 		<ul class="thumbnails">
-			<li class="span4"><a href="//www.mozhunt.com/landing/about" class="thumbnail" id="mozhunttoken"><img src="asset/img/token/explore/explore_large.png" alt="mozhunt token preview" id="mozhunttokenimg" style="max-height:268px;" /></a></li>
+			<li class="span4"><a href="//www.mozhunt.com/landing/about/x04ifV" class="thumbnail" id="mozhunttoken"><img src="asset/img/token/explore/explore_large.png" alt="mozhunt token preview" id="mozhunttokenimg" style="max-height:268px;" /></a></li>
 			<li class="span2"><a href="#" class="thumbnail"><img src="asset/img/token/explore/explore_default.png" alt="mozhunt explore token" rel="explore" style="max-height:124px" /></a></li>
 			<li class="span2"><a href="#" class="thumbnail"><img src="asset/img/token/sleep/sleep_default.png" alt="mozhunt sleep token" rel="sleep" style="max-height:124px" /></a></li>
 			<li class="span2"><a href="#" class="thumbnail"><img src="asset/img/token/wave/wave_default.png" alt="mozhunt wave token" rel="wave" style="max-height:124px" /></a></li>
