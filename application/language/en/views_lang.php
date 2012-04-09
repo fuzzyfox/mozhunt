@@ -26,5 +26,8 @@
 	$lang['view.domain.verify'] 	= 'Verify Domain';
 	$lang['view.play'] 				= 'Play';
 	
+	// landing pages
+	$lang['landing.about'] = 'Welcome to mozhunt!';
+	
 /* End of file views_lang.php */
 /* Location: ./application/language/en/views_lang.php */

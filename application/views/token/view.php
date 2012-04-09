@@ -29,7 +29,7 @@ webpage you wish to show to token on!</p>
 		<p>Final step... see told you this was easy! This should be placed where ever
 		you wish the token to display on your site... it can be in a blog post,
 		the footer, sidebar... its up to you.</p>
-		<pre><code>&lt;a href="//www.mozhunt.com/landing/about" id="mozhunttoken"&gt;
+		<pre><code>&lt;a href="//www.mozhunt.com/landing/about/<?php echo alphaID(intval("$tokenID".rand(), 10), false, 5, $this->config->item('encryption_key')); ?>" id="mozhunttoken"&gt;
 	&lt;img src="//www.mozhunt.com/token/img/<span class="tokenstyle">default</span>/default.png?s=default" alt="mozhunt token" id="mozhunttokenimg" /&gt;
 &lt;/a&gt;</code></pre>
 	</div>

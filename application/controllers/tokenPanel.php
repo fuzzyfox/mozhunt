@@ -14,7 +14,7 @@ class TokenPanel extends CI_Controller
     {
         parent::__construct();
         $this->load->model(array('domain_model', 'token_model'));
-        $this->load->helper(array('url', 'form'));
+        $this->load->helper(array('url', 'form', 'number'));
         $this->load->library(array('token_management', 'domain_management', 'form_validation', 'theme'));
         if(!$this->user_session->isUserLoggedIn()) {
             redirect('user/login');

@@ -96,7 +96,7 @@ class Token extends CI_Controller
                 if($this->user_session->isUserLoggedIn($this->session->userdata('userID')))
                 {
                     $test = $this->db->get_where('userToken', array('userID'=>$this->session->userdata('userID'), 'tokenID'=>$tokenID));
-                    if($test->num_rows != 1)
+                    if($test->num_rows() != 1)
                     {
                         $this->load->library('token_management');
                         if(!$this->find_model->hasOTK($tokenID))
