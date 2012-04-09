@@ -16,3 +16,5 @@ $mozhunt.init({
 	style : 'default',
 	size : 'default'
 });
+
+$mozhunt.token.style.display = "block";
