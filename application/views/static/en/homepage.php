@@ -13,8 +13,8 @@
 	<span class="pull-right">-- mozhunt team</span></div>-->
 	<h2>Happy Easter!</h2>
 	<img src="asset/img/eastereggs.png" alt="mozhnunt easter eggs" class="pull-right" />
-	<p>Well... today is easter sunday, and you know what that means... It means we
-	are all off filling up on them Easter Eggs. Its not all doom and gloom though.
+	<p>Well... today is Easter Monday, and you know what that means... It means we
+	are <strong>still</strong> all suffing our faces with Easter Eggs. Its not all doom and gloom though.
 	Here is a little something to look forward to. We are going to be running a belated
 	Easter Egg Hunt in just a few days. So keep your eyes peeled, and follow us on twitter
 	to stay up to date with the latest news.</p>
