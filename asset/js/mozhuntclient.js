@@ -291,7 +291,7 @@ if(typeof $mozhunt === 'undefined')
 						$mozhunt.tokenupdate(data.status, config);
 						// add click event
 						$mozhunt.addevent($mozhunt.token, 'click', function(e){
-							alert('oops... you already found that token');
+							window.showModalDialog("//www.mozhunt.com/asset/misc/modal_found.html", "", "dialogWidth:480px; dialogHeight:380px");
 							e.preventDefault();
 							return false;
 						});
@@ -306,19 +306,18 @@ if(typeof $mozhunt === 'undefined')
 								addResponse = JSON.parse(addResponse);
 								if(addResponse.success)
 								{
-									alert(addResponse.alertString[0]);
+									window.showModalDialog("//www.mozhunt.com/asset/misc/modal_success.html", "", "dialogWidth:480px; dialogHeight:380px");
 									$mozhunt.tokenupdate('found', config);
 									// add click event
 									$mozhunt.addevent($mozhunt.token, 'click', function(e){
-										alert(addResponse.alertString[1]);
-										console.log('token click event added');
+										window.showModalDialog("//www.mozhunt.com/asset/misc/modal_found.html", "", "dialogWidth:480px; dialogHeight:380px");
 										e.preventDefault();
 										return false;
 									});
 								}
 								else
 								{
-									alert(addResponse.alertString[0]);
+									window.showModalDialog("//www.mozhunt.com/asset/misc/modal_error.html", "", "dialogWidth:480px; dialogHeight:380px");
 								}
 							});
 							e.preventDefault();
@@ -328,7 +327,7 @@ if(typeof $mozhunt === 'undefined')
 					// there was an error somewhere exit
 					default:
 						$mozhunt.tokenupdate('error', config);
-						alert(data.status);
+						window.showModalDialog("//www.mozhunt.com/asset/misc/modal_error.html", "", "dialogWidth:480px; dialogHeight:380px");
 					break;
 				}
 			}, 'http://www.mozhunt.com');

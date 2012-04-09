@@ -1,0 +1,42 @@
+<!doctype html>
+	<html>
+		<head>
+			<meta charset="utf-8" />
+			<meta name="viewport" content="width=device-width,initial-scale=1">
+			<base href="../../">
+			<title>token error</title>
+			<link rel="stylesheet" href="asset/css/bootstrap.min.css" />
+			<style type="text/css">
+				body {
+					text-align : center;
+					padding-top : 30px;
+					overflow : hidden;
+				}
+				img {
+					display : block;
+					margin : auto;
+					max-height : 200px;
+					max-width : 200px;
+				}
+			</style>
+		</head>
+		<body>
+			<section class="container">
+				<img src="asset/img/token/wave/wave_large.png" alt="success panda" />
+				<h1>Success!</h1>
+				<div class="alert alert-block alert-success">
+					<h3>Yay! This token was successfully added to your score!</h3>
+					<p>This window closes in <span id="timer">5</span> seconds</p>
+				</div>
+				<a href="javascript:window.close();" class="btn">Close window now</a>
+			</section>
+			
+			<script type="text/javascript">
+				setTimeout(window.close, 5000);
+				var countdown = setInterval(function(){
+					var timer = document.getElementById('timer');
+					timer.innerHTML = parseInt(timer.innerHTML, 10) - 1;
+				}, 1000);
+			</script>
+		</body>
+	</html>
