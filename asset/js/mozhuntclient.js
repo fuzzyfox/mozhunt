@@ -274,7 +274,7 @@ if(typeof $mozhunt === 'undefined')
 		$mozhunt.proxy = $mozhunt.iframe('//www.mozhunt.com/token/api/verify/'+(config.tokenid)+'/'+(config.apikey));
 		
 		var cDate = new Date();
-		var lDate = new Date('April 10, 2012 00:00:00');
+		var lDate = new Date('April 15, 2012 00:00:00');
 		if(cDate.getTime() > lDate.getTime())
 		{
 			// setup what to do when mozhunt.com responds
