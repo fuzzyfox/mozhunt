@@ -13,11 +13,10 @@
 	<span class="pull-right">-- mozhunt team</span></div>-->
 	<h2>Happy Easter!</h2>
 	<img src="asset/img/eastereggs.png" alt="mozhnunt easter eggs" class="pull-right" />
-	<p>Well... today is Easter Monday, and you know what that means... It means we
-	are <strong>still</strong> all suffing our faces with Easter Eggs. Its not all doom and gloom though.
-	Here is a little something to look forward to. We are going to be running a belated
-	Easter Egg Hunt in just a few days. So keep your eyes peeled, and follow us on twitter
-	to stay up to date with the latest news.</p>
+	<p>Well... happy post Easter. We want to know how your Easter was in the form of a
+	blog post... but maybe you could <a href="http://youtu.be/ihnhGoeq530">add a panda to it</a>?
+	We are going to be running a belated Easter Hunt in just a few days. So keep
+	your eyes peeled, and follow us on twitter to stay up to date with the latest news.</p>
 	<a href="//twitter.com/mozhunt" class="btn btn-primary btn-large">Follow us on twitter</a>
 	<a href="user/join" class="btn btn-success btn-large">Sign up now!</a>
 </section>
